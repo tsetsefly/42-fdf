@@ -10,4 +10,42 @@
 #                                                                              #
 # **************************************************************************** #
 
+NAME		=		fdf.a
+FILENAMES	=		ft_printf.c
+
+CC			=		gcc
+CFLAGS		+=		-Wall -Wextra -Werror
+CFLAGS		+=		-I includes/
+
+SRCS		=		$(addprefix srcs/, $(FILENAMES))
+OBJS		=		$(addprefix build/, $(FILENAMES:.c=.o))
+
+LIBFT		=		./libft/libft.a
+LIBINC		=		-I./libft
+LIBLINK		=		-L./libft -lft
+
+.PHONY:	all clean fclean re
+
+all: libft $(NAME)
+
+build:
+	mkdir $@
+
+build/%.o: srcs/%.c | build
+	$(CC) $(CFLAGS) $(LIBINC) -o $@ -c $<
+
+libft: $(LIBFT)
+
+$(LIBFT):
+	make -C ./libft
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(LIBLINK) -o $@ $^ -fsanitize=address
+
+clean: rm -rf build/
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
 
