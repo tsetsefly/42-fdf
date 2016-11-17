@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME		=		fdf.a
-FILENAMES	=		ft_printf.c
+FILENAMES	=		fdf.c
 
 CC			=		gcc
 CFLAGS		+=		-Wall -Wextra -Werror
@@ -24,23 +24,32 @@ LIBFT		=		./libft/libft.a
 LIBINC		=		-I./libft
 LIBLINK		=		-L./libft -lft
 
+LIBMLX		=		./minilibx_macos/libmlx.a 
+LIBMLXINC	=		-I./minilibx_macos/
+LIBMLXLINK	=		-L./minilibx_macos -lmlx -framework OpenGL -framework AppKit -Iminilibx_macos
+
 .PHONY:	all clean fclean re
 
-all: libft $(NAME)
+all: libft libmlx $(NAME)
 
 build:
 	mkdir $@
 
 build/%.o: srcs/%.c | build
-	$(CC) $(CFLAGS) $(LIBINC) -o $@ -c $<
+	$(CC) $(CFLAGS) $(LIBINC) $(LIBMLXINC) -o $@ -c $<
 
 libft: $(LIBFT)
 
 $(LIBFT):
 	make -C ./libft
 
+libmlx: $(LIBMLX)
+
+$(LIBMLX):
+	make -C ./libmlx
+
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBLINK) -o $@ $^ -fsanitize=address
+	$(CC) $(CFLAGS) $(LIBLINK) $(LIBMLXLINK) -o $@ $^ -fsanitize=address
 
 clean: rm -rf build/
 
