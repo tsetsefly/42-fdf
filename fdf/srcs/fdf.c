@@ -93,7 +93,6 @@ int			main ()
 
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, window_x, window_y, "detective");
-	mlx_string_put(mlx, window, 500, 625, color, "-detective");
 	// draw_line(400, 400, 200, 200, mlx, window, color);
 	// draw_line(400, 400, 600, 200, mlx, window, color);
 	// draw_line(400, 400, 600, 600, mlx, window, color);
