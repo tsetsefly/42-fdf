@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtse <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 17:47:05 by dtse              #+#    #+#             */
-/*   Updated: 2016/11/15 17:47:07 by dtse             ###   ########.fr       */
+/*   Created: 2016/10/12 16:37:22 by dtse              #+#    #+#             */
+/*   Updated: 2016/10/12 16:37:24 by dtse             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../minilibx_macos/mlx.h"
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <math.h>
-# include <fcntl.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 8
 
-typedef struct	s_pt
+# include <stdlib.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include "libft/libft.h"
+
+typedef struct	s_overflow
 {
-	double	x;
-	double	y;
-	double	z;
-	double	og_x;
-	double	og_y;
-	double	og_z;
-}				t_pt;
+	int					fd;
+	char				*buffer;
+}				t_overflow;
+
+int				get_next_line(const int fd, char **line);
 
 #endif
