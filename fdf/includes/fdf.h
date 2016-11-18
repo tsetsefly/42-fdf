@@ -14,6 +14,7 @@
 # define FDF_H
 # include "../minilibx_macos/mlx.h"
 # include "../libft/libft.h"
+# include "../libft/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>

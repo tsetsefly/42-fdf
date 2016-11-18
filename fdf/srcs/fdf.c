@@ -78,7 +78,23 @@ void		input_detective(int key_press, void *mlx)
 	(void)mlx;
 }
 
-int			main ()
+void		file_detective(char *file_name)
+{
+	int		fd;
+	char	*line;
+
+	// if ((fd = open("file", O_RDONLY)) == -1)
+	// 	return (-1);
+	fd = open(file_name, O_RDONLY);
+	while (get_next_line(fd, &line) != 0)
+	{
+		printf("%s\n", line);
+		free(line);
+  	}
+	close(fd);
+}
+
+int			main (int ac, char **av)
 {
 	void	*mlx;
 	void	*window;
@@ -87,76 +103,81 @@ int			main ()
 	int		color;
 	int 	color_change = 8;
 
-	window_x = 800;
-	window_y = 800;
-	color = 140 * 65536; // RGB = (R*65536)+(G*256)+B , (when R is RED, G is GREEN and B is BLUE)
+	if (ac == 2)
+	{
+		window_x = 800;
+		window_y = 800;
+		color = 140 * 65536; // RGB = (R*65536)+(G*256)+B , (when R is RED, G is GREEN and B is BLUE)
 
-	mlx = mlx_init();
-	window = mlx_new_window(mlx, window_x, window_y, "detective");
-	// draw_line(400, 400, 200, 200, mlx, window, color);
-	// draw_line(400, 400, 600, 200, mlx, window, color);
-	// draw_line(400, 400, 600, 600, mlx, window, color);
-	// draw_line(400, 400, 600, 800, mlx, window, color);
-	// draw_line(400, 400, 600, 0, mlx, window, color);
+		file_detective(av[1]);
 
-	// draw_line(200, 200, 400, 400, mlx, window, color);
-	// draw_line(600, 200, 400, 400, mlx, window, color);
-	// draw_line(600, 600, 400, 400, mlx, window, color);
-	// draw_line(200, 600, 400, 400, mlx, window, color);
+		mlx = mlx_init();
+		window = mlx_new_window(mlx, window_x, window_y, "detective");
+		// draw_line(400, 400, 200, 200, mlx, window, color);
+		// draw_line(400, 400, 600, 200, mlx, window, color);
+		// draw_line(400, 400, 600, 600, mlx, window, color);
+		// draw_line(400, 400, 600, 800, mlx, window, color);
+		// draw_line(400, 400, 600, 0, mlx, window, color);
 
-	// VERTICAL LINE UP --> DOWN HERE
-	draw_line(400, 200, 400, 400, mlx, window, color += color_change);
+		// draw_line(200, 200, 400, 400, mlx, window, color);
+		// draw_line(600, 200, 400, 400, mlx, window, color);
+		// draw_line(600, 600, 400, 400, mlx, window, color);
+		// draw_line(200, 600, 400, 400, mlx, window, color);
 
-	draw_line(450, 200, 400, 400, mlx, window, color += color_change);
-	draw_line(500, 200, 400, 400, mlx, window, color += color_change);
-	draw_line(550, 200, 400, 400, mlx, window, color += color_change);
-	
-	draw_line(600, 200, 400, 400, mlx, window, color += color_change);
-	
-	draw_line(600, 250, 400, 400, mlx, window, color += color_change);
-	draw_line(600, 300, 400, 400, mlx, window, color += color_change);
-	draw_line(600, 350, 400, 400, mlx, window, color += color_change);
-	
-	draw_line(600, 400, 400, 400, mlx, window, color += color_change);
-	
-	draw_line(600, 450, 400, 400, mlx, window, color += color_change);
-	draw_line(600, 500, 400, 400, mlx, window, color += color_change);
-	draw_line(600, 550, 400, 400, mlx, window, color += color_change);
-	
-	draw_line(600, 600, 400, 400, mlx, window, color += color_change);
+		// VERTICAL LINE UP --> DOWN HERE
+		draw_line(400, 200, 400, 400, mlx, window, color += color_change);
 
-	draw_line(550, 600, 400, 400, mlx, window, color += color_change);
-	draw_line(500, 600, 400, 400, mlx, window, color += color_change);
-	draw_line(450, 600, 400, 400, mlx, window, color += color_change);
+		draw_line(450, 200, 400, 400, mlx, window, color += color_change);
+		draw_line(500, 200, 400, 400, mlx, window, color += color_change);
+		draw_line(550, 200, 400, 400, mlx, window, color += color_change);
+		
+		draw_line(600, 200, 400, 400, mlx, window, color += color_change);
+		
+		draw_line(600, 250, 400, 400, mlx, window, color += color_change);
+		draw_line(600, 300, 400, 400, mlx, window, color += color_change);
+		draw_line(600, 350, 400, 400, mlx, window, color += color_change);
+		
+		draw_line(600, 400, 400, 400, mlx, window, color += color_change);
+		
+		draw_line(600, 450, 400, 400, mlx, window, color += color_change);
+		draw_line(600, 500, 400, 400, mlx, window, color += color_change);
+		draw_line(600, 550, 400, 400, mlx, window, color += color_change);
+		
+		draw_line(600, 600, 400, 400, mlx, window, color += color_change);
 
-	// VERTICAL LINE DOWN --> UP HERE
-	draw_line(400, 600, 400, 400, mlx, window, color += color_change);
+		draw_line(550, 600, 400, 400, mlx, window, color += color_change);
+		draw_line(500, 600, 400, 400, mlx, window, color += color_change);
+		draw_line(450, 600, 400, 400, mlx, window, color += color_change);
 
-	draw_line(350, 600, 400, 400, mlx, window, color += color_change);
-	draw_line(300, 600, 400, 400, mlx, window, color += color_change);
-	draw_line(250, 600, 400, 400, mlx, window, color += color_change);
+		// VERTICAL LINE DOWN --> UP HERE
+		draw_line(400, 600, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 600, 400, 400, mlx, window, color += color_change);
+		draw_line(350, 600, 400, 400, mlx, window, color += color_change);
+		draw_line(300, 600, 400, 400, mlx, window, color += color_change);
+		draw_line(250, 600, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 550, 400, 400, mlx, window, color += color_change);
-	draw_line(200, 500, 400, 400, mlx, window, color += color_change);
-	draw_line(200, 450, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 600, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 400, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 550, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 500, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 450, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 350, 400, 400, mlx, window, color += color_change);
-	draw_line(200, 300, 400, 400, mlx, window, color += color_change);
-	draw_line(200, 250, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 400, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 200, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 350, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 300, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 250, 400, 400, mlx, window, color += color_change);
 
-	draw_line(250, 200, 400, 400, mlx, window, color += color_change);
-	draw_line(300, 200, 400, 400, mlx, window, color += color_change);
-	draw_line(350, 200, 400, 400, mlx, window, color += color_change);
+		draw_line(200, 200, 400, 400, mlx, window, color += color_change);
 
-	mlx_key_hook(window, (void *)input_detective, mlx);
-	mlx_loop(mlx);
+		draw_line(250, 200, 400, 400, mlx, window, color += color_change);
+		draw_line(300, 200, 400, 400, mlx, window, color += color_change);
+		draw_line(350, 200, 400, 400, mlx, window, color += color_change);
 
-	printf("wahoo!!!\n");
+		mlx_key_hook(window, (void *)input_detective, mlx);
+		mlx_loop(mlx);
+	}
+	else
+		printf("wahoo!!!\n");
 	return (0);
 }
