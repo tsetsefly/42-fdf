@@ -83,7 +83,7 @@ void		file_detective(char *file_name)
 	int		fd;
 	char	*line;
 
-	// if ((fd = open("file", O_RDONLY)) == -1)
+	// if ((fd = open("file", O_RDONLY)) == -1) //
 	// 	return (-1);
 	fd = open(file_name, O_RDONLY);
 	while (get_next_line(fd, &line) != 0)

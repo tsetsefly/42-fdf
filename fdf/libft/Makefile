@@ -80,13 +80,14 @@ FILENAMES	=		ft_atoi.c			\
 CC			=		gcc
 CFLAGS		=		-c -Wall -Wextra -Werror
 OBJS		=		$(FILENAMES:.c=.o)
+INCDIR		=		includes
 
 .PHONY:	all clean fclean re
 
 all: $(NAME)
 
 $(NAME):
-	@$(CC) $(CFLAGS) $(FILENAMES)
+	@$(CC) $(CFLAGS) $(FILENAMES) -I $(INCDIR)
 	@ar -rc $(NAME).a $(OBJS)
 
 clean:
