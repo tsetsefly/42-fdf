@@ -72,20 +72,62 @@ void		input_detective(int key_press, void *mlx)
 	(void)mlx;
 }
 
+void		print_2D_chararray(char **array, int rows)
+{
+	int		i;
+	size_t	len;
+	
+	i = 0;
+	len = 0;
+	ft_putstr("wahoo!\n");
+	while (i < rows)
+	{
+		ft_putstr(array[i]);
+		ft_putchar('\n');
+		i++;
+	}
+}
+
 void		file_detective(char *file_name)
 {
 	int		fd;
+	int		rows;
+	size_t	len;
 	char	*line;
+	char	**file_storage;
 
 	// if ((fd = open("file", O_RDONLY)) == -1)
 	// 	return (-1);
+
+	// get dimensions of the array
+	// malloc for array
+	// fill array with values
 	fd = open(file_name, O_RDONLY);
-	while (get_next_line(fd, &line) != 0)
+	rows = 0;
+	len = 0;
+	while (get_next_line(fd, &line) > 0)
 	{
 		printf("%s\n", line);
+		rows++;
 		free(line);
   	}
+	printf("ROWS = %d\n", rows);
 	close(fd);
+	file_storage = (char **)malloc(sizeof(char *) * (rows + 1));
+	fd = open(file_name, O_RDONLY);
+	rows = 0;
+  	while (get_next_line(fd, &line) > 0)
+	{
+		len = ft_strlen(line);
+		printf("%s\tLEN = %lu\n", line, len);
+		file_storage[rows] = (char *)malloc(sizeof(char) * (len + 1));
+		ft_strcpy(file_storage[rows], line);
+		// file_storage[rows][len + 1] = '\0';
+		rows++;
+		free(line);
+  	}
+  	file_storage[rows] = 0;
+  	// print_2D_chararray(file_storage, rows);
 }
 
 void		test_print_spiral(void *mlx, void *window) // REMOVE LATER!!!
@@ -163,7 +205,7 @@ int			main (int ac, char **av)
 		file_detective(av[1]);
 		mlx = mlx_init();
 		window = mlx_new_window(mlx, window_x, window_y, "detective");
-		test_print_spiral(mlx, window);
+		test_print_spiral(mlx, window);  // REMOVE LATER!!!
 	}
 	else
 		printf("didn't pass a file!!!\n");
