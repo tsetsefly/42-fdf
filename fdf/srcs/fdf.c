@@ -88,7 +88,44 @@ void		print_2D_chararray(char **array, int rows)
 	}
 }
 
-void		file_detective(char *file_name)
+int		find_num_cols(char *array)
+{
+	int i;
+	int len;
+	int cols;
+
+	len = ft_strlen(array);
+	i = 0;
+	cols = 0;
+	while (i < len)
+	{
+		if (array[i] == ' ')
+		{
+			cols++;
+			while (array[i] == ' ')
+				i++;
+		}
+		else
+			i++;
+	}
+	cols++;
+	return (cols);
+}
+
+void		parse_file(char **file_storage, int rows)
+{
+	int		i;
+	int		cols;
+
+	cols = find_num_cols(file_storage[0]);
+	printf("COLS = %d\n", cols);
+	i = 0;
+	rows = 0; // REMOVE LATER
+
+	// need to populate struct with values
+}
+
+void 		**file_detective(char *file_name)
 {
 	int		fd;
 	int		rows;
@@ -127,7 +164,9 @@ void		file_detective(char *file_name)
 		free(line);
   	}
   	file_storage[rows] = 0;
-  	// print_2D_chararray(file_storage, rows);
+  	print_2D_chararray(file_storage, rows);
+  	parse_file(file_storage, rows);
+  	return (0); // WTF? Why do I need this?
 }
 
 void		test_print_spiral(void *mlx, void *window) // REMOVE LATER!!!
