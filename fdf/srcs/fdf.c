@@ -112,16 +112,34 @@ int		find_num_cols(char *array)
 	return (cols);
 }
 
+t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols)
+{
+	int i;
+
+	i = 0;
+	while (i < cols)
+	{
+		r_map[i++]
+		// need to parse character array for the numbers and put them into the struct one by one
+	}
+}
+
 void		parse_file(char **file_storage, int rows)
 {
 	int		i;
 	int		cols;
+	t_pt	**map;
 
 	cols = find_num_cols(file_storage[0]);
-	printf("COLS = %d\n", cols);
+	printf("ROWS = %d, COLS = %d\n", rows, cols);
+	
+	map = (t_pt **)malloc(sizeof(t_pt *) * rows);
 	i = 0;
-	rows = 0; // REMOVE LATER
-
+	while (i < rows)
+		map[i++] = (t_pt *)malloc(sizeof(t_pt) * cols);
+	i = 0;
+	while (i < rows)
+		map[i++] = fill_map(file_storage[i], map[rows - i - 1], rows - i - 1, cols);
 	// need to populate struct with values
 }
 
@@ -148,7 +166,7 @@ void 		**file_detective(char *file_name)
 		rows++;
 		free(line);
   	}
-	printf("ROWS = %d\n", rows);
+	// printf("ROWS = %d\n", rows);
 	close(fd);
 	file_storage = (char **)malloc(sizeof(char *) * (rows + 1));
 	fd = open(file_name, O_RDONLY);
