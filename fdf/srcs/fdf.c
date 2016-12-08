@@ -119,8 +119,9 @@ t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols)
 	i = 0;
 	while (i < cols)
 	{
-		r_map[i++]
+		r_map[i++] = 
 		// need to parse character array for the numbers and put them into the struct one by one
+		// string split to atoi... might need to clean up memory allocation though with free in base functions
 	}
 }
 
