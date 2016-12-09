@@ -30,9 +30,17 @@ typedef struct	s_pt
 	double	og_z;
 }				t_pt;
 
-typedef struct s_superstruct
+typedef struct s_super
 {
-	t_pt	**map_storage;
-}				t_superstruct;
+	char	*file_name;
+	t_pt	**map;
+	char	**file_storage;
+	int		rows;
+	int		cols;
+	void	*mlx;
+	void	*window;
+	int		window_x;
+	int		window_y;
+}				t_super;
 
 #endif
