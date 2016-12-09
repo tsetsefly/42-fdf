@@ -25,6 +25,9 @@ typedef struct	s_pt
 	double	x;
 	double	y;
 	double	z;
+	double	scaled_x;
+	double	scaled_y;
+	double	scaled_z;
 	double	og_x;
 	double	og_y;
 	double	og_z;

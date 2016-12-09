@@ -289,7 +289,8 @@ int			main (int ac, char **av)
 	if (ac == 2)
 	{
 		super_struct = init_superstruct(av[1]);
-		
+		// next thing to do is scale the points to the window in the map for the initial positions
+		// after that need to draw the lines connecting the points
 		test_print_spiral(super_struct.mlx, super_struct.window);  // REMOVE LATER!!!
 	}
 	else
