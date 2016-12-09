@@ -114,14 +114,37 @@ int		find_num_cols(char *array)
 
 t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols)
 {
-	int i;
+	int		i;
+	char	**num_char_array;
 
+	num_char_array = ft_strsplit(r_char, ' '); // may need to come back later to error check for other delimiters
 	i = 0;
 	while (i < cols)
 	{
-		r_map[i++] = 
-		// need to parse character array for the numbers and put them into the struct one by one
-		// string split to atoi... might need to clean up memory allocation though with free in base functions
+		r_map[i].og_x = map_row;
+		r_map[i].og_y = i;
+		r_map[i].og_z = ft_atoi(num_char_array[i]);
+		i++;
+	}
+	return (r_map);
+}
+
+void		print_map(t_pt **map, int rows, int cols)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < cols)
+		{
+			printf("(%d,%d) %d \t", (int)map[i][j].og_x, (int)map[i][j].og_y, (int)map[i][j].og_z);
+			j++;
+		}
+		printf("\n");
+		i++;
 	}
 }
 
@@ -140,11 +163,14 @@ void		parse_file(char **file_storage, int rows)
 		map[i++] = (t_pt *)malloc(sizeof(t_pt) * cols);
 	i = 0;
 	while (i < rows)
-		map[i++] = fill_map(file_storage[i], map[rows - i - 1], rows - i - 1, cols);
-	// need to populate struct with values
+	{
+		map[i] = fill_map(file_storage[i], map[i], i, cols);
+		i++;
+	}
+	print_map(map, rows, cols);
 }
 
-void 		**file_detective(char *file_name)
+void 		file_detective(char *file_name)
 {
 	int		fd;
 	int		rows;
@@ -185,7 +211,6 @@ void 		**file_detective(char *file_name)
   	file_storage[rows] = 0;
   	print_2D_chararray(file_storage, rows);
   	parse_file(file_storage, rows);
-  	return (0); // WTF? Why do I need this?
 }
 
 void		test_print_spiral(void *mlx, void *window) // REMOVE LATER!!!
