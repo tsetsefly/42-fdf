@@ -42,10 +42,14 @@ typedef struct s_super
 	int		cols;
 	void	*mlx;
 	void	*window;
-	int		window_x;
-	int		window_y;
+	double	window_x;
+	double	window_y;
 	double	max_z;
 	double	min_z;
+	double	step_unit;
+	char	long_axis;
+	double	start_x;
+	double	start_y;
 }				t_super;
 
 #endif
