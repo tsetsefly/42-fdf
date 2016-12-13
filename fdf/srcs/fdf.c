@@ -328,10 +328,30 @@ void		print_shit(t_super super_struct)
 	int		i;
 	int		j;
 	int		color = 140 * 65536;
+
+	i = 0;
+	while (i < super_struct.rows)
+	{
+		j = 0;
+		while (j < super_struct.cols)
+		{
+			// mlx_pixel_put(super_struct.mlx, super_struct.window, x, y, color);
+			mlx_pixel_put(super_struct.mlx, super_struct.window, super_struct.map[i][j].scaled_x, super_struct.map[i][j].scaled_y, color);
+			j++;
+		}
+		i++;
+	}
+	mlx_key_hook(super_struct.window, (void *)input_detective, super_struct.mlx);
+	mlx_loop(super_struct.mlx);
+}
+
+t_super		scale_init_map(t_super super_struct)
+{
+	int		i;
+	int		j;
 	double	x;
 	double	y;
 
-	x = super_struct.start_x;
 	y = super_struct.start_y;
 	i = 0;
 	while (i < super_struct.rows)
@@ -340,13 +360,15 @@ void		print_shit(t_super super_struct)
 		x = super_struct.start_x;
 		while (j < super_struct.cols)
 		{
-			mlx_pixel_put(super_struct.mlx, super_struct.window, x, y, color);
+			super_struct.map[i][j].scaled_x = x;
+			super_struct.map[i][j].scaled_y = y;
 			x += super_struct.step_unit;
 			j++;
 		}
 		y += super_struct.step_unit;
 		i++;
 	}
+	return (super_struct);
 }
 
 t_super		scale_that_shit(t_super super_struct)
@@ -368,6 +390,7 @@ t_super		scale_that_shit(t_super super_struct)
 		super_struct.start_x = (super_struct.window_x / 2) - (super_struct.step_unit * (super_struct.cols + 1) / 2);
 	}
 	printf("step unit = %f, axis = %c, start_x = %f, start_y = %f\n", super_struct.step_unit, super_struct.long_axis, super_struct.start_x, super_struct.start_y);
+	super_struct = scale_init_map(super_struct);
 	print_shit(super_struct);
 	return (super_struct);
 }
