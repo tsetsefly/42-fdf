@@ -169,6 +169,8 @@ t_super		parse_file(t_super super_struct)
 	return (super_struct);
 }
 
+
+// probably need to find max and min Z here
 t_super 	file_detective(t_super super_struct)
 {
 	int		fd;
@@ -269,16 +271,26 @@ void		test_print_spiral(void *mlx, void *window) // REMOVE LATER!!!
 	mlx_loop(mlx);
 }
 
+t_pt		**scale_that_shit(t_super super_struct)
+{
+	
+
+
+	return (map);
+}
+
 t_super		init_superstruct(char *av1)
 {
 	t_super	super_struct;
 
-	super_struct.window_x = 800;
-	super_struct.window_y = 800;
+	// can make this more efficient with pointers instead of copying variables through functions
+	super_struct.window_x = 1000;
+	super_struct.window_y = 1000;
 	super_struct.file_name = av1;
 	super_struct = file_detective(super_struct);
 	super_struct.mlx = mlx_init();
 	super_struct.window = mlx_new_window(super_struct.mlx, super_struct.window_x, super_struct.window_y, "detective");
+	super_struct.map = scale_that_shit(super_struct);
 	return (super_struct);
 }
 
