@@ -391,6 +391,7 @@ t_super		scale_that_shit(t_super super_struct)
 	}
 	printf("step unit = %f, axis = %c, start_x = %f, start_y = %f\n", super_struct.step_unit, super_struct.long_axis, super_struct.start_x, super_struct.start_y);
 	super_struct = scale_init_map(super_struct);
+	// need to draw lines now
 	print_shit(super_struct);
 	return (super_struct);
 }
