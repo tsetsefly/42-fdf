@@ -148,13 +148,46 @@ void		print_map(t_super super_struct)
 	}
 }
 
+t_super		max_min_z(t_super super_struct)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	super_struct.max_z = super_struct.map[0][0].og_z;
+	super_struct.min_z = super_struct.map[0][0].og_z;
+	printf("MAX_Z = %f, MIN_Z = %f\n", super_struct.max_z, super_struct.min_z);
+	while (i < super_struct.rows)
+	{
+		j = 0;
+		while (j < super_struct.cols)
+		{
+			// printf("(%d, %d) %f\t", i, j, super_struct.map[i][j].og_z);
+			if (super_struct.map[i][j].og_z > super_struct.max_z)
+			{
+				super_struct.max_z = super_struct.map[i][j].og_z;
+				// printf("MAX_Z = %f, MIN_Z = %f\n", super_struct.max_z, super_struct.min_z);
+			}
+			else if (super_struct.map[i][j].og_z < super_struct.min_z)
+			{
+				super_struct.min_z = super_struct.map[i][j].og_z;
+				// printf("MAX_Z = %f, MIN_Z = %f\n", super_struct.max_z, super_struct.min_z);
+			}
+			j++;
+		}
+		i++;
+	}
+	printf("MAX_Z = %f, MIN_Z = %f\n", super_struct.max_z, super_struct.min_z);
+	return (super_struct);
+}
+
+// probably need to find max and min Z here
 t_super		parse_file(t_super super_struct)
 {
 	int		i;
 
 	super_struct.cols = find_num_cols(super_struct.file_storage[0]);
 	printf("ROWS = %d, COLS = %d\n", super_struct.rows, super_struct.cols);
-	
 	super_struct.map = (t_pt **)malloc(sizeof(t_pt *) * super_struct.rows);
 	i = 0;
 	while (i < super_struct.rows)
@@ -166,11 +199,28 @@ t_super		parse_file(t_super super_struct)
 		i++;
 	}
 	print_map(super_struct);
-	return (super_struct);
+	return (super_struct = max_min_z(super_struct));
 }
 
+int			find_num_rows(char *file_name)
+{
+	int		fd;
+	char	*line;
+	int		rows;
 
-// probably need to find max and min Z here
+	fd = open(file_name, O_RDONLY);
+	rows = 0;
+	while (get_next_line(fd, &line) > 0)
+	{
+		printf("%s\n", line);
+		rows++;
+		free(line);
+  	}
+  	// printf("ROWS = %d\n", rows);
+	close(fd);
+	return (rows);
+}
+
 t_super 	file_detective(t_super super_struct)
 {
 	int		fd;
@@ -183,20 +233,22 @@ t_super 	file_detective(t_super super_struct)
 	// get dimensions of the array
 	// malloc for array
 	// fill array with values
-	fd = open(super_struct.file_name, O_RDONLY);
-	super_struct.rows = 0;
-	len = 0;
-	while (get_next_line(fd, &line) > 0)
-	{
-		printf("%s\n", line);
-		super_struct.rows++;
-		free(line);
-  	}
+	// fd = open(super_struct.file_name, O_RDONLY);
+	// super_struct.rows = 0;
+	// len = 0;
+	// while (get_next_line(fd, &line) > 0)
+	// {
+	// 	printf("%s\n", line);
+	// 	super_struct.rows++;
+	// 	free(line);
+ 	//  	}
 	// printf("ROWS = %d\n", rows);
-	close(fd);
+	// close(fd);
+	super_struct.rows = find_num_rows(super_struct.file_name);
 	super_struct.file_storage = (char **)malloc(sizeof(char *) * (super_struct.rows + 1));
 	fd = open(super_struct.file_name, O_RDONLY);
 	super_struct.rows = 0;
+	len = 0;
   	while (get_next_line(fd, &line) > 0)
 	{
 		len = ft_strlen(line);
@@ -271,13 +323,12 @@ void		test_print_spiral(void *mlx, void *window) // REMOVE LATER!!!
 	mlx_loop(mlx);
 }
 
-t_pt		**scale_that_shit(t_super super_struct)
-{
+// t_pt		**scale_that_shit(t_super super_struct)
+// {
 	
 
-
-	return (map);
-}
+// 	return (map);
+// }
 
 t_super		init_superstruct(char *av1)
 {
@@ -290,7 +341,7 @@ t_super		init_superstruct(char *av1)
 	super_struct = file_detective(super_struct);
 	super_struct.mlx = mlx_init();
 	super_struct.window = mlx_new_window(super_struct.mlx, super_struct.window_x, super_struct.window_y, "detective");
-	super_struct.map = scale_that_shit(super_struct);
+	// super_struct.map = scale_that_shit(super_struct);
 	return (super_struct);
 }
 
@@ -301,6 +352,7 @@ int			main (int ac, char **av)
 	if (ac == 2)
 	{
 		super_struct = init_superstruct(av[1]);
+
 		// next thing to do is scale the points to the window in the map for the initial positions
 		// after that need to draw the lines connecting the points
 		test_print_spiral(super_struct.mlx, super_struct.window);  // REMOVE LATER!!!

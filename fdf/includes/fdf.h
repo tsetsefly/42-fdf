@@ -44,6 +44,8 @@ typedef struct s_super
 	void	*window;
 	int		window_x;
 	int		window_y;
+	double	max_z;
+	double	min_z;
 }				t_super;
 
 #endif
