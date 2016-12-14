@@ -22,6 +22,7 @@ void		ft_swap_doubles(double *a, double *b)
 	*b = tmp;
 }
 
+// need to make this fit norm
 void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color)
 {
 	double	i;
