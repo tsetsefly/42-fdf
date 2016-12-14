@@ -67,6 +67,8 @@ void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *win
 void		input_detective(int key_press, void *mlx)
 {
 	printf("key_press = %d\n", key_press);
+	if (key_press == 126)
+		printf("up!\n");
 	if (key_press == 53)
 		exit(1);
 	(void)mlx;
@@ -227,23 +229,6 @@ t_super 	file_detective(t_super super_struct)
 	size_t	len;
 	char	*line;
 
-	// if ((fd = open("file", O_RDONLY)) == -1)
-	// 	return (-1);
-
-	// get dimensions of the array
-	// malloc for array
-	// fill array with values
-	// fd = open(super_struct.file_name, O_RDONLY);
-	// super_struct.rows = 0;
-	// len = 0;
-	// while (get_next_line(fd, &line) > 0)
-	// {
-	// 	printf("%s\n", line);
-	// 	super_struct.rows++;
-	// 	free(line);
- 	//  	}
-	// printf("ROWS = %d\n", rows);
-	// close(fd);
 	super_struct.rows = find_num_rows(super_struct.file_name);
 	super_struct.file_storage = (char **)malloc(sizeof(char *) * (super_struct.rows + 1));
 	fd = open(super_struct.file_name, O_RDONLY);
@@ -252,10 +237,9 @@ t_super 	file_detective(t_super super_struct)
   	while (get_next_line(fd, &line) > 0)
 	{
 		len = ft_strlen(line);
-		printf("%s\tLEN = %lu\n", line, len);
+		// printf("%s\tLEN = %lu\n", line, len);
 		super_struct.file_storage[super_struct.rows] = (char *)malloc(sizeof(char) * (len + 1));
 		ft_strcpy(super_struct.file_storage[super_struct.rows], line);
-		// file_storage[rows][len + 1] = '\0';
 		super_struct.rows++;
 		free(line);
   	}
@@ -335,7 +319,6 @@ void		print_shit(t_super super_struct)
 		j = 0;
 		while (j < super_struct.cols)
 		{
-			// mlx_pixel_put(super_struct.mlx, super_struct.window, x, y, color);
 			mlx_pixel_put(super_struct.mlx, super_struct.window, super_struct.map[i][j].scaled_x, super_struct.map[i][j].scaled_y, color);
 			j++;
 		}
@@ -362,7 +345,6 @@ t_super		scale_init_map(t_super super_struct)
 		{
 			super_struct.map[i][j].scaled_x = x;
 			super_struct.map[i][j].scaled_y = y;
-			super_struct.map[i][j].scaled_z = 0;
 			x += super_struct.step_unit;
 			j++;
 		}
@@ -376,23 +358,21 @@ t_super		scale_that_shit(t_super super_struct)
 {
 	super_struct.step_unit = 0;
 
+	// not quite centered
 	if (super_struct.cols >= super_struct.rows)
 	{
 		super_struct.step_unit = ((3 * super_struct.window_x) / 5) / (super_struct.cols + 1);
 		super_struct.long_axis = 'x';
-		super_struct.start_x = super_struct.window_x / 5;
-		super_struct.start_y = (super_struct.window_y / 2) - (super_struct.step_unit * (super_struct.rows + 1) / 2);
 	}
 	else
 	{
 		super_struct.step_unit = ((3 * super_struct.window_y) / 5) / (super_struct.rows + 1);
 		super_struct.long_axis = 'y';
-		super_struct.start_y = super_struct.window_y / 5;
-		super_struct.start_x = (super_struct.window_x / 2) - (super_struct.step_unit * (super_struct.cols + 1) / 2);
 	}
+	super_struct.start_x = (super_struct.window_x / 2) - (super_struct.step_unit * (super_struct.cols) / 2);
+	super_struct.start_y = (super_struct.window_y / 2) - (super_struct.step_unit * (super_struct.rows) / 2);
 	printf("step unit = %f, axis = %c, start_x = %f, start_y = %f\n", super_struct.step_unit, super_struct.long_axis, super_struct.start_x, super_struct.start_y);
 	super_struct = scale_init_map(super_struct);
-	// need to draw lines now
 	// print_shit(super_struct);
 	return (super_struct);
 }
@@ -429,12 +409,14 @@ t_super		init_superstruct(char *av1)
 	// can make this more efficient with pointers instead of copying variables through functions
 	super_struct.window_x = 1000;
 	super_struct.window_y = 1000;
+	super_struct.angle_x = 0;
+	super_struct.angle_y = 0;
+	super_struct.angle_z = 0;
 	super_struct.file_name = av1;
 	super_struct = file_detective(super_struct);
 	super_struct.mlx = mlx_init();
 	super_struct.window = mlx_new_window(super_struct.mlx, super_struct.window_x, super_struct.window_y, "detective");
 	super_struct = scale_that_shit(super_struct);
-	connect_lines(super_struct);
 	return (super_struct);
 }
 
@@ -445,12 +427,10 @@ int			main (int ac, char **av)
 	if (ac == 2)
 	{
 		super_struct = init_superstruct(av[1]);
-
-		// next thing to do is scale the points to the window in the map for the initial positions
-		// after that need to draw the lines connecting the points
+		connect_lines(super_struct);
 		// test_print_spiral(super_struct.mlx, super_struct.window);  // REMOVE LATER!!!
 	}
 	else
-		printf("didn't pass a file!!!\n");
+		printf("Error: didn't pass a file!\n");
 	return (0);
 }

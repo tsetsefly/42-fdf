@@ -24,10 +24,10 @@ typedef struct	s_pt
 {
 	double	x;
 	double	y;
-	double	z;
+	// double	z;
 	double	scaled_x;
 	double	scaled_y;
-	double	scaled_z;
+	// double	scaled_z;
 	double	og_x;
 	double	og_y;
 	double	og_z;
@@ -50,6 +50,9 @@ typedef struct s_super
 	char	long_axis;
 	double	start_x;
 	double	start_y;
+	double	angle_x;
+	double	angle_y;
+	double	angle_z;
 }				t_super;
 
 #endif
