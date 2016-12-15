@@ -65,13 +65,24 @@ void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *win
 	}	
 }
 
+void		x_axis(t_super *super_struct)
+{
+	int		i;
+	int		j;
+
+	while
+
+
+}
+
 // rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
-int		input_detective(int key_press, /*void *mlx, */t_super *super_struct)
+int			input_detective(int key_press, /*void *mlx, */t_super *super_struct)
 {
 	printf("key_press = %d\n", key_press);
 	if (key_press == 126)
 		printf("up!\n");
-		// printf("%f\n", super_struct.map[2][2]->scaled_z);
+		printf("%f\n", super_struct->map[2][2].scaled_z);
+		x_axis(super_struct);
 	if (key_press == 53)
 		exit(1);
 	(void)super_struct;
