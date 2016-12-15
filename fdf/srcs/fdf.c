@@ -67,12 +67,15 @@ void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *win
 
 void		x_axis(t_super *super_struct)
 {
-	int		i;
-	int		j;
+	// int		i;
+	// int		j;
 
-	while
+	// need to update the angle based on key press
+	// need to apply the axis equation to each point in the map
+	// radians = degrees * pi / 180
+	// need to translate from neutral position each time? in that case need to sequentially run against x, y, z
 
-
+	(void)super_struct;
 }
 
 // rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
