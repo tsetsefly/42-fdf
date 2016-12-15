@@ -66,15 +66,16 @@ void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *win
 }
 
 // rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
-void		input_detective(int key_press, void *mlx)
+int		input_detective(int key_press, /*void *mlx, */t_super *super_struct)
 {
 	printf("key_press = %d\n", key_press);
 	if (key_press == 126)
 		printf("up!\n");
-		
+		// printf("%f\n", super_struct.map[2][2]->scaled_z);
 	if (key_press == 53)
 		exit(1);
-	(void)mlx;
+	(void)super_struct;
+	return (0);
 }
 
 void		print_2D_chararray(char **array, int rows)
@@ -253,64 +254,64 @@ t_super 	file_detective(t_super super_struct)
   	return(super_struct = parse_file(super_struct));
 }
 
-void		test_print_spiral(void *mlx, void *window) // REMOVE LATER!!!
-{
-	int		color = 140 * 65536; // RGB = (R*65536)+(G*256)+B , (when R is RED, G is GREEN and B is BLUE)
-	int 	color_change = 8;
+// void		test_print_spiral(void *mlx, void *window) // REMOVE LATER!!!
+// {
+// 	int		color = 140 * 65536; // RGB = (R*65536)+(G*256)+B , (when R is RED, G is GREEN and B is BLUE)
+// 	int 	color_change = 8;
 
-	// VERTICAL LINE UP --> DOWN HERE
-	draw_line(400, 200, 400, 400, mlx, window, color += color_change);
+// 	// VERTICAL LINE UP --> DOWN HERE
+// 	draw_line(400, 200, 400, 400, mlx, window, color += color_change);
 
-	draw_line(450, 200, 400, 400, mlx, window, color += color_change);
-	draw_line(500, 200, 400, 400, mlx, window, color += color_change);
-	draw_line(550, 200, 400, 400, mlx, window, color += color_change);
+// 	draw_line(450, 200, 400, 400, mlx, window, color += color_change);
+// 	draw_line(500, 200, 400, 400, mlx, window, color += color_change);
+// 	draw_line(550, 200, 400, 400, mlx, window, color += color_change);
 	
-	draw_line(600, 200, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 200, 400, 400, mlx, window, color += color_change);
 	
-	draw_line(600, 250, 400, 400, mlx, window, color += color_change);
-	draw_line(600, 300, 400, 400, mlx, window, color += color_change);
-	draw_line(600, 350, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 250, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 300, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 350, 400, 400, mlx, window, color += color_change);
 	
-	draw_line(600, 400, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 400, 400, 400, mlx, window, color += color_change);
 	
-	draw_line(600, 450, 400, 400, mlx, window, color += color_change);
-	draw_line(600, 500, 400, 400, mlx, window, color += color_change);
-	draw_line(600, 550, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 450, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 500, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 550, 400, 400, mlx, window, color += color_change);
 	
-	draw_line(600, 600, 400, 400, mlx, window, color += color_change);
+// 	draw_line(600, 600, 400, 400, mlx, window, color += color_change);
 
-	draw_line(550, 600, 400, 400, mlx, window, color += color_change);
-	draw_line(500, 600, 400, 400, mlx, window, color += color_change);
-	draw_line(450, 600, 400, 400, mlx, window, color += color_change);
+// 	draw_line(550, 600, 400, 400, mlx, window, color += color_change);
+// 	draw_line(500, 600, 400, 400, mlx, window, color += color_change);
+// 	draw_line(450, 600, 400, 400, mlx, window, color += color_change);
 
-	// VERTICAL LINE DOWN --> UP HERE
-	draw_line(400, 600, 400, 400, mlx, window, color += color_change);
+// 	// VERTICAL LINE DOWN --> UP HERE
+// 	draw_line(400, 600, 400, 400, mlx, window, color += color_change);
 
-	draw_line(350, 600, 400, 400, mlx, window, color += color_change);
-	draw_line(300, 600, 400, 400, mlx, window, color += color_change);
-	draw_line(250, 600, 400, 400, mlx, window, color += color_change);
+// 	draw_line(350, 600, 400, 400, mlx, window, color += color_change);
+// 	draw_line(300, 600, 400, 400, mlx, window, color += color_change);
+// 	draw_line(250, 600, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 600, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 600, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 550, 400, 400, mlx, window, color += color_change);
-	draw_line(200, 500, 400, 400, mlx, window, color += color_change);
-	draw_line(200, 450, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 550, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 500, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 450, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 400, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 400, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 350, 400, 400, mlx, window, color += color_change);
-	draw_line(200, 300, 400, 400, mlx, window, color += color_change);
-	draw_line(200, 250, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 350, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 300, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 250, 400, 400, mlx, window, color += color_change);
 
-	draw_line(200, 200, 400, 400, mlx, window, color += color_change);
+// 	draw_line(200, 200, 400, 400, mlx, window, color += color_change);
 
-	draw_line(250, 200, 400, 400, mlx, window, color += color_change);
-	draw_line(300, 200, 400, 400, mlx, window, color += color_change);
-	draw_line(350, 200, 400, 400, mlx, window, color += color_change);
+// 	draw_line(250, 200, 400, 400, mlx, window, color += color_change);
+// 	draw_line(300, 200, 400, 400, mlx, window, color += color_change);
+// 	draw_line(350, 200, 400, 400, mlx, window, color += color_change);
 
-	mlx_key_hook(window, (void *)input_detective, mlx);
-	mlx_loop(mlx);
-}
+// 	mlx_key_hook(window, (void *)input_detective, mlx);
+// 	mlx_loop(mlx);
+// }
 
 void		print_shit(t_super super_struct)
 {
@@ -329,7 +330,7 @@ void		print_shit(t_super super_struct)
 		}
 		i++;
 	}
-	mlx_key_hook(super_struct.window, (void *)input_detective, super_struct.mlx);
+	mlx_key_hook(super_struct.window, input_detective, &super_struct);
 	mlx_loop(super_struct.mlx);
 }
 
@@ -407,7 +408,7 @@ void		connect_lines(t_super super_struct)
 		}
 		i++;
 	}
-	mlx_key_hook(super_struct.window, (void *)input_detective, super_struct.mlx);
+	mlx_key_hook(super_struct.window, input_detective, &super_struct);
 	mlx_loop(super_struct.mlx);
 }
 
