@@ -65,11 +65,13 @@ void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *win
 	}	
 }
 
+// rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
 void		input_detective(int key_press, void *mlx)
 {
 	printf("key_press = %d\n", key_press);
 	if (key_press == 126)
 		printf("up!\n");
+		
 	if (key_press == 53)
 		exit(1);
 	(void)mlx;
@@ -121,6 +123,8 @@ t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols)
 	char	**num_char_array;
 
 	num_char_array = ft_strsplit(r_char, ' '); // may need to come back later to error check for other delimiters
+
+	// need to add in the HEX color parsing here
 	i = 0;
 	while (i < cols)
 	{
@@ -346,6 +350,10 @@ t_super		scale_init_map(t_super super_struct)
 		{
 			super_struct.map[i][j].scaled_x = x;
 			super_struct.map[i][j].scaled_y = y;
+			super_struct.map[i][j].scaled_z = super_struct.map[i][j].og_z * super_struct.step_unit;
+			super_struct.map[i][j].x = x;
+			super_struct.map[i][j].y = y;
+			super_struct.map[i][j].z = super_struct.map[i][j].scaled_z;
 			x += super_struct.step_unit;
 			j++;
 		}
@@ -392,9 +400,9 @@ void		connect_lines(t_super super_struct)
 		while (j < super_struct.cols)
 		{
 			if (j < super_struct.cols - 1)
-				draw_line(super_struct.map[i][j].scaled_x, super_struct.map[i][j].scaled_y, super_struct.map[i][j + 1].scaled_x, super_struct.map[i][j + 1].scaled_y, super_struct.mlx, super_struct.window, color);
+				draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i][j + 1].x, super_struct.map[i][j + 1].y, super_struct.mlx, super_struct.window, color);
 			if (i < super_struct.rows - 1)
-				draw_line(super_struct.map[i][j].scaled_x, super_struct.map[i][j].scaled_y, super_struct.map[i + 1][j].scaled_x, super_struct.map[i + 1][j].scaled_y, super_struct.mlx, super_struct.window, color);
+				draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i + 1][j].x, super_struct.map[i + 1][j].y, super_struct.mlx, super_struct.window, color);
 			j++;
 		}
 		i++;
