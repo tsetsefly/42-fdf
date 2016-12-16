@@ -24,7 +24,7 @@ int			input_detective(int key_press, t_super *super_struct)
 		x_axis(super_struct);
 	if (key_press == 53)
 		exit(1);
-	(void)super_struct;
+	// (void)super_struct;
 	return (0);
 }
 
