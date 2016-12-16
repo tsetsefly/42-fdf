@@ -19,6 +19,9 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
+# define X_ROT 15
+# define Y_ROT 15
+# define Z_ROT 15
 
 typedef struct	s_pt
 {
@@ -54,5 +57,34 @@ typedef struct s_super
 	double	angle_y;
 	double	angle_z;
 }				t_super;
+
+// fdf.c
+int			input_detective(int key_press, t_super *super_struct);
+
+// rotation.c
+void		x_axis(t_super *super_struct);
+
+// draw.c
+void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color);
+void		connect_lines(t_super super_struct);
+
+// superstruct_setup.c
+t_super		init_superstruct(char *av1);
+t_super		scale_that_shit(t_super super_struct);
+t_super		scale_init_map(t_super super_struct);
+t_super		max_min_z(t_super super_struct);
+
+// file_handling.c
+int			find_num_cols(char *array);
+int			find_num_rows(char *file_name);
+t_super 	file_detective(t_super super_struct);
+t_super		parse_file(t_super super_struct);
+t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols);
+
+// debugging_functions.c
+void		print_shit(t_super super_struct);
+void		print_map(t_super super_struct);
+void		print_2D_chararray(char **array, int rows);
+// void		test_print_spiral(void *mlx, void *window);
 
 #endif

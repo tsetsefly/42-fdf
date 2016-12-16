@@ -11,7 +11,12 @@
 # **************************************************************************** #
 
 NAME		=		fdf.a
-FILENAMES	=		fdf.c
+FILENAMES	=		fdf.c					\
+					rotation.c				\
+					superstruct_setup.c		\
+					file_handling.c			\
+					debugging_functions.c	\
+					draw.c
 
 CC			=		gcc
 CFLAGS		+=		-Wall -Wextra -Werror
