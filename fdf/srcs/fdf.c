@@ -18,6 +18,7 @@ int			input_detective(int key_press, t_super *super_struct)
 {
 	printf("key_press = %d\n", key_press);
 	if (key_press == 126)
+		mlx_clear_window(super_struct->mlx, super_struct->window);
 		printf("up!\n");
 		printf("%f\n", super_struct->map[2][2].scaled_z);
 		x_axis(super_struct);
