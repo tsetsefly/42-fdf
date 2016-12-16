@@ -22,6 +22,8 @@
 # define X_ROT 15
 # define Y_ROT 15
 # define Z_ROT 15
+# define WINDOW_X 1000
+# define WINDOW_Y 1000
 
 typedef struct	s_pt
 {
@@ -85,6 +87,7 @@ t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols);
 void		print_shit(t_super super_struct);
 void		print_map(t_super super_struct);
 void		print_2D_chararray(char **array, int rows);
+// void		ft_swap_doubles(double *a, double *b);
 // void		test_print_spiral(void *mlx, void *window);
 
 #endif

@@ -13,15 +13,6 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!!
 
-// void		ft_swap_doubles(double *a, double *b)
-// {
-// 	double	tmp;
-
-// 	tmp = *a;
-// 	*a = *b;
-// 	*b = tmp;
-// }
-
 // rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm //
 int			input_detective(int key_press, t_super *super_struct)
 {

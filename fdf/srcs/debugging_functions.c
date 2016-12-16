@@ -69,6 +69,15 @@ void		print_shit(t_super super_struct)
 	mlx_loop(super_struct.mlx);
 }
 
+// void		ft_swap_doubles(double *a, double *b)
+// {
+// 	double	tmp;
+
+// 	tmp = *a;
+// 	*a = *b;
+// 	*b = tmp;
+// }
+
 // void		test_print_spiral(void *mlx, void *window) // REMOVE LATER!!!
 // {
 // 	int		color = 140 * 65536; // RGB = (R*65536)+(G*256)+B , (when R is RED, G is GREEN and B is BLUE)
