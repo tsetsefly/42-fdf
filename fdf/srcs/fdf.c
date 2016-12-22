@@ -22,7 +22,7 @@ int			input_detective(int key_press, t_super *super_struct)
 		printf("up!\n");
 		printf("%f\n", super_struct->map[2][2].scaled_z);
 		x_axis(super_struct);
-	if (key_press == 53)
+	else if (key_press == 53)
 		exit(1);
 	// (void)super_struct;
 	return (0);
