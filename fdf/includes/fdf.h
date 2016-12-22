@@ -19,9 +19,9 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-# define X_ROT 15
-# define Y_ROT 15
-# define Z_ROT 15
+# define X_ROT 5
+# define Y_ROT 5
+# define Z_ROT 5
 # define WINDOW_X 1000
 # define WINDOW_Y 1000
 
