@@ -45,3 +45,26 @@ void		x_axis(t_super *super_struct)
 	}
 	connect_lines(*super_struct);
 }
+
+void		y_axis(t_super *super_struct)
+{
+	int		i;
+	int		j;
+
+	super_struct->angle_y += X_ROT * M_PI / 180.0;
+	printf("angle_y = %f\n", super_struct->angle_y);
+	i = 0;
+	while (i < super_struct->rows)
+	{
+		j = 0;
+		while (j < super_struct->cols)
+		{
+			super_struct->map[i][j].z = super_struct->map[i][j].scaled_y * cos(super_struct->angle_y) - super_struct->map[i][j].scaled_x * cos(super_struct->angle_y);
+			super_struct->map[i][j].x = super_struct->map[i][j].scaled_z * sin(super_struct->angle_y) + super_struct->map[i][j].scaled_x * cos(super_struct->angle_y);
+			super_struct->map[i][j].y = super_struct->map[i][j].scaled_y;
+			j++;
+		}
+		i++;
+	}
+	connect_lines(*super_struct);
+}
