@@ -22,28 +22,50 @@ int			input_detective(int key_press, t_super *super_struct)
 	{
 		mlx_clear_window(super_struct->mlx, super_struct->window);
 		printf("x!\n");
-		x_axis(super_struct);
+		x_axis(super_struct, 1);
 	}
-		// printf("%f\n", super_struct->map[2][2].scaled_z);
-		// y_axis(super_struct);
-		// z_axis(super_struct);
+	if (key_press == 1)
+	{
+		mlx_clear_window(super_struct->mlx, super_struct->window);
+		printf("-x!\n");
+		x_axis(super_struct, -1);
+	}
 	else if (key_press == 0)
 	{
 		mlx_clear_window(super_struct->mlx, super_struct->window);
 		printf("y!\n");
-		y_axis(super_struct);
+		y_axis(super_struct, 1);
+	}
+	else if (key_press == 2)
+	{
+		mlx_clear_window(super_struct->mlx, super_struct->window);
+		printf("-y!\n");
+		y_axis(super_struct, -1);
 	}
 	else if (key_press == 12)
 	{
 		mlx_clear_window(super_struct->mlx, super_struct->window);
 		printf("z!\n");
-		z_axis(super_struct);
+		// printf("%f\n", super_struct->map[2][2].scaled_z);
+		z_axis(super_struct, 1);
+	}
+	else if (key_press == 14)
+	{
+		mlx_clear_window(super_struct->mlx, super_struct->window);
+		printf("-z!\n");
+		z_axis(super_struct, -1);
+	}
+	else if (key_press == 3)
+	{
+		mlx_clear_window(super_struct->mlx, super_struct->window);
+		printf("reset!\n");
+		reset_points(super_struct);
 	}
 	else if (key_press == 53)
 		exit(1);
 	else
 		printf("Error: not a valid keypress!\n");
-	// (void)super_struct; //
+	// (void)super_struct;
 	return (0);
 }
 
