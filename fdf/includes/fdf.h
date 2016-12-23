@@ -66,6 +66,7 @@ int			input_detective(int key_press, t_super *super_struct);
 // rotation.c
 void		x_axis(t_super *super_struct);
 void		y_axis(t_super *super_struct);
+void		z_axis(t_super *super_struct);
 
 // draw.c
 void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color);
