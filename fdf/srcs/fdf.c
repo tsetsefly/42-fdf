@@ -13,18 +13,36 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!!
 
-// rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm //
+// rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
+// a = 0; w = 13; s = 1; d= 2; q = 12; e = 14
 int			input_detective(int key_press, t_super *super_struct)
 {
 	printf("key_press = %d\n", key_press);
-	if (key_press == 126)
+	if (key_press == 13)
+	{
 		mlx_clear_window(super_struct->mlx, super_struct->window);
-		printf("up!\n");
-		printf("%f\n", super_struct->map[2][2].scaled_z);
-		// x_axis(super_struct);
+		printf("x!\n");
+		x_axis(super_struct);
+	}
+		// printf("%f\n", super_struct->map[2][2].scaled_z);
+		// y_axis(super_struct);
+		// z_axis(super_struct);
+	else if (key_press == 0)
+	{
+		mlx_clear_window(super_struct->mlx, super_struct->window);
+		printf("y!\n");
 		y_axis(super_struct);
-	if (key_press == 53)
+	}
+	else if (key_press == 12)
+	{
+		mlx_clear_window(super_struct->mlx, super_struct->window);
+		printf("z!\n");
+		z_axis(super_struct);
+	}
+	else if (key_press == 53)
 		exit(1);
+	else
+		printf("Error: not a valid keypress!\n");
 	// (void)super_struct; //
 	return (0);
 }
