@@ -59,7 +59,7 @@ void		y_axis(t_super *super_struct)
 		j = 0;
 		while (j < super_struct->cols)
 		{
-			super_struct->map[i][j].z = super_struct->map[i][j].scaled_y * cos(super_struct->angle_y) - super_struct->map[i][j].scaled_x * cos(super_struct->angle_y);
+			super_struct->map[i][j].z = super_struct->map[i][j].scaled_y * cos(super_struct->angle_y) - super_struct->map[i][j].scaled_x * sin(super_struct->angle_y);
 			super_struct->map[i][j].x = super_struct->map[i][j].scaled_z * sin(super_struct->angle_y) + super_struct->map[i][j].scaled_x * cos(super_struct->angle_y);
 			super_struct->map[i][j].y = super_struct->map[i][j].scaled_y;
 			j++;

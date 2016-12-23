@@ -21,7 +21,8 @@ int			input_detective(int key_press, t_super *super_struct)
 		mlx_clear_window(super_struct->mlx, super_struct->window);
 		printf("up!\n");
 		printf("%f\n", super_struct->map[2][2].scaled_z);
-		x_axis(super_struct);
+		// x_axis(super_struct);
+		y_axis(super_struct);
 	if (key_press == 53)
 		exit(1);
 	// (void)super_struct; //
