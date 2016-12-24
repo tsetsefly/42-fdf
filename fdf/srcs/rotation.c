@@ -22,7 +22,7 @@ void		x_axis(t_super *super_struct, int neg)
 	// need to apply the axis equation to each point in the map
 	// radians = degrees * pi / 180
 	// need to translate from neutral position each time? in that case need to sequentially run against x, y, z
-	super_struct->angle_x += X_ROT * M_PI * neg / 180.0;
+	super_struct->angle_x += (X_ROT * M_PI / 180.0) * neg;
 	printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z);
 	i = 0;
 	while (i < super_struct->rows)
@@ -48,7 +48,7 @@ void		y_axis(t_super *super_struct, int neg)
 	int		i;
 	int		j;
 
-	super_struct->angle_y += X_ROT * M_PI * neg / 180.0;
+	super_struct->angle_y += (Y_ROT * M_PI / 180.0) * neg;
 	printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z);
 	i = 0;
 	while (i < super_struct->rows)
@@ -74,7 +74,7 @@ void		z_axis(t_super *super_struct, int neg)
 	int		i;
 	int		j;
 
-	super_struct->angle_z += X_ROT * M_PI * neg / 180.0;
+	super_struct->angle_z += (Z_ROT * M_PI / 180.0) * neg;
 	printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z);
 	i = 0;
 	while (i < super_struct->rows)
