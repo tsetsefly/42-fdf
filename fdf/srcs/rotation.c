@@ -113,5 +113,8 @@ void		reset_points(t_super *super_struct)
 		}
 		i++;
 	}
+	super_struct->angle_x = 0;
+	super_struct->angle_y = 0;
+	super_struct->angle_z = 0;
 	connect_lines(*super_struct);
 }

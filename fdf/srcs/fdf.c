@@ -73,7 +73,7 @@ int			input_detective(int key_press, t_super *super_struct)
 		exit(1);
 	else
 		printf("Error: not a valid keypress!\n");
-	// (void)super_struct;
+	// (void)super_struct; //
 	return (0);
 }
 
