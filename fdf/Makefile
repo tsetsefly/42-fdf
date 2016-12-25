@@ -16,7 +16,8 @@ FILENAMES	=		fdf.c					\
 					superstruct_setup.c		\
 					file_handling.c			\
 					debugging_functions.c	\
-					draw.c
+					draw.c					\
+					key_press.c
 
 CC			=		gcc
 CFLAGS		+=		-Wall -Wextra -Werror

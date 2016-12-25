@@ -61,7 +61,7 @@ typedef struct s_super
 }				t_super;
 
 // fdf.c
-int			input_detective(int key_press, t_super *super_struct);
+
 
 // rotation.c
 void		x_axis(t_super *super_struct, int neg);
@@ -92,5 +92,8 @@ void		print_map(t_super super_struct);
 void		print_2D_chararray(char **array, int rows);
 // void		ft_swap_doubles(double *a, double *b);
 // void		test_print_spiral(void *mlx, void *window);
+
+// key_press.c
+int			input_detective(int key_press, t_super *super_struct);
 
 #endif
