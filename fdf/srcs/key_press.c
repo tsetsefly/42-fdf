@@ -13,8 +13,18 @@
 #include <stdio.h> // REMOVE LATER!!!
 #include "fdf.h"
 
-// rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
 // a = 0; w = 13; s = 1; d= 2; q = 12; e = 14
+int			direction_detective(int key_press)
+{
+	if (key_press == 13 || key_press == 1 || key_press == 0 || key_press == 2 ||
+		key_press == 12 || key_press == 14)
+		return (1);
+	else
+		return (0);
+}
+
+// rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
+
 // should re-center after each rotation
 int			input_detective(int key_press, t_super *super_struct)
 {
