@@ -17,7 +17,8 @@ FILENAMES	=		fdf.c					\
 					file_handling.c			\
 					debugging_functions.c	\
 					draw.c					\
-					key_press.c
+					key_press.c				\
+					angle_wrangler.c
 
 CC			=		gcc
 CFLAGS		+=		-Wall -Wextra -Werror

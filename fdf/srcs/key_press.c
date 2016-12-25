@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtse <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,54 +24,19 @@ int			direction_detective(int key_press)
 }
 
 // rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
-
 // should re-center after each rotation
 int			input_detective(int key_press, t_super *super_struct)
 {
 	printf("key_press = %d\n", key_press);
-	// 'W' = x
-	if (key_press == 13)
+	if (direction_detective(key_press))
 	{
 		mlx_clear_window(super_struct->mlx, super_struct->window);
-		printf("x!\n");
-		x_axis(super_struct, 1);
-	}
-	// 'S' = -x
-	else if (key_press == 1)
-	{
-		mlx_clear_window(super_struct->mlx, super_struct->window);
-		printf("-x!\n");
-		x_axis(super_struct, -1);
-	}
-	// 'A' = y
-	else if (key_press == 0)
-	{
-		mlx_clear_window(super_struct->mlx, super_struct->window);
-		printf("y!\n");
-		y_axis(super_struct, 1);
-	}
-	// 'D' = -y
-	else if (key_press == 2)
-	{
-		mlx_clear_window(super_struct->mlx, super_struct->window);
-		printf("-y!\n");
-		y_axis(super_struct, -1);
-	}
-	// 'Q' = z
-	else if (key_press == 12)
-	{
-		mlx_clear_window(super_struct->mlx, super_struct->window);
-		printf("z!\n");
-		// printf("%f\n", super_struct->map[2][2].scaled_z);
-		z_axis(super_struct, 1);
-	}
-	// 'E' = -z
-	else if (key_press == 14)
-	{
-		mlx_clear_window(super_struct->mlx, super_struct->window);
-		printf("-z!\n");
-		z_axis(super_struct, -1);
-	}
+		apply_angle(super_struct, key_press);
+		x_axis(super_struct);
+		y_axis(super_struct);
+		z_axis(super_struct);
+		connect_lines(*super_struct);
+	}	
 	// 'F' = reset
 	else if (key_press == 3)
 	{

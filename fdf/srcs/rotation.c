@@ -13,17 +13,11 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!!
 
-void		x_axis(t_super *super_struct, int neg)
+void		x_axis(t_super *super_struct)
 {
 	int		i;
 	int		j;
 
-	// need to update the angle based on key press
-	// need to apply the axis equation to each point in the map
-	// radians = degrees * pi / 180
-	// need to translate from neutral position each time? in that case need to sequentially run against x, y, z
-	super_struct->angle_x += (X_ROT * M_PI / 180.0) * neg;
-	printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z);
 	i = 0;
 	while (i < super_struct->rows)
 	{
@@ -40,16 +34,13 @@ void		x_axis(t_super *super_struct, int neg)
 		}
 		i++;
 	}
-	connect_lines(*super_struct);
 }
 
-void		y_axis(t_super *super_struct, int neg)
+void		y_axis(t_super *super_struct)
 {
 	int		i;
 	int		j;
 
-	super_struct->angle_y += (Y_ROT * M_PI / 180.0) * neg;
-	printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z);
 	i = 0;
 	while (i < super_struct->rows)
 	{
@@ -66,16 +57,13 @@ void		y_axis(t_super *super_struct, int neg)
 		}
 		i++;
 	}
-	connect_lines(*super_struct);
 }
 
-void		z_axis(t_super *super_struct, int neg)
+void		z_axis(t_super *super_struct)
 {
 	int		i;
 	int		j;
 
-	super_struct->angle_z += (Z_ROT * M_PI / 180.0) * neg;
-	printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z);
 	i = 0;
 	while (i < super_struct->rows)
 	{
@@ -92,7 +80,6 @@ void		z_axis(t_super *super_struct, int neg)
 		}
 		i++;
 	}
-	connect_lines(*super_struct);
 }
 
 void		reset_points(t_super *super_struct)

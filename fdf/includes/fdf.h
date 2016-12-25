@@ -64,9 +64,9 @@ typedef struct s_super
 
 
 // rotation.c
-void		x_axis(t_super *super_struct, int neg);
-void		y_axis(t_super *super_struct, int neg);
-void		z_axis(t_super *super_struct, int neg);
+void		x_axis(t_super *super_struct);
+void		y_axis(t_super *super_struct);
+void		z_axis(t_super *super_struct);
 void		reset_points(t_super *super_struct);
 
 // draw.c
@@ -95,5 +95,9 @@ void		print_2D_chararray(char **array, int rows);
 
 // key_press.c
 int			input_detective(int key_press, t_super *super_struct);
+int			direction_detective(int key_press);
+
+// angle_wrangler.c
+void		apply_angle(t_super *super_struct, int key_press);
 
 #endif

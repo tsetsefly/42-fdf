@@ -70,9 +70,11 @@ void		connect_lines(t_super super_struct)
 		while (j < super_struct.cols)
 		{
 			if (j < super_struct.cols - 1)
-				draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i][j + 1].x, super_struct.map[i][j + 1].y, super_struct.mlx, super_struct.window, color);
+				draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i][j + 1].x,
+					super_struct.map[i][j + 1].y, super_struct.mlx, super_struct.window, color);
 			if (i < super_struct.rows - 1)
-				draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i + 1][j].x, super_struct.map[i + 1][j].y, super_struct.mlx, super_struct.window, color);
+				draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i + 1][j].x,
+					super_struct.map[i + 1][j].y, super_struct.mlx, super_struct.window, color);
 			j++;
 		}
 		i++;
