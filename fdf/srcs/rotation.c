@@ -27,9 +27,9 @@ void		x_axis(t_super *super_struct)
 			// super_struct->map[i][j].y = super_struct->map[i][j].scaled_y * cos(super_struct->angle_x) - super_struct->map[i][j].scaled_z * sin(super_struct->angle_x);
 			// super_struct->map[i][j].z = super_struct->map[i][j].scaled_y * sin(super_struct->angle_x) + super_struct->map[i][j].scaled_z * cos(super_struct->angle_x);
 			// super_struct->map[i][j].x = super_struct->map[i][j].scaled_x;
-			super_struct->map[i][j].y = super_struct->map[i][j].y * cos(super_struct->angle_x) - super_struct->map[i][j].z * sin(super_struct->angle_x);
-			super_struct->map[i][j].z = super_struct->map[i][j].y * sin(super_struct->angle_x) + super_struct->map[i][j].z * cos(super_struct->angle_x);
-			super_struct->map[i][j].x = super_struct->map[i][j].x;
+			super_struct->map[i][j].y = super_struct->map[i][j].scaled_y * cos(super_struct->angle_x) - super_struct->map[i][j].scaled_z * sin(super_struct->angle_x);
+			super_struct->map[i][j].z = super_struct->map[i][j].scaled_y * sin(super_struct->angle_x) + super_struct->map[i][j].scaled_z * cos(super_struct->angle_x);
+			super_struct->map[i][j].x = super_struct->map[i][j].scaled_x;
 			j++;
 		}
 		i++;

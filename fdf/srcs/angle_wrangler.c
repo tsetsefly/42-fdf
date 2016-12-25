@@ -31,7 +31,7 @@ void		apply_angle(t_super *super_struct, int key_press)
 	}
 	else if (key_press == 13 || key_press == 1)
 	{
-		if (key_press == 1)
+		if (key_press == 13)
 			super_struct->angle_x += (X_ROT * M_PI / 180.0);
 		else
 			super_struct->angle_x += (X_ROT * M_PI / 180.0) * -1;
