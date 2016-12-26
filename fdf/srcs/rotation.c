@@ -64,6 +64,10 @@ void		z_axis(t_super *super_struct)
 	int		i;
 	int		j;
 
+	super_struct->min_x = super_struct->map[0][0].x;
+	super_struct->max_x = super_struct->map[0][0].x;
+	super_struct->min_y = super_struct->map[0][0].y;
+	super_struct->max_y = super_struct->map[0][0].y;
 	i = 0;
 	while (i < super_struct->rows)
 	{
@@ -75,7 +79,7 @@ void		z_axis(t_super *super_struct)
 			// super_struct->map[i][j].z = super_struct->map[i][j].scaled_z;
 			super_struct->map[i][j].x = super_struct->map[i][j].x * cos(super_struct->angle_z) - super_struct->map[i][j].y * sin(super_struct->angle_z);
 			super_struct->map[i][j].y = super_struct->map[i][j].x * sin(super_struct->angle_z) + super_struct->map[i][j].y * cos(super_struct->angle_z);
-			// super_struct->map[i][j].z = super_struct->map[i][j].z; //
+			// super_struct->map[i][j].z = super_struct->map[i][j].z;
 			j++;
 		}
 		i++;
