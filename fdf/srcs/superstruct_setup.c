@@ -105,6 +105,8 @@ void		init_values(t_super *super_struct)
 	super_struct->angle_x = 0;
 	super_struct->angle_y = 0;
 	super_struct->angle_z = 0;
+	super_struct->mlx = mlx_init();
+	super_struct->window = mlx_new_window(super_struct->mlx, WINDOW_X, WINDOW_Y, "detective");
 }
 
 t_super		init_superstruct(char *av1)
@@ -116,8 +118,6 @@ t_super		init_superstruct(char *av1)
 	init_values(super_struct);
 	super_struct->file_name = av1;
 	file_detective(super_struct);
-	super_struct->mlx = mlx_init();
-	super_struct->window = mlx_new_window(super_struct->mlx, WINDOW_X, WINDOW_Y, "detective");
 	scale_that_shit(super_struct);
 	return (*super_struct);
 }
