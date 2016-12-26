@@ -24,7 +24,7 @@ void		apply_angle(t_super *super_struct, int key_press)
 {
 	if (key_press == 0 || key_press == 2)
 	{
-		if (key_press == 0)
+		if (key_press == 2)
 			super_struct->angle_y += (Y_ROT * M_PI / 180.0);
 		else
 			super_struct->angle_y += (Y_ROT * M_PI / 180.0) * -1;
