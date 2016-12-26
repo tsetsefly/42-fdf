@@ -80,11 +80,21 @@ void		z_axis(t_super *super_struct)
 			super_struct->map[i][j].x = super_struct->map[i][j].x * cos(super_struct->angle_z) - super_struct->map[i][j].y * sin(super_struct->angle_z);
 			super_struct->map[i][j].y = super_struct->map[i][j].x * sin(super_struct->angle_z) + super_struct->map[i][j].y * cos(super_struct->angle_z);
 			// super_struct->map[i][j].z = super_struct->map[i][j].z;
+			if (super_struct->min_x > super_struct->map[i][j].x)
+				super_struct->min_x = super_struct->map[i][j].x;
+			if (super_struct->max_x < super_struct->map[i][j].x)
+				super_struct->max_x = super_struct->map[i][j].x;
+			if (super_struct->min_y > super_struct->map[i][j].y)
+				super_struct->min_y = super_struct->map[i][j].y;
+			if (super_struct->max_y < super_struct->map[i][j].y)
+				super_struct->max_y = super_struct->map[i][j].y;
 			j++;
 		}
 		i++;
 	}
 }
+
+
 
 void		reset_points(t_super *super_struct)
 {

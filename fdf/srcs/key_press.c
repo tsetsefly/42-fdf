@@ -35,6 +35,7 @@ int			input_detective(int key_press, t_super *super_struct)
 		x_axis(super_struct);
 		y_axis(super_struct);
 		z_axis(super_struct);
+		printf("min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
 		connect_lines(*super_struct);
 	}	
 	// 'F' = reset
