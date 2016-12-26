@@ -47,8 +47,8 @@ typedef struct s_super
 	int		cols;
 	void	*mlx;
 	void	*window;
-	double	window_x;
-	double	window_y;
+	double	window_x; // why do I need these?
+	double	window_y; // why do I need these?
 	double	max_z;
 	double	min_z;
 	double	step_unit;
@@ -61,7 +61,7 @@ typedef struct s_super
 }				t_super;
 
 // fdf.c
-
+// int main(int ac, char **av);
 
 // rotation.c
 void		x_axis(t_super *super_struct);
