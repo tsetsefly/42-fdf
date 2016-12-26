@@ -94,7 +94,25 @@ void		z_axis(t_super *super_struct)
 	}
 }
 
+void		center_points(t_super *super_struct)
+{
+	int		i;
+	int		j;
 
+	i = 0;
+	while (i < super_struct->rows)
+	{
+		j = 0;
+		while (j < super_struct->cols)
+		{
+			super_struct->map[i][j].x = super_struct->map[i][j].scaled_x;
+			super_struct->map[i][j].y = super_struct->map[i][j].scaled_y;
+			super_struct->map[i][j].z = super_struct->map[i][j].scaled_z;
+			j++;
+		}
+		i++;
+	}
+}
 
 void		reset_points(t_super *super_struct)
 {

@@ -71,6 +71,7 @@ typedef struct s_super
 void		x_axis(t_super *super_struct);
 void		y_axis(t_super *super_struct);
 void		z_axis(t_super *super_struct);
+void		center_points(t_super *super_struct);
 void		reset_points(t_super *super_struct);
 
 // draw.c
