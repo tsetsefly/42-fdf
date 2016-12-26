@@ -105,6 +105,10 @@ void		init_values(t_super *super_struct)
 	super_struct->angle_x = 0;
 	super_struct->angle_y = 0;
 	super_struct->angle_z = 0;
+	super_struct->min_x = 0;
+	super_struct->max_x = 0;
+	super_struct->min_y = 0;
+	super_struct->max_y = 0;
 	super_struct->mlx = mlx_init();
 	super_struct->window = mlx_new_window(super_struct->mlx, WINDOW_X, WINDOW_Y, "detective");
 }

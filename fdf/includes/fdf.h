@@ -58,6 +58,10 @@ typedef struct s_super
 	double	angle_x;
 	double	angle_y;
 	double	angle_z;
+	double	min_x;
+	double	max_x;
+	double	min_y;
+	double	max_y;
 }				t_super;
 
 // fdf.c
