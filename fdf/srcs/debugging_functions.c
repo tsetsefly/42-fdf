@@ -29,18 +29,18 @@ void		print_2D_chararray(char **array, int rows)
 	}
 }
 
-void		print_map(t_super super_struct)
+void		print_map(t_super *super_struct)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (i < super_struct.rows)
+	while (i < super_struct->rows)
 	{
 		j = 0;
-		while (j < super_struct.cols)
+		while (j < super_struct->cols)
 		{
-			printf("(%d,%d) %d \t", (int)super_struct.map[i][j].og_x, (int)super_struct.map[i][j].og_y, (int)super_struct.map[i][j].og_z);
+			printf("(%d,%d) %d \t", (int)super_struct->map[i][j].og_x, (int)super_struct->map[i][j].og_y, (int)super_struct->map[i][j].og_z);
 			j++;
 		}
 		printf("\n");

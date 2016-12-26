@@ -75,21 +75,21 @@ void		connect_lines(t_super super_struct);
 
 // superstruct_setup.c
 t_super		init_superstruct(char *av1);
-t_super		scale_that_shit(t_super super_struct);
-t_super		scale_init_map(t_super super_struct);
+void		scale_that_shit(t_super *super_struct);
+void		scale_init_map(t_super *super_struct);
 void		init_values(t_super *super_struct);
-t_super		max_min_z(t_super super_struct);
+void		max_min_z(t_super *super_struct);
 
 // file_handling.c
 int			find_num_cols(char *array);
 int			find_num_rows(char *file_name);
-t_super 	file_detective(t_super super_struct);
-t_super		parse_file(t_super super_struct);
+void	 	file_detective(t_super *super_struct);
+void		parse_file(t_super *super_struct);
 t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols);
 
 // debugging_functions.c
 void		print_shit(t_super super_struct);
-void		print_map(t_super super_struct);
+void		print_map(t_super *super_struct);
 void		print_2D_chararray(char **array, int rows);
 // void		ft_swap_doubles(double *a, double *b);
 // void		test_print_spiral(void *mlx, void *window);
