@@ -100,6 +100,12 @@ t_super		scale_that_shit(t_super super_struct)
 	return (super_struct);
 }
 
+void		init_values(t_super *super_struct)
+{
+	printf("wahoo!");
+	(void)super_struct;
+}
+
 t_super		init_superstruct(char *av1)
 {
 	t_super	super_struct;
@@ -108,6 +114,7 @@ t_super		init_superstruct(char *av1)
 	super_struct.angle_x = 0;
 	super_struct.angle_y = 0;
 	super_struct.angle_z = 0;
+	init_values(&super_struct);
 	super_struct.file_name = av1;
 	super_struct = file_detective(super_struct);
 	super_struct.mlx = mlx_init();

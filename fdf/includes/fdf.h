@@ -77,6 +77,7 @@ void		connect_lines(t_super super_struct);
 t_super		init_superstruct(char *av1);
 t_super		scale_that_shit(t_super super_struct);
 t_super		scale_init_map(t_super super_struct);
+void		init_values(t_super *super_struct);
 t_super		max_min_z(t_super super_struct);
 
 // file_handling.c
