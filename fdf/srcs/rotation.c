@@ -79,7 +79,7 @@ void		z_axis(t_super *super_struct)
 			// super_struct->map[i][j].z = super_struct->map[i][j].scaled_z;
 			super_struct->map[i][j].x = super_struct->map[i][j].x * cos(super_struct->angle_z) - super_struct->map[i][j].y * sin(super_struct->angle_z);
 			super_struct->map[i][j].y = super_struct->map[i][j].x * sin(super_struct->angle_z) + super_struct->map[i][j].y * cos(super_struct->angle_z);
-			// super_struct->map[i][j].z = super_struct->map[i][j].z;
+			// super_struct->map[i][j].z = super_struct->map[i][j].z; //
 			if (super_struct->min_x > super_struct->map[i][j].x)
 				super_struct->min_x = super_struct->map[i][j].x;
 			if (super_struct->max_x < super_struct->map[i][j].x)
@@ -98,7 +98,13 @@ void		center_points(t_super *super_struct)
 {
 	int		i;
 	int		j;
+	double	center_x;
+	double	center_y;
+	double	adjust_x;
+	double	adjust_y;
 
+	center_x = super_struct->max_x - super_struct->min_x;
+	center_y = super_struct->max_y - super_struct->min_y;
 	i = 0;
 	while (i < super_struct->rows)
 	{
