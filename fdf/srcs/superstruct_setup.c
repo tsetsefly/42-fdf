@@ -84,16 +84,16 @@ void		scale_that_shit(t_super *super_struct)
 	// not quite centered
 	if (super_struct->cols >= super_struct->rows)
 	{
-		super_struct->step_unit = ((3 * WINDOW_X) / 5) / (super_struct->cols + 1);
+		super_struct->step_unit = ((3 * WINDOW_X) / 5) / (super_struct->cols - 1);
 		super_struct->long_axis = 'x';
 	}
 	else
 	{
-		super_struct->step_unit = ((3 * WINDOW_Y) / 5) / (super_struct->rows + 1);
+		super_struct->step_unit = ((3 * WINDOW_Y) / 5) / (super_struct->rows - 1);
 		super_struct->long_axis = 'y';
 	}
-	super_struct->start_x = (WINDOW_X / 2) - (super_struct->step_unit * (super_struct->cols) / 2);
-	super_struct->start_y = (WINDOW_Y / 2) - (super_struct->step_unit * (super_struct->rows) / 2);
+	super_struct->start_x = (WINDOW_X / 2) - (super_struct->step_unit * (super_struct->cols - 1) / 2); //
+	super_struct->start_y = (WINDOW_Y / 2) - (super_struct->step_unit * (super_struct->rows - 1) / 2);
 	printf("step unit = %f, axis = %c, start_x = %f, start_y = %f\n", super_struct->step_unit, super_struct->long_axis, super_struct->start_x, super_struct->start_y);
 	scale_init_map(super_struct);
 	// print_shit(super_struct);

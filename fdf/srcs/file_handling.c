@@ -81,10 +81,11 @@ void		parse_file(t_super *super_struct)
 
 	super_struct->cols = find_num_cols(super_struct->file_storage[0]);
 	printf("ROWS = %d, COLS = %d\n", super_struct->rows, super_struct->cols);
-	super_struct->map = (t_pt **)malloc(sizeof(t_pt *) * super_struct->rows);
+	super_struct->map = (t_pt **)malloc(sizeof(t_pt *) * (super_struct->rows));
 	i = 0;
 	while (i < super_struct->rows)
-		super_struct->map[i++] = (t_pt *)malloc(sizeof(t_pt) * super_struct->cols);
+		super_struct->map[i++] = (t_pt *)malloc(sizeof(t_pt) * (super_struct->cols));
+	printf("i / rows = %d\n", i);
 	i = 0;
 	while (i < super_struct->rows)
 	{

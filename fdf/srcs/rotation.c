@@ -105,17 +105,19 @@ void		center_points(t_super *super_struct)
 
 	center_x = ((super_struct->max_x - super_struct->min_x) / 2) + super_struct->min_x;
 	center_y = ((super_struct->max_y - super_struct->min_y) / 2) + super_struct->min_y;
+	// center_x = super_struct->max_x - ((super_struct->max_x - super_struct->min_x) / 2); //+ super_struct->min_x;
+	// center_y = super_struct->max_y - ((super_struct->max_y - super_struct->min_y) / 2); //+ super_struct->min_y;
 	adjust_x = (WINDOW_X / 2) - center_x;
 	adjust_y = (WINDOW_Y / 2) - center_y;
-	printf("adjust_x = %f, adjust_y = %f\n", adjust_x, adjust_y);
+	printf("adjust_x = %f, adjust_y = %f, center_x = %f, center_y = %f\n", adjust_x, adjust_y, center_x, center_y);
 	i = 0;
 	while (i < super_struct->rows)
 	{
 		j = 0;
 		while (j < super_struct->cols)
 		{
-			super_struct->map[i][j].x = super_struct->map[i][j].x + adjust_x;
-			super_struct->map[i][j].y = super_struct->map[i][j].y + adjust_y;
+			super_struct->map[i][j].x += adjust_x;
+			super_struct->map[i][j].y += adjust_y;
 			// super_struct->map[i][j].z = super_struct->map[i][j].scaled_z;
 			j++;
 		}
