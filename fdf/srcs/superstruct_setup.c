@@ -44,7 +44,6 @@ void		max_min_z(t_super *super_struct)
 		i++;
 	}
 	printf("MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
-	// return (super_struct);
 }
 
 void		scale_init_map(t_super *super_struct)
@@ -74,22 +73,26 @@ void		scale_init_map(t_super *super_struct)
 		y += super_struct->step_unit;
 		i++;
 	}
-	// return (super_struct);
 }
 
 void		scale_that_shit(t_super *super_struct)
 {
-	// super_struct->step_unit = 0; // moving to init_values
-
-	if (super_struct->cols >= super_struct->rows)
+	// need to factor in z-axis
+	if (super_struct->cols >= super_struct->rows && super_struct->cols >= (super_struct->max_z - super_struct->min_z))
 	{
 		super_struct->step_unit = ((3 * WINDOW_X) / 5) / (super_struct->cols - 1);
 		super_struct->long_axis = 'x'; // may not need this
 	}
-	else
+	else if (super_struct->rows >= super_struct->cols && super_struct->rows >= (super_struct->max_z - super_struct->min_z))
 	{
 		super_struct->step_unit = ((3 * WINDOW_Y) / 5) / (super_struct->rows - 1);
 		super_struct->long_axis = 'y';
+	}
+	else
+	{
+		// probably need to adjust this later... can also take (super_struct->max_z - super_struct->min_z) and make it a var
+		super_struct->step_unit = (((WINDOW_X + WINDOW_Y) / 2) / (super_struct->max_z - super_struct->min_z));
+		super_struct->long_axis = 'z';
 	}
 	super_struct->start_x = (WINDOW_X / 2) - (super_struct->step_unit * (super_struct->cols - 1) / 2);
 	super_struct->start_y = (WINDOW_Y / 2) - (super_struct->step_unit * (super_struct->rows - 1) / 2);
