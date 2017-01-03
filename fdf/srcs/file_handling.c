@@ -20,20 +20,21 @@ int			find_num_cols(char *array)
 	int		cols;
 
 	len = ft_strlen(array);
+	printf("find_num_cols:len = %d\n", len);
 	i = 0;
 	cols = 0;
 	while (i < len)
 	{
-		if (array[i] == ' ')
+		if (array[i] != ' ')
 		{
 			cols++;
-			while (array[i] == ' ')
+			while (array[i] != ' ')
 				i++;
 		}
 		else
 			i++;
 	}
-	cols++;
+	// cols++;
 	return (cols);
 }
 
