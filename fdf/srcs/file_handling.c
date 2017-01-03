@@ -20,6 +20,7 @@ int			find_num_cols(char *array)
 	int		cols;
 
 	len = ft_strlen(array);
+	// remove later
 	printf("find_num_cols:len = %d\n", len);
 	i = 0;
 	cols = 0;
@@ -34,7 +35,6 @@ int			find_num_cols(char *array)
 		else
 			i++;
 	}
-	// cols++;
 	return (cols);
 }
 
@@ -80,19 +80,24 @@ void		parse_file(t_super *super_struct)
 {
 	int		i;
 
+	// need to check all the rows for consistency later
 	super_struct->cols = find_num_cols(super_struct->file_storage[0]);
 	printf("ROWS = %d, COLS = %d\n", super_struct->rows, super_struct->cols);
 	super_struct->map = (t_pt **)malloc(sizeof(t_pt *) * (super_struct->rows));
 	i = 0;
 	while (i < super_struct->rows)
-		super_struct->map[i++] = (t_pt *)malloc(sizeof(t_pt) * (super_struct->cols));
-	printf("i / rows = %d\n", i);
-	i = 0;
-	while (i < super_struct->rows)
 	{
+		super_struct->map[i] = (t_pt *)malloc(sizeof(t_pt) * (super_struct->cols));
 		super_struct->map[i] = fill_map(super_struct->file_storage[i], super_struct->map[i], i, super_struct->cols);
 		i++;
 	}
+	printf("i / rows = %d\n", i);
+	// i = 0;
+	// while (i < super_struct->rows)
+	// {
+	// 	super_struct->map[i] = fill_map(super_struct->file_storage[i], super_struct->map[i], i, super_struct->cols);
+	// 	i++;
+	// }
 	print_map(super_struct);
 	max_min_z(super_struct);
 	// return (super_struct = max_min_z(super_struct));
