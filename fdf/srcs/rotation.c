@@ -48,7 +48,7 @@ void		x_axis(t_super *super_struct)
 	}
 }
 
-void		y_axis(t_super *super_struct) //
+void		y_axis(t_super *super_struct)
 {
 	int		i;
 	int		j;
