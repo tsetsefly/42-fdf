@@ -100,8 +100,9 @@ void		scale_that_shit(t_super *super_struct)
 	// return (super_struct);
 }
 
-void		init_values(t_super *super_struct)
+void		init_values(t_super *super_struct, char **av1)
 {
+	super_struct->file_name = *av1;
 	super_struct->angle_x = 0;
 	super_struct->angle_y = 0;
 	super_struct->angle_z = 0;
@@ -118,9 +119,9 @@ t_super		init_superstruct(char *av1)
 	t_super	*super_struct;
 
 	// can make this more efficient with pointers instead of copying variables through functions
+	// should i malloc the superstruct in the main function?
 	super_struct = (t_super *)malloc(sizeof(t_super));
-	init_values(super_struct);
-	super_struct->file_name = av1;
+	init_values(super_struct, &av1);
 	file_detective(super_struct);
 	scale_that_shit(super_struct);
 	return (*super_struct);
