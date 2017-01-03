@@ -98,6 +98,7 @@ void		parse_file(t_super *super_struct)
 	// 	super_struct->map[i] = fill_map(super_struct->file_storage[i], super_struct->map[i], i, super_struct->cols);
 	// 	i++;
 	// }
+	// remove later
 	print_map(super_struct);
 	max_min_z(super_struct);
 	// return (super_struct = max_min_z(super_struct));

@@ -79,13 +79,12 @@ void		scale_init_map(t_super *super_struct)
 
 void		scale_that_shit(t_super *super_struct)
 {
-	super_struct->step_unit = 0;
+	// super_struct->step_unit = 0; // moving to init_values
 
-	// not quite centered
 	if (super_struct->cols >= super_struct->rows)
 	{
 		super_struct->step_unit = ((3 * WINDOW_X) / 5) / (super_struct->cols - 1);
-		super_struct->long_axis = 'x';
+		super_struct->long_axis = 'x'; // may not need this
 	}
 	else
 	{
@@ -97,12 +96,12 @@ void		scale_that_shit(t_super *super_struct)
 	printf("step unit = %f, axis = %c, start_x = %f, start_y = %f\n", super_struct->step_unit, super_struct->long_axis, super_struct->start_x, super_struct->start_y);
 	scale_init_map(super_struct);
 	// print_shit(super_struct);
-	// return (super_struct);
 }
 
 void		init_values(t_super *super_struct, char **av1)
 {
 	super_struct->file_name = *av1;
+	super_struct->step_unit = 0;
 	super_struct->angle_x = 0;
 	super_struct->angle_y = 0;
 	super_struct->angle_z = 0;
