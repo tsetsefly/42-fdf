@@ -108,6 +108,7 @@ void 		file_detective(t_super *super_struct)
 	fd = open(super_struct->file_name, O_RDONLY);
 	super_struct->rows = 0;
 	len = 0;
+	// stores a string of each line in super_struct->file_storage
   	while (get_next_line(fd, &line) > 0)
 	{
 		len = ft_strlen(line);
@@ -117,7 +118,9 @@ void 		file_detective(t_super *super_struct)
 		super_struct->rows++;
 		free(line);
   	}
+  	// caps the line
   	super_struct->file_storage[super_struct->rows] = 0;
+  	// remove later, just prints stuff... or can add this function to libft
   	print_2D_chararray(super_struct->file_storage, super_struct->rows);
   	parse_file(super_struct);
   	// return(super_struct = parse_file(super_struct));
