@@ -62,6 +62,7 @@ typedef struct s_super
 	double	max_x;
 	double	min_y;
 	double	max_y;
+	int		file_error;
 }				t_super;
 
 // fdf.c

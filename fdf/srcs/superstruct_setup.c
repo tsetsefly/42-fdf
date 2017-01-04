@@ -104,6 +104,7 @@ void		scale_that_shit(t_super *super_struct)
 void		init_values(t_super *super_struct, char **av1)
 {
 	super_struct->file_name = *av1;
+	super_struct->file_error = 0;
 	super_struct->step_unit = 0;
 	super_struct->angle_x = 0;
 	super_struct->angle_y = 0;
