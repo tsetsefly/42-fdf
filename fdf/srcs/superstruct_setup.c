@@ -126,6 +126,8 @@ t_super		init_superstruct(char *av1)
 	super_struct = (t_super *)malloc(sizeof(t_super));
 	init_values(super_struct, &av1);
 	file_detective(super_struct);
+	if (super_struct->file_error)
+		return(*super_struct);
 	scale_that_shit(super_struct);
 	return (*super_struct);
 }

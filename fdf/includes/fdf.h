@@ -87,7 +87,7 @@ void		init_values(t_super *super_struct, char **av1);
 void		max_min_z(t_super *super_struct);
 
 // file_handling.c
-int			find_num_cols(char *array);
+void		find_num_cols(t_super *super_struct);
 int			find_num_rows(char *file_name);
 void	 	file_detective(t_super *super_struct);
 void		parse_file(t_super *super_struct);
@@ -106,5 +106,8 @@ int			direction_detective(int key_press);
 
 // angle_wrangler.c
 void		apply_angle(t_super *super_struct, int key_press);
+
+// error_checking.c
+void		compare_cols(t_super *super_struct, int cols, int i);
 
 #endif

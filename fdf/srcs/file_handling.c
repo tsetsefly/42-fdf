@@ -13,29 +13,35 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!
 
-int			find_num_cols(char *array)
+void		find_num_cols(t_super *super_struct)
 {
 	int		i;
+	int		j;
 	int		len;
 	int		cols;
 
-	len = ft_strlen(array);
 	// remove later
-	printf("find_num_cols:len = %d\n", len);
+	// printf("find_num_cols:len = %d\n", len);
 	i = 0;
-	cols = 0;
-	while (i < len)
+	while (i < super_struct->rows)
 	{
-		if (array[i] != ' ')
+		j = 0;
+		cols = 0;
+		len = ft_strlen(super_struct->file_storage[i]);
+		while (j < len)
 		{
-			cols++;
-			while (array[i] != ' ')
-				i++;
+			if (super_struct->file_storage[i][j] != ' ')
+			{
+				cols++;
+				while (super_struct->file_storage[i][j] != ' ')
+					j++;
+			}
+			else
+				j++;
 		}
-		else
-			i++;
+		compare_cols(super_struct, cols, i);
+		i++;
 	}
-	return (cols);
 }
 
 int			find_num_rows(char *file_name)
@@ -65,6 +71,7 @@ t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols)
 	num_char_array = ft_strsplit(r_char, ' '); // may need to come back later to error check for other delimiters
 
 	// need to add in the HEX color parsing here
+	// need to add checking for non-number characters here
 	i = 0;
 	while (i < cols)
 	{
@@ -81,7 +88,9 @@ void		parse_file(t_super *super_struct)
 	int		i;
 
 	// need to check all the rows for consistency later
-	super_struct->cols = find_num_cols(super_struct->file_storage[0]);
+	find_num_cols(super_struct);
+	if (super_struct->file_error)
+		return ;
 	printf("ROWS = %d, COLS = %d\n", super_struct->rows, super_struct->cols);
 	super_struct->map = (t_pt **)malloc(sizeof(t_pt *) * (super_struct->rows));
 	i = 0;
