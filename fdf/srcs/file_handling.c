@@ -68,7 +68,7 @@ t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols)
 	int		i;
 	char	**num_char_array;
 
-	num_char_array = ft_strsplit(r_char, ' '); // may need to come back later to error check for other delimiters
+	num_char_array = ft_strsplit(r_char, ' ');
 
 	// need to add in the HEX color parsing here
 	// need to add checking for non-number characters here
@@ -87,7 +87,6 @@ void		parse_file(t_super *super_struct)
 {
 	int		i;
 
-	// need to check all the rows for consistency later
 	find_num_cols(super_struct);
 	if (super_struct->file_error)
 		return ;
@@ -101,16 +100,9 @@ void		parse_file(t_super *super_struct)
 		i++;
 	}
 	printf("i / rows = %d\n", i);
-	// i = 0;
-	// while (i < super_struct->rows)
-	// {
-	// 	super_struct->map[i] = fill_map(super_struct->file_storage[i], super_struct->map[i], i, super_struct->cols);
-	// 	i++;
-	// }
 	// remove later
 	print_map(super_struct);
 	max_min_z(super_struct);
-	// return (super_struct = max_min_z(super_struct));
 }
 
 void 		file_detective(t_super *super_struct)

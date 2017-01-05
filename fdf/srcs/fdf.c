@@ -23,7 +23,7 @@ int			main (int ac, char **av)
 		if (super_struct.file_error)
 			printf("Error: file format!\n");
 		else
-			connect_lines(super_struct); //
+			connect_lines(super_struct);
 		// test_print_spiral(super_struct.mlx, super_struct.window);  // REMOVE LATER!!!
 	}
 	else

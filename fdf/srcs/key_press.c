@@ -44,8 +44,7 @@ int			input_detective(int key_press, t_super *super_struct)
 			center_points(super_struct);
 		}
 		connect_lines(*super_struct);
-	}	
-	// 'F' = reset
+	}
 	else if (key_press == 3)
 	{
 		mlx_clear_window(super_struct->mlx, super_struct->window);
