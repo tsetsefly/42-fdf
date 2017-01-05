@@ -17,7 +17,7 @@
 int			direction_detective(int key_press)
 {
 	if (key_press == 13 || key_press == 1 || key_press == 0 || key_press == 2 ||
-		key_press == 12 || key_press == 14)
+		key_press == 12 || key_press == 14 || key_press == 6 || key_press == 7)
 		return (1);
 	else
 		return (0);

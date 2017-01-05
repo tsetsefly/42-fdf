@@ -106,6 +106,7 @@ int			direction_detective(int key_press);
 
 // angle_wrangler.c
 void		apply_angle(t_super *super_struct, int key_press);
+void		ninty_rotation(t_super *super_struct, int key_press);
 
 // error_checking.c
 void		compare_cols(t_super *super_struct, int cols, int i);
