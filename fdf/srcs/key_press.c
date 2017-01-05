@@ -24,7 +24,6 @@ int			direction_detective(int key_press)
 }
 
 // rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
-// should re-center after each rotation
 int			input_detective(int key_press, t_super *super_struct)
 {
 	printf("key_press = %d\n", key_press);
@@ -36,7 +35,7 @@ int			input_detective(int key_press, t_super *super_struct)
 		y_axis(super_struct);
 		x_axis(super_struct);
 		// printf("BEFORE = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
-		center_points(super_struct); // this doesn't handle z correctly
+		center_points(super_struct);
 		printf("AFTER = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
 		connect_lines(*super_struct);
 	}	
@@ -51,6 +50,5 @@ int			input_detective(int key_press, t_super *super_struct)
 		exit(1);
 	else
 		printf("Error: not a valid keypress!\n");
-	// (void)super_struct; //
 	return (0);
 }
