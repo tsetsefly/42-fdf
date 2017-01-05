@@ -111,4 +111,8 @@ void		ninty_rotation(t_super *super_struct, int key_press);
 // error_checking.c
 void		compare_cols(t_super *super_struct, int cols, int i);
 
+// zoom_zoom_zoom.c
+void		zoom_detective(t_super *super_struct, int key_press);
+void		zooms(t_super *super_struct, double zoom_factor);
+
 #endif
