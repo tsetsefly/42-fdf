@@ -65,8 +65,8 @@ void		scale_init_map(t_super *super_struct)
 			super_struct->map[i][j].scaled_x = x;
 			super_struct->map[i][j].scaled_y = y;
 			// could probably adjust this to the map
-			super_struct->map[i][j].scaled_z = super_struct->map[i][j].og_z *
-				super_struct->step_unit / 2;
+			super_struct->map[i][j].scaled_z =
+				super_struct->map[i][j].og_z * super_struct->step_unit / 2;
 			super_struct->map[i][j].x = x;
 			super_struct->map[i][j].y = y;
 			super_struct->map[i][j].z = super_struct->map[i][j].scaled_z;
@@ -80,7 +80,6 @@ void		scale_init_map(t_super *super_struct)
 
 void		scale_that_shit(t_super *super_struct)
 {
-	// need to factor in z-axis
 	if (super_struct->cols >= super_struct->rows && super_struct->cols >= (super_struct->max_z - super_struct->min_z))
 	{
 		super_struct->step_unit = ((3 * WINDOW_X) / 5) / (super_struct->cols - 1);

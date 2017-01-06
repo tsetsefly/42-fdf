@@ -40,7 +40,8 @@ void		init_min_max(t_super *super_struct, char letter)
 	}
 	if (letter == 'x')
 	{
-		super_struct->min_y = super_struct->map[0][0].y * cos(super_struct->angle_x)
+		super_struct->min_y = super_struct->map[0][0].y *
+			cos(super_struct->angle_x)
 			- super_struct->map[0][0].z * sin(super_struct->angle_x);
 		super_struct->max_y = super_struct->min_y;	
 	} 

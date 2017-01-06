@@ -95,11 +95,14 @@ void		parse_file(t_super *super_struct)
 	i = 0;
 	while (i < super_struct->rows)
 	{
-		super_struct->map[i] = (t_pt *)malloc(sizeof(t_pt) * (super_struct->cols));
-		super_struct->map[i] = fill_map(super_struct->file_storage[i], super_struct->map[i], i, super_struct->cols);
+		super_struct->map[i] =
+			(t_pt *)malloc(sizeof(t_pt) * (super_struct->cols));
+		super_struct->map[i] =
+			fill_map(super_struct->file_storage[i], super_struct->map[i], i,
+				super_struct->cols);
 		i++;
 	}
-	printf("i / rows = %d\n", i);
+	// printf("i / rows = %d\n", i);
 	// remove later
 	print_map(super_struct);
 	max_min_z(super_struct);
@@ -112,7 +115,8 @@ void 		file_detective(t_super *super_struct)
 	char	*line;
 
 	super_struct->rows = find_num_rows(super_struct->file_name);
-	super_struct->file_storage = (char **)malloc(sizeof(char *) * (super_struct->rows + 1));
+	super_struct->file_storage =
+		(char **)malloc(sizeof(char *) * (super_struct->rows + 1));
 	fd = open(super_struct->file_name, O_RDONLY);
 	super_struct->rows = 0;
 	len = 0;
@@ -121,15 +125,13 @@ void 		file_detective(t_super *super_struct)
 	{
 		len = ft_strlen(line);
 		// printf("%s\tLEN = %lu\n", line, len);
-		super_struct->file_storage[super_struct->rows] = (char *)malloc(sizeof(char) * (len + 1));
+		super_struct->file_storage[super_struct->rows] =
+			(char *)malloc(sizeof(char) * (len + 1));
 		ft_strcpy(super_struct->file_storage[super_struct->rows], line);
 		super_struct->rows++;
 		free(line);
   	}
-  	// caps the line
-  	super_struct->file_storage[super_struct->rows] = 0;
-  	// remove later, just prints stuff... or can add this function to libft
-  	print_2D_chararray(super_struct->file_storage, super_struct->rows);
+  	super_struct->file_storage[super_struct->rows] = 0; // caps the line
+  	print_2D_chararray(super_struct->file_storage, super_struct->rows); // remove later, just prints stuff... or can add this function to libft
   	parse_file(super_struct);
-  	// return(super_struct = parse_file(super_struct));
 }
