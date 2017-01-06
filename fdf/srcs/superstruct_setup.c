@@ -65,7 +65,8 @@ void		scale_init_map(t_super *super_struct)
 			super_struct->map[i][j].scaled_x = x;
 			super_struct->map[i][j].scaled_y = y;
 			// could probably adjust this to the map
-			super_struct->map[i][j].scaled_z = super_struct->map[i][j].og_z * super_struct->step_unit / 2;
+			super_struct->map[i][j].scaled_z = super_struct->map[i][j].og_z *
+				super_struct->step_unit / 2;
 			super_struct->map[i][j].x = x;
 			super_struct->map[i][j].y = y;
 			super_struct->map[i][j].z = super_struct->map[i][j].scaled_z;

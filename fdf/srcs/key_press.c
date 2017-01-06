@@ -28,10 +28,12 @@ int			direction_detective(int key_press)
 // rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
 int			input_detective(int key_press, t_super *super_struct)
 {
+	printf("\n");
 	printf("key_press = %d\n", key_press);
+	mlx_clear_window(super_struct->mlx, super_struct->window);
 	if (direction_detective(key_press))
 	{
-		mlx_clear_window(super_struct->mlx, super_struct->window);
+		// mlx_clear_window(super_struct->mlx, super_struct->window);
 		if (key_press == 18 || key_press == 19)
 			zoom_detective(super_struct, key_press);
 		else
@@ -41,14 +43,14 @@ int			input_detective(int key_press, t_super *super_struct)
 			y_axis(super_struct);
 			x_axis(super_struct);
 			// printf("BEFORE = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
-			printf("min_x = %f, max_x = %f, min_y = %f, max_y = %f\n\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
+			printf("min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
 			center_points(super_struct);
 		}
 		connect_lines(*super_struct);
 	}
 	else if (key_press == 3)
 	{
-		mlx_clear_window(super_struct->mlx, super_struct->window);
+		// mlx_clear_window(super_struct->mlx, super_struct->window);
 		printf("reset!\n");
 		reset_points(super_struct);
 	}
