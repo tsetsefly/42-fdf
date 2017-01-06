@@ -47,8 +47,8 @@ typedef struct s_super
 	int		cols;
 	void	*mlx;
 	void	*window;
-	double	window_x; // why do I need these?
-	double	window_y; // why do I need these?
+	double	window_x;
+	double	window_y;
 	double	max_z;
 	double	min_z;
 	double	step_unit;
@@ -65,15 +65,10 @@ typedef struct s_super
 	int		file_error;
 }				t_super;
 
-// fdf.c
-// int main(int ac, char **av);
-
 // rotation.c
 void		x_axis(t_super *super_struct);
 void		y_axis(t_super *super_struct);
 void		z_axis(t_super *super_struct);
-void		center_points(t_super *super_struct);
-void		reset_points(t_super *super_struct);
 
 // draw.c
 void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color);
@@ -114,5 +109,9 @@ void		compare_cols(t_super *super_struct, int cols, int i);
 // zoom_zoom_zoom.c
 void		zoom_detective(t_super *super_struct, int key_press);
 void		zooms(t_super *super_struct, double zoom_factor);
+
+// adjustments.c
+void		center_points(t_super *super_struct);
+void		reset_points(t_super *super_struct);
 
 #endif

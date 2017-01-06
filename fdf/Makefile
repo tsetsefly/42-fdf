@@ -20,7 +20,8 @@ FILENAMES	=		fdf.c					\
 					key_press.c				\
 					angle_wrangler.c		\
 					error_checking.c		\
-					zoom_zoom_zoom.c
+					zoom_zoom_zoom.c		\
+					adjustments.c
 
 CC			=		gcc
 CFLAGS		+=		-Wall -Wextra -Werror
