@@ -65,52 +65,74 @@ typedef struct s_super
 	int		file_error;
 }				t_super;
 
-// rotation.c
+/* *********************** */
+/*       rotation.c        */
+/* *********************** */
 void		x_axis(t_super *super_struct);
 void		y_axis(t_super *super_struct);
 void		z_axis(t_super *super_struct);
 
-// draw.c
+/* *********************** */
+/*          draw.c         */
+/* *********************** */
 void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color);
 void		connect_lines(t_super super_struct);
 
-// superstruct_setup.c
+/* *********************** */
+/*   superstruct_setup.c   */
+/* *********************** */
 t_super		init_superstruct(char *av1);
 void		scale_that_shit(t_super *super_struct);
 void		scale_init_map(t_super *super_struct);
 void		init_values(t_super *super_struct, char **av1);
 void		max_min_z(t_super *super_struct);
 
-// file_handling.c
+/* *********************** */
+/*     file_handling.c     */
+/* *********************** */
 void		find_num_cols(t_super *super_struct);
 int			find_num_rows(char *file_name);
 void	 	file_detective(t_super *super_struct);
 void		parse_file(t_super *super_struct);
 t_pt		*fill_map(char *r_char, t_pt *r_map, int map_row, int cols);
 
-// debugging_functions.c
+/* *********************** */
+/*  debugging_functions.c  */
+/* *********************** */
 void		print_shit(t_super super_struct);
 void		print_map(t_super *super_struct);
 void		print_2D_chararray(char **array, int rows);
 // void		ft_swap_doubles(double *a, double *b);
 // void		test_print_spiral(void *mlx, void *window);
 
-// key_press.c
+/* *********************** */
+/*       key_press.c       */
+/* *********************** */
 int			input_detective(int key_press, t_super *super_struct);
 int			direction_detective(int key_press);
 
-// angle_wrangler.c
+/* *********************** */
+/*    angle_wrangler.c     */
+/* *********************** */
 void		apply_angle(t_super *super_struct, int key_press);
 void		ninty_rotation(t_super *super_struct, int key_press);
 
-// error_checking.c
+/* *********************** */
+/*    error_checking.c     */
+/* *********************** */
 void		compare_cols(t_super *super_struct, int cols, int i);
 
-// zoom_zoom_zoom.c
+/* *********************** */
+/*    zoom_zoom_zoom.c     */
+/* *********************** */
 void		zoom_detective(t_super *super_struct, int key_press);
 void		zooms(t_super *super_struct, double zoom_factor);
 
-// adjustments.c
+/* *********************** */
+/*      adjustments.c      */
+/* *********************** */
+void		check_min_max(t_super *super_struct, int i, int j);
+void		init_min_max(t_super *super_struct);
 void		center_points(t_super *super_struct);
 void		reset_points(t_super *super_struct);
 
