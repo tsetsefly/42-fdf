@@ -18,7 +18,7 @@ void		x_axis(t_super *super_struct)
 	int		i;
 	int		j;
 
-	init_min_max(super_struct);
+	init_min_max(super_struct, 'x');
 	i = 0;
 	while (i < super_struct->rows)
 	{
@@ -31,7 +31,7 @@ void		x_axis(t_super *super_struct)
 			super_struct->map[i][j].z = super_struct->map[i][j].y *
 				sin(super_struct->angle_x) + super_struct->map[i][j].z *
 				cos(super_struct->angle_x);
-			check_min_max(super_struct, i, j);
+			check_min_max(super_struct, i, j, 'x');
 			j++;
 		}
 		i++;
@@ -43,6 +43,7 @@ void		y_axis(t_super *super_struct)
 	int		i;
 	int		j;
 
+	// init_min_max(super_struct, 'x');
 	i = 0;
 	while (i < super_struct->rows)
 	{
@@ -55,6 +56,7 @@ void		y_axis(t_super *super_struct)
 			super_struct->map[i][j].x = super_struct->map[i][j].z *
 				sin(super_struct->angle_y) + super_struct->map[i][j].x *
 				cos(super_struct->angle_y);
+			// check_min_max(super_struct, i, j, 'x');
 			j++;
 		}
 		i++;

@@ -131,8 +131,8 @@ void		zooms(t_super *super_struct, double zoom_factor);
 /* *********************** */
 /*      adjustments.c      */
 /* *********************** */
-void		check_min_max(t_super *super_struct, int i, int j);
-void		init_min_max(t_super *super_struct);
+void		check_min_max(t_super *super_struct, int i, int j, char letter);
+void		init_min_max(t_super *super_struct, char letter);
 void		center_points(t_super *super_struct);
 void		reset_points(t_super *super_struct);
 

@@ -45,6 +45,7 @@ void		apply_angle(t_super *super_struct, int key_press)
 	}
 	else if (key_press == 6 || key_press == 7 || key_press == 8)
 		ninty_rotation(super_struct, key_press);
+	printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z);
 }
 
 void		ninty_rotation(t_super *super_struct, int key_press)
@@ -53,6 +54,8 @@ void		ninty_rotation(t_super *super_struct, int key_press)
 		super_struct->angle_z += (90 * M_PI / 180.0);
 	else if (key_press == 7)
 		super_struct->angle_x += (90 * M_PI / 180.0);
+	else if (key_press == 8)
+		super_struct->angle_y += (90 * M_PI / 180.0);
 }
 
 // need to update the angle based on key press

@@ -14,6 +14,7 @@
 #include <stdio.h> // REMOVE LATER!!!
 
 // can probably merge this in later to something like the scaling
+// can merge into adjustments.c
 void		max_min_z(t_super *super_struct)
 {
 	int		i;
@@ -22,7 +23,7 @@ void		max_min_z(t_super *super_struct)
 	i = 0;
 	super_struct->max_z = super_struct->map[0][0].og_z;
 	super_struct->min_z = super_struct->map[0][0].og_z;
-	printf("MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
+	printf("BEFORE = MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
 	while (i < super_struct->rows)
 	{
 		j = 0;
@@ -63,6 +64,7 @@ void		scale_init_map(t_super *super_struct)
 		{
 			super_struct->map[i][j].scaled_x = x;
 			super_struct->map[i][j].scaled_y = y;
+			// could probably adjust this to the map
 			super_struct->map[i][j].scaled_z = super_struct->map[i][j].og_z * super_struct->step_unit / 2;
 			super_struct->map[i][j].x = x;
 			super_struct->map[i][j].y = y;

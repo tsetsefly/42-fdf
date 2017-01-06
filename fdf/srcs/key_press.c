@@ -18,7 +18,8 @@ int			direction_detective(int key_press)
 {
 	if (key_press == 13 || key_press == 1 || key_press == 0 || key_press == 2 ||
 		key_press == 12 || key_press == 14 || key_press == 6 ||
-		key_press == 7 || key_press == 18 || key_press == 19)
+		key_press == 7 || key_press == 18 || key_press == 19 ||
+		key_press == 8)
 		return (1);
 	else
 		return (0);
@@ -40,7 +41,7 @@ int			input_detective(int key_press, t_super *super_struct)
 			y_axis(super_struct);
 			x_axis(super_struct);
 			// printf("BEFORE = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
-			printf("AFTER = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
+			printf("min_x = %f, max_x = %f, min_y = %f, max_y = %f\n\n", super_struct->min_x, super_struct->max_x, super_struct->min_y, super_struct->max_y);
 			center_points(super_struct);
 		}
 		connect_lines(*super_struct);
