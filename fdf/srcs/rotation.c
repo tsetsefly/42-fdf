@@ -16,12 +16,10 @@
 void		init_min_max(t_super *super_struct)
 {
 	super_struct->min_x = super_struct->map[0][0].x;
-	super_struct->max_x = super_struct->map[0][0].x;
+	super_struct->max_x = super_struct->min_x;
 	super_struct->min_y = super_struct->map[0][0].y * cos(super_struct->angle_x)
 		- super_struct->map[0][0].z * sin(super_struct->angle_x);
-	// can assign this off of min_y
-	super_struct->max_y = super_struct->map[0][0].y * cos(super_struct->angle_x)
-		- super_struct->map[0][0].z * sin(super_struct->angle_x);
+	super_struct->max_y = super_struct->min_y;
 }
 
 void		x_axis(t_super *super_struct)
