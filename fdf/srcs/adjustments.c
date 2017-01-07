@@ -50,6 +50,7 @@ void		init_min_max(t_super *super_struct, char letter)
 
 void		center_points(t_super *super_struct)
 {
+	// need to cut this down to 5 variables
 	int		i;
 	int		j;
 	double	center_x;
