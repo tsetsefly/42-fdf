@@ -13,7 +13,7 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!
 
-// can probably merge this in later to something like the scaling
+// can probably merge this in later to something like the scaling //
 // can merge into adjustments.c
 void		max_min_z(t_super *super_struct)
 {
@@ -31,20 +31,16 @@ void		max_min_z(t_super *super_struct)
 		{
 			// printf("(%d, %d) %f\t", i, j, super_struct.map[i][j].og_z);
 			if (super_struct->map[i][j].og_z > super_struct->max_z)
-			{
 				super_struct->max_z = super_struct->map[i][j].og_z;
-				// printf("MAX_Z = %f, MIN_Z = %f\n", super_struct.max_z, super_struct.min_z);
-			}
 			else if (super_struct->map[i][j].og_z < super_struct->min_z)
-			{
 				super_struct->min_z = super_struct->map[i][j].og_z;
-				// printf("MAX_Z = %f, MIN_Z = %f\n", super_struct.max_z, super_struct.min_z);
-			}
 			j++;
 		}
 		i++;
 	}
-	printf("MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
+	// printf("MAX_Z = %f, MIN_Z = %f\n", super_struct.max_z, super_struct.min_z);
+	// printf("MAX_Z = %f, MIN_Z = %f\n", super_struct.max_z, super_struct.min_z);
+	printf("AFTER = MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
 }
 
 void		scale_init_map(t_super *super_struct)
