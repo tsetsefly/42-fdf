@@ -126,7 +126,7 @@ void		print_2D_chararray(char **array, int rows);
 /* *********************** */
 
 int			input_detective(int key_press, t_super *super_struct);
-int			direction_detective(int key_press);
+int			key_detective(int key_press);
 
 /* *********************** */
 /*    angle_wrangler.c     */

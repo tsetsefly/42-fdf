@@ -20,8 +20,6 @@ void		find_num_cols(t_super *super_struct)
 	int		len;
 	int		cols;
 
-	// remove later
-	// printf("find_num_cols:len = %d\n", len);
 	i = 0;
 	while (i < super_struct->rows)
 	{
@@ -102,9 +100,7 @@ void		parse_file(t_super *super_struct)
 				super_struct->cols);
 		i++;
 	}
-	// printf("i / rows = %d\n", i);
-	// remove later
-	print_map(super_struct);
+	print_map(super_struct); // remove later!!!
 	max_min_z(super_struct);
 }
 
