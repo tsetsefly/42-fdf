@@ -86,6 +86,8 @@ void		z_axis(t_super *super_struct);
 /* *********************** */
 
 void		init_draw_vars(int i, int j, t_super *super_struct, char letter);
+void		low_slope(t_super *super_struct);
+void		high_slope(t_super *super_struct);
 void		draw_line(int i, int j, t_super *super_struct, char letter);
 void		connect_lines(t_super super_struct);
 

@@ -51,9 +51,13 @@ void		y_axis(t_super *super_struct)
 			super_struct->map[i][j].x =
 				super_struct->map[i][j].z * sin(super_struct->angle_y)
 				+ super_struct->map[i][j].x * cos(super_struct->angle_y);
+				// super_struct->map[i][j].x * cos(super_struct->angle_y)
+				// - super_struct->map[i][j].z * sin(super_struct->angle_y);
 			super_struct->map[i][j].z =
 				super_struct->map[i][j].z * cos(super_struct->angle_y)
 				- super_struct->map[i][j].x * sin(super_struct->angle_y);
+				// super_struct->map[i][j].z * cos(super_struct->angle_y)
+				// + super_struct->map[i][j].x * sin(super_struct->angle_y);
 			check_min_max(super_struct, i, j);
 			j++;
 		}

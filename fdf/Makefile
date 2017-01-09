@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		fdf.a
+NAME		=		fdf
 FILENAMES	=		fdf.c					\
 					rotation.c				\
 					superstruct_setup.c		\

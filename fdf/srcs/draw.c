@@ -27,46 +27,64 @@ void		init_draw_vars(int i, int j, t_super *super_struct, char letter)
 		super_struct->x2 = super_struct->map[i + 1][j].x;
 		super_struct->y2 = super_struct->map[i + 1][j].y;
 	}
-	super_struct->slope = (super_struct->y2 - super_struct->y1) / (super_struct->x2 - super_struct->x1);
-	super_struct->y_int = super_struct->y1 - super_struct->slope * super_struct->x1;
+	super_struct->slope = (super_struct->y2 - super_struct->y1)
+		/ (super_struct->x2 - super_struct->x1);
+	super_struct->y_int = super_struct->y1
+		- super_struct->slope * super_struct->x1;
 }
 
-// void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color)
-void		draw_line(int i, int j, t_super *super_struct, char letter)
+void		low_slope(t_super *super_struct)
 {
 	double	k;
 	double	max;
 	int		neg;
 
+	k = 0;
+	max = fabs(super_struct->x2 - super_struct->x1);
+	neg = (super_struct->x2 < super_struct->x1) ? -1 : 1;
+	while (k <= max)
+	{
+		mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1
+			, super_struct->y1, super_struct->color);
+		// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
+		super_struct->x1 += (RES * neg);
+		super_struct->y1 = super_struct->slope * super_struct->x1
+			+ super_struct->y_int;
+		k += RES;
+	}
+}
+
+void		high_slope(t_super *super_struct)
+{
+	double	k;
+	double	max;
+	int		neg;
+
+	k = 0;
+	max = fabs(super_struct->y2 - super_struct->y1);
+	neg = (super_struct->y2 < super_struct->y1) ? -1 : 1;
+	while (k <= max)
+	{
+		mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1
+			, super_struct->y1, super_struct->color);
+		// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
+		super_struct->y1 += (RES * neg);
+		super_struct->x1 = (super_struct->x1 == super_struct->x2) ?
+			super_struct->x2 : ((super_struct->y1 - super_struct->y_int)
+			/ super_struct->slope);
+		k += RES;
+	}
+}
+
+// void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color)
+void		draw_line(int i, int j, t_super *super_struct, char letter)
+{
 	init_draw_vars(i, j, super_struct, letter);
 	// printf("START: slope = %f,\ty-int = %f,\tx-int = %f,\tx2 - x1 = %f\n", slope, y_int, x_int, x2 - x1);
-	k = 0;
 	if (fabs(super_struct->slope) < 1)
-	{
-		max = fabs(super_struct->x2 - super_struct->x1);
-		neg = (super_struct->x2 < super_struct->x1) ? -1 : 1;
-		while (k <= max)
-		{
-			mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1, super_struct->y1, super_struct->color);
-			// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
-			super_struct->x1 += (RES * neg);
-			super_struct->y1 = super_struct->slope * super_struct->x1 + super_struct->y_int;
-			k += RES;
-		}
-	}
+		low_slope(super_struct);
 	else
-	{
-		max = fabs(super_struct->y2 - super_struct->y1);
-		neg = (super_struct->y2 < super_struct->y1) ? -1 : 1;
-		while (k <= max)
-		{
-			mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1, super_struct->y1, super_struct->color);
-			// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
-			super_struct->y1 += (RES * neg);
-			super_struct->x1 = (super_struct->x1 == super_struct->x2) ? super_struct->x2 : ((super_struct->y1 - super_struct->y_int) / super_struct->slope);
-			k += RES;
-		}
-	}	
+		high_slope(super_struct);
 }
 
 void		connect_lines(t_super super_struct)
@@ -82,12 +100,8 @@ void		connect_lines(t_super super_struct)
 		{
 			if (j < super_struct.cols - 1)
 				draw_line(i, j, &super_struct, 'j');
-				// draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i][j + 1].x,
-				// 	super_struct.map[i][j + 1].y, super_struct.mlx, super_struct.window, color);
 			if (i < super_struct.rows - 1)
 				draw_line(i, j, &super_struct, 'i');
-				// draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i + 1][j].x,
-				// 	super_struct.map[i + 1][j].y, super_struct.mlx, super_struct.window, color);
 			j++;
 		}
 		i++;
