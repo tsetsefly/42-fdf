@@ -28,6 +28,8 @@ void		check_min_max(t_super *super_struct, int i, int j, char letter)
 
 void		init_min_max(t_super *super_struct, char letter)
 {
+	// double	temp;
+
 	if (letter == 'x')
 	{
 		super_struct->min_x = super_struct->map[0][0].x;
@@ -39,6 +41,9 @@ void		init_min_max(t_super *super_struct, char letter)
 	}
 	if (letter == 'y')
 	{
+		// temp =
+		// 		super_struct->map[0][0].z * cos(super_struct->angle_y)
+		// 		- super_struct->map[0][0].x * sin(super_struct->angle_y);
 		super_struct->min_x =
 			super_struct->map[0][0].z * sin(super_struct->angle_y)
 			+ super_struct->map[0][0].x * cos(super_struct->angle_y);
