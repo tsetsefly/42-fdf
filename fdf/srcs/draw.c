@@ -13,45 +13,58 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!
 
+void		init_draw_vars(int i, int j, t_super *super_struct, char letter)
+{
+	super_struct->x1 = super_struct->map[i][j].x;
+	super_struct->y1 = super_struct->map[i][j].y;
+	if (letter == 'j')
+	{
+		super_struct->x2 = super_struct->map[i][j + 1].x;
+		super_struct->y2 = super_struct->map[i][j + 1].y;
+	}
+	else if (letter == 'i')
+	{
+		super_struct->x2 = super_struct->map[i + 1][j].x;
+		super_struct->y2 = super_struct->map[i + 1][j].y;
+	}
+	super_struct->slope = (super_struct->y2 - super_struct->y1) / (super_struct->x2 - super_struct->x1);
+	super_struct->y_int = super_struct->y1 - super_struct->slope * super_struct->x1;
+}
+
 // void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color)
-void		draw_line(int i, int j, int color, t_super *super_struct)
+void		draw_line(int i, int j, t_super *super_struct, char letter)
 {
 	double	k;
-	double	slope;
-	double	y_int;
 	double	max;
-	double	res;
 	int		neg;
 
-	slope = (y2 - y1) / (x2 - x1);
-	y_int = y1 - slope * x1;
+	init_draw_vars(i, j, super_struct, letter);
 	// printf("START: slope = %f,\ty-int = %f,\tx-int = %f,\tx2 - x1 = %f\n", slope, y_int, x_int, x2 - x1);
 	k = 0;
-	res = (0.5);
-	if (fabs(slope) < 1)
+	if (fabs(super_struct->slope) < 1)
 	{
-		max = fabs(x2 - x1);
-		neg = (x2 < x1) ? -1 : 1;
+		max = fabs(super_struct->x2 - super_struct->x1);
+		neg = (super_struct->x2 < super_struct->x1) ? -1 : 1;
 		while (k <= max)
 		{
-			mlx_pixel_put(mlx, window, x1, y1, color);
+			mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1, super_struct->y1, super_struct->color);
 			// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
-			x1 += (res * neg);
-			y1 = slope * x1 + y_int;
-			k += res;
+			super_struct->x1 += (RES * neg);
+			super_struct->y1 = super_struct->slope * super_struct->x1 + super_struct->y_int;
+			k += RES;
 		}
 	}
 	else
 	{
-		max = fabs(y2 - y1);
-		neg = (y2 < y1) ? -1 : 1;
-		while (i <= max)
+		max = fabs(super_struct->y2 - super_struct->y1);
+		neg = (super_struct->y2 < super_struct->y1) ? -1 : 1;
+		while (k <= max)
 		{
-			mlx_pixel_put(mlx, window, x1, y1, color);
+			mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1, super_struct->y1, super_struct->color);
 			// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
-			y1 += (res * neg);
-			x1 = (x1 == x2) ? x2 : ((y1 - y_int) / slope);
-			i += res;
+			super_struct->y1 += (RES * neg);
+			super_struct->x1 = (super_struct->x1 == super_struct->x2) ? super_struct->x2 : ((super_struct->y1 - super_struct->y_int) / super_struct->slope);
+			k += RES;
 		}
 	}	
 }
@@ -60,7 +73,6 @@ void		connect_lines(t_super super_struct)
 {
 	int		i;
 	int		j;
-	int		color = 140 * 65536;
 
 	i = 0;
 	while (i < super_struct.rows)
@@ -69,11 +81,13 @@ void		connect_lines(t_super super_struct)
 		while (j < super_struct.cols)
 		{
 			if (j < super_struct.cols - 1)
-				draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i][j + 1].x,
-					super_struct.map[i][j + 1].y, super_struct.mlx, super_struct.window, color);
+				draw_line(i, j, &super_struct, 'j');
+				// draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i][j + 1].x,
+				// 	super_struct.map[i][j + 1].y, super_struct.mlx, super_struct.window, color);
 			if (i < super_struct.rows - 1)
-				draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i + 1][j].x,
-					super_struct.map[i + 1][j].y, super_struct.mlx, super_struct.window, color);
+				draw_line(i, j, &super_struct, 'i');
+				// draw_line(super_struct.map[i][j].x, super_struct.map[i][j].y, super_struct.map[i + 1][j].x,
+				// 	super_struct.map[i + 1][j].y, super_struct.mlx, super_struct.window, color);
 			j++;
 		}
 		i++;

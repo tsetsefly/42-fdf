@@ -111,6 +111,14 @@ void		init_values(t_super *super_struct, char **av1)
 	super_struct->max_x = 0;
 	super_struct->min_y = 0;
 	super_struct->max_y = 0;
+	super_struct->slope = 0;
+	super_struct->color = 140 * 65536;
+	super_struct->slope = 0;
+	super_struct->y_int = 0;
+	super_struct->x1 = 0;
+	super_struct->x2 = 0;
+	super_struct->y1 = 0;
+	super_struct->y2 = 0;
 	super_struct->mlx = mlx_init();
 	super_struct->window = mlx_new_window(super_struct->mlx, WINDOW_X, WINDOW_Y, "detective");
 }
