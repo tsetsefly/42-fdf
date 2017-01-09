@@ -13,11 +13,10 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!
 
-// need to make this fit norm
-// can also make fit with superstruct, or some other struct
-void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color)
+// void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color)
+void		draw_line(int i, int j, int color, t_super *super_struct)
 {
-	double	i;
+	double	k;
 	double	slope;
 	double	y_int;
 	double	max;
@@ -27,19 +26,19 @@ void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *win
 	slope = (y2 - y1) / (x2 - x1);
 	y_int = y1 - slope * x1;
 	// printf("START: slope = %f,\ty-int = %f,\tx-int = %f,\tx2 - x1 = %f\n", slope, y_int, x_int, x2 - x1);
-	i = 0;
+	k = 0;
 	res = (0.5);
 	if (fabs(slope) < 1)
 	{
 		max = fabs(x2 - x1);
 		neg = (x2 < x1) ? -1 : 1;
-		while (i <= max)
+		while (k <= max)
 		{
 			mlx_pixel_put(mlx, window, x1, y1, color);
 			// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
 			x1 += (res * neg);
 			y1 = slope * x1 + y_int;
-			i += res;
+			k += res;
 		}
 	}
 	else
@@ -57,7 +56,6 @@ void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *win
 	}	
 }
 
-// void		draw_line(double x1, double y1, double x2, double y2, void *mlx, void *window, int color)
 void		connect_lines(t_super super_struct)
 {
 	int		i;

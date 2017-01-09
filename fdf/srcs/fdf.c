@@ -24,7 +24,7 @@ int			main (int ac, char **av)
 			printf("Error: file format!\n");
 		else
 			connect_lines(super_struct);
-		// test_print_spiral(super_struct.mlx, super_struct.window);  // REMOVE LATER!!!
+		// test_print_spiral(super_struct.mlx, super_struct.window);  // REMOVE LATER!!! //
 	}
 	else
 		printf("Error: didn't pass a file!\n");

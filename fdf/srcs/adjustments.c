@@ -13,9 +13,8 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!
 
-void		check_min_max(t_super *super_struct, int i, int j, char letter)
+void		check_min_max(t_super *super_struct, int i, int j)
 {
-	(void)letter; // remove later!!!
 	if (super_struct->min_x > super_struct->map[i][j].x)
 		super_struct->min_x = super_struct->map[i][j].x;
 	if (super_struct->max_x < super_struct->map[i][j].x)
@@ -28,8 +27,6 @@ void		check_min_max(t_super *super_struct, int i, int j, char letter)
 
 void		init_min_max(t_super *super_struct, char letter)
 {
-	// double	temp;
-
 	if (letter == 'x')
 	{
 		super_struct->min_x = super_struct->map[0][0].x;
@@ -41,9 +38,6 @@ void		init_min_max(t_super *super_struct, char letter)
 	}
 	if (letter == 'y')
 	{
-		// temp =
-		// 		super_struct->map[0][0].z * cos(super_struct->angle_y)
-		// 		- super_struct->map[0][0].x * sin(super_struct->angle_y);
 		super_struct->min_x =
 			super_struct->map[0][0].z * sin(super_struct->angle_y)
 			+ super_struct->map[0][0].x * cos(super_struct->angle_y);
@@ -55,21 +49,16 @@ void		init_min_max(t_super *super_struct, char letter)
 
 void		center_points(t_super *super_struct)
 {
-	// need to cut this down to 5 variables
 	int		i;
 	int		j;
-	double	center_x;
-	double	center_y;
 	double	adjust_x;
 	double	adjust_y;
 
-	center_x = ((super_struct->max_x - super_struct->min_x) / 2)
-		+ super_struct->min_x;
-	center_y = ((super_struct->max_y - super_struct->min_y) / 2)
-		+ super_struct->min_y;
-	adjust_x = (WINDOW_X / 2) - center_x;
-	adjust_y = (WINDOW_Y / 2) - center_y;
-	printf("adjust_x = %f, adjust_y = %f, center_x = %f, center_y = %f\n", adjust_x, adjust_y, center_x, center_y); // REMOVE LATER!!! //
+	adjust_x = (WINDOW_X / 2) - (((super_struct->max_x - super_struct->min_x)
+		/ 2) + super_struct->min_x);
+	adjust_y = (WINDOW_Y / 2) - (((super_struct->max_y - super_struct->min_y)
+		/ 2) + super_struct->min_y);
+	printf("adjust_x = %f, adjust_y = %f, center_x = %f, center_y = %f\n", adjust_x, adjust_y, (((super_struct->max_x - super_struct->min_x) / 2) + super_struct->min_x), (((super_struct->max_y - super_struct->min_y) / 2) + super_struct->min_y)); // REMOVE LATER
 	i = 0;
 	while (i < super_struct->rows)
 	{

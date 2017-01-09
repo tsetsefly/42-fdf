@@ -13,8 +13,6 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!!
 
-// rotation = https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
-// order matters
 void		x_axis(t_super *super_struct)
 {
 	int		i;
@@ -56,7 +54,7 @@ void		y_axis(t_super *super_struct)
 			super_struct->map[i][j].z =
 				super_struct->map[i][j].z * cos(super_struct->angle_y)
 				- super_struct->map[i][j].x * sin(super_struct->angle_y);
-			check_min_max(super_struct, i, j, 'y');
+			check_min_max(super_struct, i, j);
 			j++;
 		}
 		i++;

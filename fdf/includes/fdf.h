@@ -19,11 +19,11 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-# define X_ROT 5
-# define Y_ROT 5
-# define Z_ROT 5
-# define WINDOW_X 1000
-# define WINDOW_Y 1000
+# define X_ROT 1.0
+# define Y_ROT 1.0
+# define Z_ROT 1.0
+# define WINDOW_X 1000.0
+# define WINDOW_Y 1000.0
 
 typedef struct	s_pt
 {
@@ -131,7 +131,7 @@ void		zooms(t_super *super_struct, double zoom_factor);
 /* *********************** */
 /*      adjustments.c      */
 /* *********************** */
-void		check_min_max(t_super *super_struct, int i, int j, char letter);
+void		check_min_max(t_super *super_struct, int i, int j);
 void		init_min_max(t_super *super_struct, char letter);
 void		center_points(t_super *super_struct);
 void		reset_points(t_super *super_struct);
