@@ -24,17 +24,17 @@ void		x_axis(t_super *super_struct)
 		j = 0;
 		while (j < super_struct->cols)
 		{
-			super_struct->map[i][j].x = super_struct->map[i][j].scaled_x;
+			super_struct->map[i][j].x = super_struct->map[i][j].scaled_x; // for X -> Y -> Z!
 			super_struct->map[i][j].y =
-				// super_struct->map[i][j].y * cos(super_struct->angle_x)
-				// - super_struct->map[i][j].z * sin(super_struct->angle_x);
-				super_struct->map[i][j].scaled_y * cos(super_struct->angle_x)
-				- super_struct->map[i][j].scaled_z * sin(super_struct->angle_x);
+				// super_struct->map[i][j].y * cos(super_struct->angle_x) // for Z -> X -> Y
+				// - super_struct->map[i][j].z * sin(super_struct->angle_x); // for Z -> X -> Y
+				super_struct->map[i][j].scaled_y * cos(super_struct->angle_x) // for X -> Y -> Z!
+				- super_struct->map[i][j].scaled_z * sin(super_struct->angle_x); // for X -> Y -> Z!
 			super_struct->map[i][j].z =
-				// super_struct->map[i][j].y * sin(super_struct->angle_x)
-				// + super_struct->map[i][j].z * cos(super_struct->angle_x);
-				super_struct->map[i][j].scaled_y * sin(super_struct->angle_x)
-				+ super_struct->map[i][j].scaled_z * cos(super_struct->angle_x);
+				// super_struct->map[i][j].y * sin(super_struct->angle_x) // for Z -> X -> Y
+				// + super_struct->map[i][j].z * cos(super_struct->angle_x); // for Z -> X -> Y
+				super_struct->map[i][j].scaled_y * sin(super_struct->angle_x) // for X -> Y -> Z!
+				+ super_struct->map[i][j].scaled_z * cos(super_struct->angle_x); // for X -> Y -> Z!
 			j++;
 		}
 		i++;
@@ -46,7 +46,7 @@ void		y_axis(t_super *super_struct)
 	int		i;
 	int		j;
 
-	// init_min_max(super_struct, 'y');
+	// init_min_max(super_struct, 'y'); // for Z -> X -> Y
 	i = 0;
 	while (i < super_struct->rows)
 	{
@@ -54,16 +54,16 @@ void		y_axis(t_super *super_struct)
 		while (j < super_struct->cols)
 		{
 			super_struct->map[i][j].x =
-				// super_struct->map[i][j].z * sin(super_struct->angle_y)
-				// + super_struct->map[i][j].x * cos(super_struct->angle_y);
-				super_struct->map[i][j].x * cos(super_struct->angle_y)
-				- super_struct->map[i][j].z * sin(super_struct->angle_y);
+				// super_struct->map[i][j].z * sin(super_struct->angle_y) // for Z -> X -> Y
+				// + super_struct->map[i][j].x * cos(super_struct->angle_y); // for Z -> X -> Y
+				super_struct->map[i][j].x * cos(super_struct->angle_y) // for X -> Y -> Z!
+				- super_struct->map[i][j].z * sin(super_struct->angle_y); // for X -> Y -> Z!
 			super_struct->map[i][j].z =
-				// super_struct->map[i][j].z * cos(super_struct->angle_y)
-				// - super_struct->map[i][j].x * sin(super_struct->angle_y);
-				super_struct->map[i][j].z * cos(super_struct->angle_y)
-				+ super_struct->map[i][j].x * sin(super_struct->angle_y);
-			// check_min_max(super_struct, i, j);
+				// super_struct->map[i][j].z * cos(super_struct->angle_y) // for Z -> X -> Y
+				// - super_struct->map[i][j].x * sin(super_struct->angle_y); // for Z -> X -> Y
+				super_struct->map[i][j].z * cos(super_struct->angle_y) // for X -> Y -> Z!
+				+ super_struct->map[i][j].x * sin(super_struct->angle_y); // for X -> Y -> Z!
+			// check_min_max(super_struct, i, j); // for Z -> X -> Y
 			j++;
 		}
 		i++;
@@ -83,16 +83,16 @@ void		z_axis(t_super *super_struct)
 		while (j < super_struct->cols)
 		{
 			super_struct->map[i][j].x =
-				// super_struct->map[i][j].scaled_x * cos(super_struct->angle_z)
-				// - super_struct->map[i][j].scaled_y * sin(super_struct->angle_z);
-				super_struct->map[i][j].x * cos(super_struct->angle_z)
-				- super_struct->map[i][j].y * sin(super_struct->angle_z);
+				// super_struct->map[i][j].scaled_x * cos(super_struct->angle_z) // for Z -> X -> Y
+				// - super_struct->map[i][j].scaled_y * sin(super_struct->angle_z); // for Z -> X -> Y
+				super_struct->map[i][j].x * cos(super_struct->angle_z) // for X -> Y -> Z!
+				- super_struct->map[i][j].y * sin(super_struct->angle_z); // for X -> Y -> Z!
 			super_struct->map[i][j].y =
-				// super_struct->map[i][j].scaled_x * sin(super_struct->angle_z)
-				// + super_struct->map[i][j].scaled_y * cos(super_struct->angle_z);
-				super_struct->map[i][j].x * sin(super_struct->angle_z)
-				+ super_struct->map[i][j].y * cos(super_struct->angle_z);
-			super_struct->map[i][j].z = super_struct->map[i][j].scaled_z;
+				// super_struct->map[i][j].scaled_x * sin(super_struct->angle_z) // for Z -> X -> Y
+				// + super_struct->map[i][j].scaled_y * cos(super_struct->angle_z); // for Z -> X -> Y
+				super_struct->map[i][j].x * sin(super_struct->angle_z) // for X -> Y -> Z!
+				+ super_struct->map[i][j].y * cos(super_struct->angle_z); // for X -> Y -> Z!
+			super_struct->map[i][j].z = super_struct->map[i][j].scaled_z; // for X -> Y -> Z!
 			// check_min_max(super_struct, i, j);
 			j++;
 		}
