@@ -41,9 +41,9 @@ int			input_detective(int key_press, t_super *super_struct)
 		if (key_press == 18 || key_press == 19)
 		{
 			zoom_detective(super_struct, key_press);
-			x_axis(super_struct); // for X -> Y -> Z!
-			y_axis(super_struct); // for X -> Y -> Z!
-			z_axis(super_struct); // for X -> Y -> Z!
+			// x_axis(super_struct); // for X -> Y -> Z!
+			// y_axis(super_struct); // for X -> Y -> Z!
+			// z_axis(super_struct); // for X -> Y -> Z!
 		}
 		else
 		{
