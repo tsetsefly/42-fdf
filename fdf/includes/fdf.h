@@ -25,6 +25,7 @@
 # define WINDOW_X 1000.0
 # define WINDOW_Y 1000.0
 # define RES 0.5
+# define SCALE 0.6
 
 typedef struct	s_pt
 {

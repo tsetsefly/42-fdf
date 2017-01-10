@@ -76,14 +76,14 @@ void		scale_that_shit(t_super *super_struct)
 	if (super_struct->cols >= super_struct->rows && super_struct->cols
 		>= (super_struct->max_z - super_struct->min_z))
 	{
-		super_struct->step_unit = ((3 * WINDOW_X) / 5)
+		super_struct->step_unit = WINDOW_X * SCALE
 			/ (super_struct->cols - 1);
 		super_struct->long_axis = 'x'; // may not need this
 	}
 	else if (super_struct->rows >= super_struct->cols && super_struct->rows
 		>= (super_struct->max_z - super_struct->min_z))
 	{
-		super_struct->step_unit = ((3 * WINDOW_Y) / 5)
+		super_struct->step_unit = WINDOW_Y * SCALE
 			/ (super_struct->rows - 1);
 		super_struct->long_axis = 'y';
 	}

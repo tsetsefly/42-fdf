@@ -44,6 +44,25 @@ void		init_min_max(t_super *super_struct, char letter)
 		super_struct->max_x = super_struct->min_x;
 		super_struct->min_y = super_struct->map[0][0].y;
 		super_struct->max_y = super_struct->min_y;
+		// super_struct->min_x = super_struct->map[0][0].x;
+		// super_structfgff->max_x = super_struct->min_x;
+		// super_struct->min_y = super_struct->map[0][0].y;
+		// super_struct->max_y = super_struct->min_y;
+	}
+	if (letter == 'z')
+	{
+		// super_struct->min_x =
+		// 	super_struct->map[0][0].x * cos(super_struct->angle_z)
+		// 	- super_struct->map[0][0].y * sin(super_struct->angle_z);
+		// super_struct->max_x = super_struct->min_x;
+		// super_struct->min_y =
+		// 	super_struct->min_x * sin(super_struct->angle_z)
+		// 	+ super_struct->map[0][0].y * cos(super_struct->angle_z);
+		// super_struct->max_y = super_struct->min_y;
+		super_struct->min_x = super_struct->map[0][0].x;
+		super_struct->max_x = super_struct->min_x;
+		super_struct->min_y = super_struct->map[0][0].y;
+		super_struct->max_y = super_struct->min_y;
 	}
 }
 
