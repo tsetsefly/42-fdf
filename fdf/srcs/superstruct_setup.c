@@ -38,7 +38,8 @@ void		max_min_z(t_super *super_struct)
 		}
 		i++;
 	}
-	printf("AFTER = MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
+	super_struct->z_delta = super_struct->max_z - super_struct->min_z;
+	printf("AFTER = MAX_Z = %f, MIN_Z = %f, Z_DELTA = %f\n", super_struct->max_z, super_struct->min_z, super_struct->z_delta);
 }
 
 void		scale_init_map(t_super *super_struct)
@@ -74,14 +75,14 @@ void		scale_init_map(t_super *super_struct)
 void		scale_that_shit(t_super *super_struct)
 {
 	if (super_struct->cols >= super_struct->rows && super_struct->cols
-		>= (super_struct->max_z - super_struct->min_z))
+		>= super_struct->z_delta)
 	{
 		super_struct->step_unit = WINDOW_X * SCALE
 			/ (super_struct->cols - 1);
 		super_struct->long_axis = 'x'; // may not need this
 	}
 	else if (super_struct->rows >= super_struct->cols && super_struct->rows
-		>= (super_struct->max_z - super_struct->min_z))
+		>= super_struct->z_delta)
 	{
 		super_struct->step_unit = WINDOW_Y * SCALE
 			/ (super_struct->rows - 1);
@@ -89,8 +90,8 @@ void		scale_that_shit(t_super *super_struct)
 	}
 	else
 	{
-		super_struct->step_unit = (((WINDOW_X + WINDOW_Y) / 2)
-			/ (super_struct->max_z - super_struct->min_z));
+		super_struct->step_unit = ((WINDOW_X + WINDOW_Y) / 2)
+			/ super_struct->z_delta;
 		super_struct->long_axis = 'z';
 	}
 	super_struct->start_x = (WINDOW_X / 2) - (super_struct->step_unit
@@ -122,6 +123,7 @@ void		init_values(t_super *super_struct, char **av1)
 	super_struct->x2 = 0;
 	super_struct->y1 = 0;
 	super_struct->y2 = 0;
+	super_struct->z_delta = 0;
 	super_struct->mlx = mlx_init();
 	super_struct->window = mlx_new_window(super_struct->mlx, WINDOW_X, WINDOW_Y, "detective");
 }

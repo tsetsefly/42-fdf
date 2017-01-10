@@ -72,6 +72,7 @@ typedef struct s_super
 	double	x2;
 	double	y1;
 	double	y2;
+	double	z_delta;
 }				t_super;
 
 /* *********************** */
