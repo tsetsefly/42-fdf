@@ -24,23 +24,23 @@ void		apply_angle(t_super *super_struct, int key_press)
 	if (key_press == 0 || key_press == 2)
 	{
 		if (key_press == 2)
-			super_struct->angle_y += (Y_ROT * M_PI / 180.0);
+			super_struct->angle_y += Y_ROT;
 		else
-			super_struct->angle_y += (Y_ROT * M_PI / 180.0) * -1;
+			super_struct->angle_y -= Y_ROT;
 	}
 	else if (key_press == 13 || key_press == 1)
 	{
 		if (key_press == 13)
-			super_struct->angle_x += (X_ROT * M_PI / 180.0);
+			super_struct->angle_x += X_ROT;
 		else
-			super_struct->angle_x += (X_ROT * M_PI / 180.0) * -1;
+			super_struct->angle_x -= X_ROT;
 	}
 	else if (key_press == 12 || key_press == 14)
 	{
 		if (key_press == 12)
-			super_struct->angle_z += (Z_ROT * M_PI / 180.0);
+			super_struct->angle_z += Z_ROT;
 		else
-			super_struct->angle_z += (Z_ROT * M_PI / 180.0) * -1;
+			super_struct->angle_z -= Z_ROT;
 	}
 	else if (key_press == 6 || key_press == 7 || key_press == 8)
 		ninty_rotation(super_struct, key_press);
@@ -51,9 +51,9 @@ void		apply_angle(t_super *super_struct, int key_press)
 void		ninty_rotation(t_super *super_struct, int key_press)
 {
 	if (key_press == 6)
-		super_struct->angle_z += (90 * M_PI / 180.0);
+		super_struct->angle_z += 90;
 	else if (key_press == 7)
-		super_struct->angle_x += (90 * M_PI / 180.0);
+		super_struct->angle_x += 90;
 	else if (key_press == 8)
-		super_struct->angle_y += (90 * M_PI / 180.0);
+		super_struct->angle_y += 90;
 }

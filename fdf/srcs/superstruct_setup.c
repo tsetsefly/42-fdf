@@ -49,12 +49,13 @@ void		scale_init_map(t_super *super_struct)
 	double	x;
 	double	y;
 
-	y = super_struct->start_y;
+
+	y = 0;
 	i = 0;
 	while (i < super_struct->rows)
 	{
 		j = 0;
-		x = super_struct->start_x;
+		x = 0;
 		while (j < super_struct->cols)
 		{
 			super_struct->map[i][j].scaled_x = x;
@@ -126,6 +127,8 @@ void		init_values(t_super *super_struct, char **av1)
 	super_struct->z_delta = 0;
 	super_struct->mlx = mlx_init();
 	super_struct->window = mlx_new_window(super_struct->mlx, WINDOW_X, WINDOW_Y, "detective");
+	super_struct->bits_per_pixel = 32;
+	super_struct->endian = 0;
 }
 
 t_super		init_superstruct(char *av1)

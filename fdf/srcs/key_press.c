@@ -35,10 +35,16 @@ int			input_detective(int key_press, t_super *super_struct)
 	printf("\n");
 	printf("key_press = %d\n", key_press);
 	mlx_clear_window(super_struct->mlx, super_struct->window);
+	mlx_destroy_image(super_struct->mlx, super_struct->img);
 	if (key_detective(key_press))
 	{
 		if (key_press == 18 || key_press == 19)
+		{
 			zoom_detective(super_struct, key_press);
+			x_axis(super_struct); // for X -> Y -> Z!
+			y_axis(super_struct); // for X -> Y -> Z!
+			z_axis(super_struct); // for X -> Y -> Z!
+		}
 		else
 		{
 			apply_angle(super_struct, key_press);

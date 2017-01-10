@@ -19,13 +19,14 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-# define X_ROT 1.0
-# define Y_ROT 1.0
-# define Z_ROT 1.0
+# define X_ROT 5.0
+# define Y_ROT 5.0
+# define Z_ROT 5.0
 # define WINDOW_X 1000.0
 # define WINDOW_Y 1000.0
 # define RES 0.5
 # define SCALE 0.6
+# define RADS(x) (x * M_PI / 180)
 
 typedef struct	s_pt
 {
@@ -73,6 +74,11 @@ typedef struct s_super
 	double	y1;
 	double	y2;
 	double	z_delta;
+	void	*img;
+	int		bits_per_pixel;
+	int		size_line; // ( max_x + 1 ) * 4 ... or 2
+	int		*endian; // 0 or 1
+	unsigned int	*mem_addr;
 }				t_super;
 
 /* *********************** */
@@ -92,6 +98,7 @@ void		low_slope(t_super *super_struct);
 void		high_slope(t_super *super_struct);
 void		draw_line(int i, int j, t_super *super_struct, char letter);
 void		connect_lines(t_super super_struct);
+void		find_max_min_x(t_super *super_struct);
 
 /* *********************** */
 /*   superstruct_setup.c   */

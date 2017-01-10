@@ -44,8 +44,9 @@ void		low_slope(t_super *super_struct)
 	neg = (super_struct->x2 < super_struct->x1) ? -1 : 1;
 	while (k <= max)
 	{
-		mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1
-			, super_struct->y1, super_struct->color);
+		// mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1
+		// 	, super_struct->y1, super_struct->color);
+		super_struct->mem_addr[(int)(round(super_struct->y1) * round(super_struct->max_x + 1) + round(super_struct->x1))] = super_struct->color;
 		// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
 		super_struct->x1 += (RES * neg);
 		super_struct->y1 = super_struct->slope * super_struct->x1
@@ -65,8 +66,9 @@ void		high_slope(t_super *super_struct)
 	neg = (super_struct->y2 < super_struct->y1) ? -1 : 1;
 	while (k <= max)
 	{
-		mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1
-			, super_struct->y1, super_struct->color);
+		// mlx_pixel_put(super_struct->mlx, super_struct->window, super_struct->x1
+		// 	, super_struct->y1, super_struct->color);
+		super_struct->mem_addr[(int)(round(super_struct->y1) * round(super_struct->max_x + 1) + round(super_struct->x1))] = super_struct->color;
 		// printf("PIXEL: x = %f, y = %f, i = %f\n", x1, y1, i);
 		super_struct->y1 += (RES * neg);
 		super_struct->x1 = (super_struct->x1 == super_struct->x2) ?
@@ -87,11 +89,38 @@ void		draw_line(int i, int j, t_super *super_struct, char letter)
 		high_slope(super_struct);
 }
 
+void		find_max_min_x(t_super *super_struct)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	init_min_max(super_struct, 'z');
+	while (i < super_struct->rows)
+	{
+		j = 0;
+		while (j < super_struct->cols)
+		{
+			check_min_max(super_struct, i, j);
+			j++;
+		}
+		i++;
+	}
+}
+
 void		connect_lines(t_super super_struct)
 {
 	int		i;
 	int		j;
 
+	find_max_min_x(&super_struct);
+	printf("BEFORE = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct.min_x, super_struct.max_x, super_struct.min_y, super_struct.max_y);
+	center_points(&super_struct);
+	find_max_min_x(&super_struct);
+	printf("AFTER = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct.min_x, super_struct.max_x, super_struct.min_y, super_struct.max_y);
+	super_struct.size_line = (round(super_struct.max_x) + 1) * 4;
+	super_struct.img = mlx_new_image(super_struct.mlx, round(super_struct.max_x + 1), round(super_struct.max_y) + 1);
+	super_struct.mem_addr = (unsigned int *)mlx_get_data_addr(super_struct.img, &super_struct.bits_per_pixel, &super_struct.size_line, super_struct.endian);
 	i = 0;
 	while (i < super_struct.rows)
 	{
@@ -106,6 +135,8 @@ void		connect_lines(t_super super_struct)
 		}
 		i++;
 	}
+	mlx_put_image_to_window(super_struct.mlx, super_struct.window, super_struct.img, (WINDOW_X - super_struct.max_x) / 2, (WINDOW_Y - super_struct.max_y) / 2);
+	printf("GOT HERE!!!!\n");
 	mlx_key_hook(super_struct.window, input_detective, &super_struct);
 	mlx_loop(super_struct.mlx);
 }
