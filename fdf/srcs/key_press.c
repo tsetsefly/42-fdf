@@ -68,6 +68,9 @@ int			input_detective(int key_press, t_super *super_struct)
 	else if (key_press == 53)
 		exit(1);
 	else
+	{
 		printf("Error: not a valid keypress!\n");
+		connect_lines(*super_struct);
+	}
 	return (0);
 }
