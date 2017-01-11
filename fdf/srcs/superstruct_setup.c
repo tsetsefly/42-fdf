@@ -46,7 +46,6 @@ void		scale_init_map(t_super *super_struct)
 	double	x;
 	double	y;
 
-
 	y = 0;
 	i = 0;
 	while (i < super_struct->rows)
@@ -123,7 +122,8 @@ void		init_values(t_super *super_struct, char **av1)
 	super_struct->y2 = 0;
 	super_struct->z_delta = 0;
 	super_struct->mlx = mlx_init();
-	super_struct->window = mlx_new_window(super_struct->mlx, WINDOW_X, WINDOW_Y, "detective");
+	super_struct->window = mlx_new_window(super_struct->mlx, WINDOW_X, WINDOW_Y,
+		 "detective");
 	super_struct->bits_per_pixel = 32;
 	super_struct->endian = 0;
 }
