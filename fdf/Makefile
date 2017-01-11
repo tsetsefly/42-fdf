@@ -21,7 +21,8 @@ FILENAMES	=		fdf.c					\
 					angle_wrangler.c		\
 					error_checking.c		\
 					zoom_zoom_zoom.c		\
-					adjustments.c
+					adjustments.c			\
+					draw_support.c
 
 CC			=		gcc
 CFLAGS		+=		-Wall -Wextra -Werror

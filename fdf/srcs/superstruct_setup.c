@@ -13,8 +13,6 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!
 
-// can probably merge this in later to something like the scaling //
-// can merge into adjustments.c
 void		max_min_z(t_super *super_struct)
 {
 	int		i;
@@ -29,7 +27,6 @@ void		max_min_z(t_super *super_struct)
 		j = 0;
 		while (j < super_struct->cols)
 		{
-			// printf("(%d, %d) %f\t", i, j, super_struct.map[i][j].og_z);
 			if (super_struct->map[i][j].og_z > super_struct->max_z)
 				super_struct->max_z = super_struct->map[i][j].og_z;
 			else if (super_struct->map[i][j].og_z < super_struct->min_z)
@@ -80,7 +77,7 @@ void		scale_that_shit(t_super *super_struct)
 	{
 		super_struct->step_unit = WINDOW_X * SCALE
 			/ (super_struct->cols - 1);
-		super_struct->long_axis = 'x'; // may not need this
+		super_struct->long_axis = 'x';
 	}
 	else if (super_struct->rows >= super_struct->cols && super_struct->rows
 		>= super_struct->z_delta)
@@ -135,8 +132,6 @@ t_super		init_superstruct(char *av1)
 {
 	t_super	*super_struct;
 
-	// can make this more efficient with pointers instead of copying variables through functions
-	// should i malloc the superstruct in the main function?
 	super_struct = (t_super *)malloc(sizeof(t_super));
 	init_values(super_struct, &av1);
 	file_detective(super_struct);

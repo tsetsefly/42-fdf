@@ -25,47 +25,12 @@ void		check_min_max(t_super *super_struct, int i, int j)
 		super_struct->max_y = super_struct->map[i][j].y;
 }
 
-void		init_min_max(t_super *super_struct, char letter)
+void		init_min_max(t_super *super_struct)
 {
-	// double	temp;
-
-	if (letter == 'x')
-	{
-		super_struct->min_x = super_struct->map[0][0].x;
-		super_struct->max_x = super_struct->min_x;	
-		super_struct->min_y =
-			super_struct->map[0][0].y * cos(super_struct->angle_x)
-			- super_struct->map[0][0].z * sin(super_struct->angle_x);
-		super_struct->max_y = super_struct->min_y;	
-	}
-	if (letter == 'y')
-	{
-		super_struct->min_x =
-			super_struct->map[0][0].z * sin(super_struct->angle_y)
-			+ super_struct->map[0][0].x * cos(super_struct->angle_y);
-		super_struct->max_x = super_struct->min_x;
-		super_struct->min_y = super_struct->map[0][0].y;
-		super_struct->max_y = super_struct->min_y;
-		// super_struct->min_x = super_struct->map[0][0].x;
-		// super_structfgff->max_x = super_struct->min_x;
-		// super_struct->min_y = super_struct->map[0][0].y;
-		// super_struct->max_y = super_struct->min_y;
-	}
-	if (letter == 'z')
-	{
-		// super_struct->min_x =
-		// 	super_struct->map[0][0].x * cos(super_struct->angle_z)
-		// 	- super_struct->map[0][0].y * sin(super_struct->angle_z);
-		// super_struct->max_x = super_struct->min_x;
-		// super_struct->min_y =
-		// 	super_struct->map[0][0].x * sin(super_struct->angle_z)
-		// 	+ super_struct->map[0][0].y * cos(super_struct->angle_z);
-		// super_struct->max_y = super_struct->min_y;
-		super_struct->min_x = super_struct->map[0][0].x;
-		super_struct->max_x = super_struct->min_x;
-		super_struct->min_y = super_struct->map[0][0].y;
-		super_struct->max_y = super_struct->min_y;
-	}
+	super_struct->min_x = super_struct->map[0][0].x;
+	super_struct->max_x = super_struct->min_x;
+	super_struct->min_y = super_struct->map[0][0].y;
+	super_struct->max_y = super_struct->min_y;
 }
 
 void		subtract_min_points(t_super *super_struct)
@@ -86,6 +51,8 @@ void		subtract_min_points(t_super *super_struct)
 		i++;
 	}
 }
+
+// either adjust this and use it or remove later
 void		center_points(t_super *super_struct)
 {
 	int		i;
@@ -106,6 +73,25 @@ void		center_points(t_super *super_struct)
 		{
 			super_struct->map[i][j].x += adjust_x;
 			super_struct->map[i][j].y += adjust_y;
+			j++;
+		}
+		i++;
+	}
+}
+
+void		max_min_xy(t_super *super_struct)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	init_min_max(super_struct);
+	while (i < super_struct->rows)
+	{
+		j = 0;
+		while (j < super_struct->cols)
+		{
+			check_min_max(super_struct, i, j);
 			j++;
 		}
 		i++;

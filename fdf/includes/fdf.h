@@ -93,12 +93,17 @@ void				z_axis(t_super *super_struct);
 /*          draw.c         */
 /* *********************** */
 
-void				init_draw_vars(int i, int j, t_super *super_struct, char letter);
 void				low_slope(t_super *super_struct);
 void				high_slope(t_super *super_struct);
 void				draw_line(int i, int j, t_super *super_struct, char letter);
 void				connect_lines(t_super super_struct);
-void				max_min_xy(t_super *super_struct);
+
+/* *********************** */
+/*     draw_support.c      */
+/* *********************** */
+
+void				init_draw_vars(int i, int j, t_super *super_struct, char letter);
+void				image_prep(t_super *super_struct);
 
 /* *********************** */
 /*   superstruct_setup.c   */
@@ -162,9 +167,10 @@ void				zooms(t_super *super_struct, double zoom_factor);
 /* *********************** */
 
 void				check_min_max(t_super *super_struct, int i, int j);
-void				init_min_max(t_super *super_struct, char letter);
+void				init_min_max(t_super *super_struct);
 void				subtract_min_points(t_super *super_struct);
 void				center_points(t_super *super_struct);
+void				max_min_xy(t_super *super_struct);
 void				reset_points(t_super *super_struct);
 
 #endif

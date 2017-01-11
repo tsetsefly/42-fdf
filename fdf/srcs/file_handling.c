@@ -116,8 +116,7 @@ void 		file_detective(t_super *super_struct)
 	fd = open(super_struct->file_name, O_RDONLY);
 	super_struct->rows = 0;
 	len = 0;
-	// stores a string of each line in super_struct->file_storage
-  	while (get_next_line(fd, &line) > 0)
+  	while (get_next_line(fd, &line) > 0) // stores a string of each line in super_struct->file_storage
 	{
 		len = ft_strlen(line);
 		// printf("%s\tLEN = %lu\n", line, len);
