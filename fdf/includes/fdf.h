@@ -77,7 +77,7 @@ typedef struct s_super
 	void	*img;
 	int		bits_per_pixel;
 	int		size_line; // ( max_x + 1 ) * 4 ... or 2
-	int		*endian; // 0 or 1
+	int		endian; // 0 or 1
 	unsigned int	*mem_addr;
 }				t_super;
 
@@ -163,6 +163,7 @@ void		zooms(t_super *super_struct, double zoom_factor);
 
 void		check_min_max(t_super *super_struct, int i, int j);
 void		init_min_max(t_super *super_struct, char letter);
+void		subtract_min_points(t_super *super_struct)
 void		center_points(t_super *super_struct);
 void		reset_points(t_super *super_struct);
 

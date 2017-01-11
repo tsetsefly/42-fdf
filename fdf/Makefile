@@ -61,7 +61,8 @@ $(LIBMLX):
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(LIBLINK) $(LIBMLXLINK) -o $@ $^ -fsanitize=address
 
-clean: rm -rf build/
+clean:
+	rm -rf build/
 
 fclean: clean
 	rm -f $(NAME)

@@ -113,14 +113,15 @@ void		connect_lines(t_super super_struct)
 	int		i;
 	int		j;
 
-	find_max_min_x(&super_struct);
 	printf("BEFORE = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct.min_x, super_struct.max_x, super_struct.min_y, super_struct.max_y);
-	center_points(&super_struct);
+	find_max_min_x(&super_struct);
+	subtract_min_points(&super_struct);
 	find_max_min_x(&super_struct);
 	printf("AFTER = min_x = %f, max_x = %f, min_y = %f, max_y = %f\n", super_struct.min_x, super_struct.max_x, super_struct.min_y, super_struct.max_y);
 	super_struct.size_line = (round(super_struct.max_x) + 1) * 4;
 	super_struct.img = mlx_new_image(super_struct.mlx, round(super_struct.max_x + 1), round(super_struct.max_y) + 1);
-	super_struct.mem_addr = (unsigned int *)mlx_get_data_addr(super_struct.img, &super_struct.bits_per_pixel, &super_struct.size_line, super_struct.endian);
+	super_struct.mem_addr = (unsigned int *)mlx_get_data_addr(super_struct.img, &super_struct.bits_per_pixel, &super_struct.size_line, &super_struct.endian);
+	printf("GOT HERE!!!!\n");
 	i = 0;
 	while (i < super_struct.rows)
 	{
@@ -135,8 +136,7 @@ void		connect_lines(t_super super_struct)
 		}
 		i++;
 	}
-	mlx_put_image_to_window(super_struct.mlx, super_struct.window, super_struct.img, (WINDOW_X - super_struct.max_x) / 2, (WINDOW_Y - super_struct.max_y) / 2);
-	printf("GOT HERE!!!!\n");
+	mlx_put_image_to_window(super_struct.mlx, super_struct.window, super_struct.img, round((WINDOW_X - super_struct.max_x) / 2), round((WINDOW_Y - super_struct.max_y) / 2));
 	mlx_key_hook(super_struct.window, input_detective, &super_struct);
 	mlx_loop(super_struct.mlx);
 }

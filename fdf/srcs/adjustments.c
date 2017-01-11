@@ -66,6 +66,24 @@ void		init_min_max(t_super *super_struct, char letter)
 	}
 }
 
+void		subtract_min_points(t_super *super_struct)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < super_struct->rows)
+	{
+		j = 0;
+		while (j < super_struct->cols)
+		{
+			super_struct->map[i][j].x -= super_struct->min_x;
+			super_struct->map[i][j].y -= super_struct->min_y;
+			j++;
+		}
+		i++;
+	}
+}
 void		center_points(t_super *super_struct)
 {
 	// int		i;
@@ -90,21 +108,6 @@ void		center_points(t_super *super_struct)
 	// 	}
 	// 	i++;
 	// }
-	int		i;
-	int		j;
-
-	i = 0;
-	while (i < super_struct->rows)
-	{
-		j = 0;
-		while (j < super_struct->cols)
-		{
-			super_struct->map[i][j].x -= super_struct->min_x;
-			super_struct->map[i][j].y -= super_struct->min_y;
-			j++;
-		}
-		i++;
-	}
 }
 
 void		reset_points(t_super *super_struct)
