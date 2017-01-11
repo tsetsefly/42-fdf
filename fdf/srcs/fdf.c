@@ -21,6 +21,7 @@ int			main (int ac, char **av)
 	{
 		super_struct = init_superstruct(av[1]);
 		if (super_struct.file_error)
+			// need to handle file errors
 			printf("Error: file format!\n");
 		else
 			connect_lines(super_struct);

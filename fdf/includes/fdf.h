@@ -24,7 +24,7 @@
 # define Z_ROT 5.0
 # define WINDOW_X 1000.0
 # define WINDOW_Y 1000.0
-# define RES 0.5
+# define RES 0.1
 # define SCALE 0.6
 # define RADS(x) (x * M_PI / 180)
 
@@ -132,8 +132,6 @@ t_pt				*fill_map(char *r_char, t_pt *r_map, int map_row, int cols);
 void				print_shit(t_super super_struct);
 void				print_map(t_super *super_struct);
 void				print_2D_chararray(char **array, int rows);
-// void		ft_swap_doubles(double *a, double *b);
-// void		test_print_spiral(void *mlx, void *window);
 
 /* *********************** */
 /*       key_press.c       */
@@ -141,6 +139,7 @@ void				print_2D_chararray(char **array, int rows);
 
 int					input_detective(int key_press, t_super *super_struct);
 int					key_detective(int key_press);
+void				quitting(t_super *super_struct);
 
 /* *********************** */
 /*    angle_wrangler.c     */
