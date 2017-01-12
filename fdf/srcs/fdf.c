@@ -32,6 +32,6 @@ int			main (int ac, char **av)
 	if (ac == 2)
 		process_fdf(av[1]);
 	else
-		printf("Error: didn't pass a file!\n"); // switch to ft_putstr
+		printf("Error: incorrect number of files!\n"); // switch to ft_putstr
 	return (0);
 }
