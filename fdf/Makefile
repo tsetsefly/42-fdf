@@ -22,7 +22,8 @@ FILENAMES	=		fdf.c					\
 					error_checking.c		\
 					zoom_zoom_zoom.c		\
 					adjustments.c			\
-					draw_support.c
+					draw_support.c			\
+					min_max_stuff.c
 
 CC			=		gcc
 CFLAGS		+=		-Wall -Wextra -Werror

@@ -64,6 +64,5 @@ int			input_detective(int key_press, t_super *super_struct)
 void		quitting(t_super *super_struct)
 {
 	free(super_struct);
-	// (void)super_struct;
 	exit(1);
 }

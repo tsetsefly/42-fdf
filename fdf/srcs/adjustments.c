@@ -13,26 +13,6 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!
 
-void		check_min_max(t_super *super_struct, int i, int j)
-{
-	if (super_struct->min_x > super_struct->map[i][j].x)
-		super_struct->min_x = super_struct->map[i][j].x;
-	if (super_struct->max_x < super_struct->map[i][j].x)
-		super_struct->max_x = super_struct->map[i][j].x;
-	if (super_struct->min_y > super_struct->map[i][j].y)
-		super_struct->min_y = super_struct->map[i][j].y;
-	if (super_struct->max_y < super_struct->map[i][j].y)
-		super_struct->max_y = super_struct->map[i][j].y;
-}
-
-void		init_min_max(t_super *super_struct)
-{
-	super_struct->min_x = super_struct->map[0][0].x;
-	super_struct->max_x = super_struct->min_x;
-	super_struct->min_y = super_struct->map[0][0].y;
-	super_struct->max_y = super_struct->min_y;
-}
-
 void		subtract_min_points(t_super *super_struct)
 {
 	int		i;
@@ -73,25 +53,6 @@ void		center_points(t_super *super_struct)
 		{
 			super_struct->map[i][j].x += adjust_x;
 			super_struct->map[i][j].y += adjust_y;
-			j++;
-		}
-		i++;
-	}
-}
-
-void		max_min_xy(t_super *super_struct)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	init_min_max(super_struct);
-	while (i < super_struct->rows)
-	{
-		j = 0;
-		while (j < super_struct->cols)
-		{
-			check_min_max(super_struct, i, j);
 			j++;
 		}
 		i++;

@@ -113,7 +113,11 @@ void 		file_detective(t_super *super_struct)
 	super_struct->rows = find_num_rows(super_struct->file_name);
 	super_struct->file_storage =
 		(char **)malloc(sizeof(char *) * (super_struct->rows + 1));
-	fd = open(super_struct->file_name, O_RDONLY);
+	if ((fd = open(super_struct->file_name, O_RDONLY)) < 0)
+	{
+		super_struct->file_error = 1;
+		return ;
+	}
 	super_struct->rows = 0;
 	len = 0;
   	while (get_next_line(fd, &line) > 0) // stores a string of each line in super_struct->file_storage

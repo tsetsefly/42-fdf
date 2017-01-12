@@ -21,11 +21,10 @@ void		process_fdf(char *av1)
 	init_superstruct(av1, super_struct);
 	if (super_struct->file_error)
 		// need to handle file errors
-		printf("Error: file format!\n");
+		printf("Error: file error!\n"); // switch to ft_putstr
 	else
 		connect_lines(super_struct);
 	// test_print_spiral(super_struct.mlx, super_struct.window);  // REMOVE LATER!!!
-
 }
 
 int			main (int ac, char **av)

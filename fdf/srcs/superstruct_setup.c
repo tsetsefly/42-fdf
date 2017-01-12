@@ -13,30 +13,15 @@
 #include "fdf.h"
 #include <stdio.h> // REMOVE LATER!!!
 
-void		max_min_z(t_super *super_struct)
+void		assign_to_map(t_super *super_struct, t_pt *map, double x, double y)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	super_struct->max_z = super_struct->map[0][0].og_z;
-	super_struct->min_z = super_struct->map[0][0].og_z;
-	printf("BEFORE = MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
-	while (i < super_struct->rows)
-	{
-		j = 0;
-		while (j < super_struct->cols)
-		{
-			if (super_struct->map[i][j].og_z > super_struct->max_z)
-				super_struct->max_z = super_struct->map[i][j].og_z;
-			else if (super_struct->map[i][j].og_z < super_struct->min_z)
-				super_struct->min_z = super_struct->map[i][j].og_z;
-			j++;
-		}
-		i++;
-	}
-	super_struct->z_delta = super_struct->max_z - super_struct->min_z;
-	printf("AFTER = MAX_Z = %f, MIN_Z = %f, Z_DELTA = %f\n", super_struct->max_z, super_struct->min_z, super_struct->z_delta);
+	map->scaled_x = x;
+	map->scaled_y = y;
+	map->scaled_z =
+		map->og_z * super_struct->step_unit / 2;
+	map->x = x;
+	map->y = y;
+	map->z = map->scaled_z;
 }
 
 void		scale_init_map(t_super *super_struct)
@@ -54,13 +39,7 @@ void		scale_init_map(t_super *super_struct)
 		x = 0;
 		while (j < super_struct->cols)
 		{
-			super_struct->map[i][j].scaled_x = x;
-			super_struct->map[i][j].scaled_y = y;
-			super_struct->map[i][j].scaled_z =
-				super_struct->map[i][j].og_z * super_struct->step_unit / 2;
-			super_struct->map[i][j].x = x;
-			super_struct->map[i][j].y = y;
-			super_struct->map[i][j].z = super_struct->map[i][j].scaled_z;
+			assign_to_map(super_struct, &super_struct->map[i][j], x, y);
 			x += super_struct->step_unit;
 			j++;
 		}

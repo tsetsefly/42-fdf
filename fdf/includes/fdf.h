@@ -109,11 +109,11 @@ void				image_prep(t_super *super_struct);
 /*   superstruct_setup.c   */
 /* *********************** */
 
+void				assign_to_map(t_super *super_struct, t_pt *map, double x, double y);
 void				init_superstruct(char *av1, t_super *super_struct);
 void				scale_that_shit(t_super *super_struct);
 void				scale_init_map(t_super *super_struct);
 void				init_values(t_super *super_struct, char **av1);
-void				max_min_z(t_super *super_struct);
 
 /* *********************** */
 /*     file_handling.c     */
@@ -165,11 +165,17 @@ void				zooms(t_super *super_struct, double zoom_factor);
 /*      adjustments.c      */
 /* *********************** */
 
-void				check_min_max(t_super *super_struct, int i, int j);
-void				init_min_max(t_super *super_struct);
 void				subtract_min_points(t_super *super_struct);
 void				center_points(t_super *super_struct);
-void				max_min_xy(t_super *super_struct);
 void				reset_points(t_super *super_struct);
+
+/* *********************** */
+/*     min_max_stuff.c     */
+/* *********************** */
+
+void				max_min_z(t_super *super_struct);
+void				check_min_max(t_super *super_struct, int i, int j);
+void				max_min_xy(t_super *super_struct);
+void				init_min_max(t_super *super_struct);
 
 #endif
