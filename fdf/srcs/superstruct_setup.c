@@ -128,15 +128,14 @@ void		init_values(t_super *super_struct, char **av1)
 	super_struct->endian = 0;
 }
 
-t_super		init_superstruct(char *av1)
+void		init_superstruct(char *av1, t_super *super_struct)
 {
-	t_super	*super_struct;
+	// t_super	*super_struct;
 
-	super_struct = (t_super *)malloc(sizeof(t_super));
+	// super_struct = (t_super *)malloc(sizeof(t_super));
 	init_values(super_struct, &av1);
 	file_detective(super_struct);
 	if (super_struct->file_error)
-		return(*super_struct);
+		return ;
 	scale_that_shit(super_struct);
-	return (*super_struct);
 }

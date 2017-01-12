@@ -96,7 +96,7 @@ void				z_axis(t_super *super_struct);
 void				low_slope(t_super *super_struct);
 void				high_slope(t_super *super_struct);
 void				draw_line(int i, int j, t_super *super_struct, char letter);
-void				connect_lines(t_super super_struct);
+void				connect_lines(t_super *super_struct);
 
 /* *********************** */
 /*     draw_support.c      */
@@ -109,7 +109,7 @@ void				image_prep(t_super *super_struct);
 /*   superstruct_setup.c   */
 /* *********************** */
 
-t_super				init_superstruct(char *av1);
+void				init_superstruct(char *av1, t_super *super_struct);
 void				scale_that_shit(t_super *super_struct);
 void				scale_init_map(t_super *super_struct);
 void				init_values(t_super *super_struct, char **av1);

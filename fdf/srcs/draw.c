@@ -68,30 +68,30 @@ void		draw_line(int i, int j, t_super *super_struct, char letter)
 		high_slope(super_struct);
 }
 
-void		connect_lines(t_super super_struct)
+void		connect_lines(t_super *super_struct)
 {
 	int		i;
 	int		j;
 
-	image_prep(&super_struct);
+	image_prep(super_struct);
 	i = 0;
-	while (i < super_struct.rows)
+	while (i < super_struct->rows)
 	{
 		j = 0;
-		while (j < super_struct.cols)
+		while (j < super_struct->cols)
 		{
-			if (j < super_struct.cols - 1)
-				draw_line(i, j, &super_struct, 'j');
-			if (i < super_struct.rows - 1)
-				draw_line(i, j, &super_struct, 'i');
+			if (j < super_struct->cols - 1)
+				draw_line(i, j, super_struct, 'j');
+			if (i < super_struct->rows - 1)
+				draw_line(i, j, super_struct, 'i');
 			j++;
 		}
 		i++;
 	}
 	// center_points(&super_struct);
-	mlx_put_image_to_window(super_struct.mlx, super_struct.window,
-		super_struct.img, round((WINDOW_X - super_struct.max_x) / 2),
-		round((WINDOW_Y - super_struct.max_y) / 2));
-	mlx_key_hook(super_struct.window, input_detective, &super_struct);
-	mlx_loop(super_struct.mlx);
+	mlx_put_image_to_window(super_struct->mlx, super_struct->window,
+		super_struct->img, round((WINDOW_X - super_struct->max_x) / 2),
+		round((WINDOW_Y - super_struct->max_y) / 2));
+	mlx_key_hook(super_struct->window, input_detective, super_struct);
+	mlx_loop(super_struct->mlx);
 }

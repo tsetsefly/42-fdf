@@ -15,10 +15,11 @@
 
 void		process_fdf(char *av1)
 {
-	t_super	super_struct;
+	t_super	*super_struct;
 
-	super_struct = init_superstruct(av1);
-	if (super_struct.file_error)
+	super_struct = (t_super *)malloc(sizeof(t_super));
+	init_superstruct(av1, super_struct);
+	if (super_struct->file_error)
 		// need to handle file errors
 		printf("Error: file format!\n");
 	else
