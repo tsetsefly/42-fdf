@@ -62,7 +62,17 @@ int			input_detective(int key_press, t_super *super_struct)
 }
 
 void		quitting(t_super *super_struct)
-{
+{	
+	int		i;
+
+	i = 0;
+	while (i < super_struct->rows)
+		free(super_struct->map[i++]);
+	free(super_struct->map);
 	free(super_struct);
+	i = 0;
+	while (i < super_struct->rows + 1)
+		free(super_struct->file_storage[i++]);
+	free(super_struct->file_storage);
 	exit(1);
 }
