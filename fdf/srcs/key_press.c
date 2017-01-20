@@ -32,8 +32,8 @@ int			key_detective(int key_press)
 
 int			input_detective(int key_press, t_super *super_struct)
 {
-	printf("\n");
-	printf("key_press = %d\n", key_press);
+	// printf("\n");
+	// printf("key_press = %d\n", key_press);
 	mlx_clear_window(super_struct->mlx, super_struct->window);
 	mlx_destroy_image(super_struct->mlx, super_struct->img);
 	if (key_detective(key_press))
@@ -55,7 +55,7 @@ int			input_detective(int key_press, t_super *super_struct)
 		quitting(super_struct);
 	else
 	{
-		printf("Error: not a valid keypress!\n");
+		ft_putstr("Error: not a valid keypress!\n");
 		connect_lines(super_struct);
 	}
 	return (0);

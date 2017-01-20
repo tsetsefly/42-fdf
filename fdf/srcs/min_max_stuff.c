@@ -21,7 +21,7 @@ void		max_min_z(t_super *super_struct)
 	i = 0;
 	super_struct->max_z = super_struct->map[0][0].og_z;
 	super_struct->min_z = super_struct->map[0][0].og_z;
-	printf("BEFORE = MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
+	// printf("BEFORE = MAX_Z = %f, MIN_Z = %f\n", super_struct->max_z, super_struct->min_z);
 	while (i < super_struct->rows)
 	{
 		j = 0;
@@ -36,7 +36,7 @@ void		max_min_z(t_super *super_struct)
 		i++;
 	}
 	super_struct->z_delta = super_struct->max_z - super_struct->min_z;
-	printf("AFTER = MAX_Z = %f, MIN_Z = %f, Z_DELTA = %f\n", super_struct->max_z, super_struct->min_z, super_struct->z_delta);
+	// printf("AFTER = MAX_Z = %f, MIN_Z = %f, Z_DELTA = %f\n", super_struct->max_z, super_struct->min_z, super_struct->z_delta);
 }
 
 void		check_min_max(t_super *super_struct, int i, int j)

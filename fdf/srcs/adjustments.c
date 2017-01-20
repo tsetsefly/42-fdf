@@ -44,7 +44,7 @@ void		center_points(t_super *super_struct)
 		/ 2) + super_struct->min_x);
 	adjust_y = (WINDOW_Y / 2) - (((super_struct->max_y - super_struct->min_y)
 		/ 2) + super_struct->min_y);
-	printf("adjust_x = %f, adjust_y = %f, center_x = %f, center_y = %f\n", adjust_x, adjust_y, (((super_struct->max_x - super_struct->min_x) / 2) + super_struct->min_x), (((super_struct->max_y - super_struct->min_y) / 2) + super_struct->min_y)); // REMOVE LATER
+	// printf("adjust_x = %f, adjust_y = %f, center_x = %f, center_y = %f\n", adjust_x, adjust_y, (((super_struct->max_x - super_struct->min_x) / 2) + super_struct->min_x), (((super_struct->max_y - super_struct->min_y) / 2) + super_struct->min_y)); // REMOVE LATER
 	i = 0;
 	while (i < super_struct->rows)
 	{

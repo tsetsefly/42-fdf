@@ -52,7 +52,7 @@ int			find_num_rows(char *file_name)
 	rows = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		printf("%s\n", line);
+		// printf("%s\n", line);
 		rows++;
 		free(line);
   	}
@@ -88,7 +88,7 @@ void		parse_file(t_super *super_struct)
 	find_num_cols(super_struct);
 	if (super_struct->file_error)
 		return ;
-	printf("ROWS = %d, COLS = %d\n", super_struct->rows, super_struct->cols);
+	// printf("ROWS = %d, COLS = %d\n", super_struct->rows, super_struct->cols);
 	super_struct->map = (t_pt **)malloc(sizeof(t_pt *) * (super_struct->rows));
 	i = 0;
 	while (i < super_struct->rows)

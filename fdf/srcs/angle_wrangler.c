@@ -44,8 +44,8 @@ void		apply_angle(t_super *super_struct, int key_press)
 	}
 	else if (key_press == 6 || key_press == 7 || key_press == 8)
 		ninty_rotation(super_struct, key_press);
-	printf("X_ROT = %f, Y_ROT = %f, Z_ROT = %f\n", X_ROT, Y_ROT, Z_ROT);
-	printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z); // REMOVE LATER!!!
+	// printf("X_ROT = %f, Y_ROT = %f, Z_ROT = %f\n", X_ROT, Y_ROT, Z_ROT);
+	// printf("angle_x = %f, angle_y = %f, angle_z = %f\n", super_struct->angle_x, super_struct->angle_y, super_struct->angle_z); // REMOVE LATER!!!
 }
 
 void		ninty_rotation(t_super *super_struct, int key_press)
