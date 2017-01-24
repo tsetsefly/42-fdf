@@ -14,6 +14,7 @@ TL;DR = "This project is about creating a simplified 3D graphic representation o
 ## Error checking
 ### One file
 ```c
+// fdf.c --> main
 int	main(int ac, char **av)
 {
     if (ac == 2)
@@ -24,6 +25,7 @@ int	main(int ac, char **av)
 ### File errors
 Checks for errors with file reading
 ```c
+// file_handling.c --> file_detective
 if ((fd = open(super_struct->file_name, O_RDONLY)) < 0)
 {
     super_struct->file_error = 1;
@@ -32,6 +34,7 @@ if ((fd = open(super_struct->file_name, O_RDONLY)) < 0)
 ```
 Checks for consistent number of columns
 ```c
+// error_checking.c --> compare_cols
 if (i == 0)
     super_struct->cols = cols;
 else
@@ -42,6 +45,7 @@ else
 ```
 Check for errors caught after file handling and struct setup
 ```c
+// fdf.c --> main
 if (super_struct->file_error)
     ft_putstr("Error: file error!\n");
 ```
@@ -65,7 +69,7 @@ super_struct->map = (t_pt **)malloc(sizeof(t_pt *) * (super_struct->rows));
 // later in a loop: malloc'ing for columns in the array of map points
 super_struct->map[i] = (t_pt *)malloc(sizeof(t_pt) * (super_struct->cols));
 ```
-Assigning initial values to the map
+Assigning original values to the map
 ```c
 // file_handling.c --> parse_file
 // inside the same loop as above
@@ -82,8 +86,9 @@ while (i < cols)
     i++;
 }
 ```
-Determining the appropriate scale factor for the window (scale_that_shit)
+Determining the appropriate scale factor for the window
 ```c
+// superstruct_setup.c --> scale_that_shit
 // determines which is the longest axis and scales accordingly
 if (super_struct->cols >= super_struct->rows && super_struct->cols >= super_struct->z_delta)
 {
@@ -102,3 +107,31 @@ else
    super_struct->long_axis = 'z';
 }
 ```
+Assigning scaled values to the map
+```c
+// superstruct_setup.c --> scale_init_map
+// looping through the rows, columns
+y = 0;
+i = 0;
+while (i < super_struct->rows)
+{
+   j = 0;
+   x = 0;
+   while (j < super_struct->cols)
+   {
+	assign_to_map(super_struct, &super_struct->map[i][j], x, y);
+	x += super_struct->step_unit;
+	j++;
+   }
+   y += super_struct->step_unit;
+   i++;
+}
+// superstruct_setup.c --> assign_to_map
+map->scaled_x = x;
+map->scaled_y = y;
+map->scaled_z = map->og_z * super_struct->step_unit / 2;
+map->x = x;
+map->y = y;
+map->z = map->scaled_z;
+```
+## Drawing
