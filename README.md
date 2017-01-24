@@ -11,6 +11,9 @@ TL;DR = "This project is about creating a simplified 3D graphic representation o
 
 ## MinilibX
 
+C graphics library used to open windows, light pixels, deal with events.
+* [Man pages](https://github.com/tsetsefly/42-fdf/tree/master/minilibx_macos/man)
+
 ## Error checking
 ### One file
 ```c
