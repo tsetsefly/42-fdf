@@ -51,7 +51,7 @@ if (super_struct->file_error)
 ```
 ## File handling
 ### File storage
-Initial file is copied to the structure as an array of strings. Allows for additional parsing later if needed (didn't implement HEX color parsing but could deal with it from this array.
+Initial file is copied to the structure as an array of strings. Allows for additional parsing later as needed (didn't implement HEX color parsing but could deal with it from this array).
 ```c
 // file_handling.c --> file_detective
 // malloc'ing array
