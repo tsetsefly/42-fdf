@@ -18,12 +18,12 @@ C graphics library used to open windows, light pixels, deal with events.
 ### One file
 ```c
 // fdf.c --> main
-int	main(int ac, char **av)
+int			main(int ac, char **av)
 {
-    if (ac == 2)
-   	process_fdf(av[1]);
-    else
-    	ft_putstr("Error: incorrect number of files!\n");
+	if (ac == 2)
+		process_fdf(av[1]);
+	else
+		ft_putstr("Error: incorrect number of files!\n");
 ```
 ### File errors
 Checks for errors with file reading
