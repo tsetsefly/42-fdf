@@ -138,3 +138,21 @@ map->y = y;
 map->z = map->scaled_z;
 ```
 ## Drawing
+
+Looping through map, point-by-point
+```c
+// draw.c --> connect_lines
+while (i < super_struct->rows)
+{
+    j = 0;
+    while (j < super_struct->cols)
+    {
+	if (j < super_struct->cols - 1)
+	    draw_line(i, j, super_struct, 'j');
+	if (i < super_struct->rows - 1)
+	    draw_line(i, j, super_struct, 'i');
+	j++;
+    }
+	i++;
+}
+```
