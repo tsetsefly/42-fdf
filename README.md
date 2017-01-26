@@ -18,7 +18,7 @@ C graphics library used to open windows, light pixels, deal with events.
 ### One file
 ```c
 // fdf.c --> main
-int			main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac == 2)
 		process_fdf(av[1]);
