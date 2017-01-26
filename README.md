@@ -138,7 +138,6 @@ map->y = y;
 map->z = map->scaled_z;
 ```
 ## Drawing
-
 Looping through map, point-by-point
 ```c
 // draw.c --> connect_lines
@@ -154,5 +153,38 @@ while (i < super_struct->rows)
 	j++;
     }
 	i++;
+}
+```
+Low slopes (less than 1)
+```c
+// draw.c --> low_slope
+max = fabs(super_struct->x2 - super_struct->x1);
+neg = (super_struct->x2 < super_struct->x1) ? -1 : 1;
+while (k <= max)
+{
+    super_struct->mem_addr[(int)(round(super_struct->y1)
+	* round(super_struct->max_x + 1) + round(super_struct->x1))] =
+	super_struct->color;
+    super_struct->x1 += (RES * neg);
+    super_struct->y1 = super_struct->slope * super_struct->x1
+	+ super_struct->y_int;
+    k += RES;
+}
+```
+High slopes (greater than or equal to 1)
+```c
+// draw.c --> high_slope
+max = fabs(super_struct->y2 - super_struct->y1);
+neg = (super_struct->y2 < super_struct->y1) ? -1 : 1;
+while (k <= max)
+{
+    super_struct->mem_addr[(int)(round(super_struct->y1)
+	* round(super_struct->max_x + 1) + round(super_struct->x1))] =
+	super_struct->color;
+    super_struct->y1 += (RES * neg);
+    super_struct->x1 = (super_struct->x1 == super_struct->x2) ?
+	super_struct->x2 : ((super_struct->y1 - super_struct->y_int)
+	/ super_struct->slope);
+    k += RES;
 }
 ```
