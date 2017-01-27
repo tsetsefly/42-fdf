@@ -39,12 +39,12 @@ Checks for consistent number of columns
 ```c
 // error_checking.c --> compare_cols
 if (i == 0)
-		super_struct->cols = cols;
-	else
-	{
-		if (super_struct->cols != cols)
-			super_struct->file_error = 1;
-	}
+	super_struct->cols = cols;
+else
+{
+	if (super_struct->cols != cols)
+		super_struct->file_error = 1;
+}
 ```
 Check for errors caught after file handling and struct setup
 ```c
