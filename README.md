@@ -93,21 +93,25 @@ Determining the appropriate scale factor for the window
 ```c
 // superstruct_setup.c --> scale_that_shit
 // determines which is the longest axis and scales accordingly
-if (super_struct->cols >= super_struct->rows && super_struct->cols >= super_struct->z_delta)
+if (super_struct->cols >= super_struct->rows && super_struct->cols
+	>= super_struct->z_delta)
 {
-    super_struct->step_unit = WINDOW_X * SCALE
-	/ (super_struct->cols - 1);
-    super_struct->long_axis = 'x';
+	super_struct->step_unit = WINDOW_X * SCALE
+		/ (super_struct->cols - 1);
+	super_struct->long_axis = 'x';
 }
-else if (super_struct->rows >= super_struct->cols && super_struct->rows >= super_struct->z_delta)
+else if (super_struct->rows >= super_struct->cols && super_struct->rows
+	>= super_struct->z_delta)
 {
-    super_struct->step_unit = WINDOW_Y * SCALE / (super_struct->rows - 1);
-    super_struct->long_axis = 'y';
+	super_struct->step_unit = WINDOW_Y * SCALE
+		/ (super_struct->rows - 1);
+	super_struct->long_axis = 'y';
 }
 else
 {
-   super_struct->step_unit = ((WINDOW_X + WINDOW_Y) / 2) / super_struct->z_delta;
-   super_struct->long_axis = 'z';
+	super_struct->step_unit = ((WINDOW_X + WINDOW_Y) / 2)
+		/ super_struct->z_delta;
+	super_struct->long_axis = 'z';
 }
 ```
 Assigning scaled values to the map
@@ -118,16 +122,16 @@ y = 0;
 i = 0;
 while (i < super_struct->rows)
 {
-   j = 0;
-   x = 0;
-   while (j < super_struct->cols)
-   {
-	assign_to_map(super_struct, &super_struct->map[i][j], x, y);
-	x += super_struct->step_unit;
-	j++;
-   }
-   y += super_struct->step_unit;
-   i++;
+	j = 0;
+	x = 0;
+	while (j < super_struct->cols)
+	{
+		assign_to_map(super_struct, &super_struct->map[i][j], x, y);
+		x += super_struct->step_unit;
+		j++;
+	}
+	y += super_struct->step_unit;
+	i++;
 }
 // superstruct_setup.c --> assign_to_map
 map->scaled_x = x;
@@ -143,15 +147,15 @@ Looping through map, point-by-point
 // draw.c --> connect_lines
 while (i < super_struct->rows)
 {
-    j = 0;
-    while (j < super_struct->cols)
-    {
-	if (j < super_struct->cols - 1)
-	    draw_line(i, j, super_struct, 'j');
-	if (i < super_struct->rows - 1)
-	    draw_line(i, j, super_struct, 'i');
-	j++;
-    }
+	j = 0;
+	while (j < super_struct->cols)
+	{
+		if (j < super_struct->cols - 1)
+			draw_line(i, j, super_struct, 'j');
+		if (i < super_struct->rows - 1)
+			draw_line(i, j, super_struct, 'i');
+		j++;
+	}
 	i++;
 }
 ```
@@ -162,13 +166,13 @@ max = fabs(super_struct->x2 - super_struct->x1);
 neg = (super_struct->x2 < super_struct->x1) ? -1 : 1;
 while (k <= max)
 {
-    super_struct->mem_addr[(int)(round(super_struct->y1)
-	* round(super_struct->max_x + 1) + round(super_struct->x1))] =
-	super_struct->color;
-    super_struct->x1 += (RES * neg);
-    super_struct->y1 = super_struct->slope * super_struct->x1
-	+ super_struct->y_int;
-    k += RES;
+	super_struct->mem_addr[(int)(round(super_struct->y1)
+		* round(super_struct->max_x + 1) + round(super_struct->x1))]
+		= super_struct->color;
+	super_struct->x1 += (RES * neg);
+	super_struct->y1 = super_struct->slope * super_struct->x1
+		+ super_struct->y_int;
+	k += RES;
 }
 ```
 High slopes (greater than or equal to 1)
@@ -178,13 +182,13 @@ max = fabs(super_struct->y2 - super_struct->y1);
 neg = (super_struct->y2 < super_struct->y1) ? -1 : 1;
 while (k <= max)
 {
-    super_struct->mem_addr[(int)(round(super_struct->y1)
-	* round(super_struct->max_x + 1) + round(super_struct->x1))] =
-	super_struct->color;
-    super_struct->y1 += (RES * neg);
-    super_struct->x1 = (super_struct->x1 == super_struct->x2) ?
-	super_struct->x2 : ((super_struct->y1 - super_struct->y_int)
-	/ super_struct->slope);
-    k += RES;
+	super_struct->mem_addr[(int)(round(super_struct->y1)
+		* round(super_struct->max_x + 1) + round(super_struct->x1))]
+		= super_struct->color;
+	super_struct->y1 += (RES * neg);
+	super_struct->x1 = (super_struct->x1 == super_struct->x2) ?
+		super_struct->x2 : ((super_struct->y1 - super_struct->y_int)
+		/ super_struct->slope);
+	k += RES;
 }
 ```
