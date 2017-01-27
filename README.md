@@ -192,3 +192,15 @@ while (k <= max)
 	k += RES;
 }
 ```
+Working with the graphics library (Minilibx)
+```c
+// draw.c --> connect_lines
+// taking image and placing it in middle
+mlx_put_image_to_window(super_struct->mlx, super_struct->window,
+	super_struct->img, round((WINDOW_X - super_struct->max_x) / 2),
+	round((WINDOW_Y - super_struct->max_y) / 2));
+// listening for key-presses
+mlx_key_hook(super_struct->window, input_detective, super_struct);
+mlx_loop(super_struct->mlx);
+```
+## Input detection
