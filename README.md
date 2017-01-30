@@ -218,7 +218,7 @@ else if (key_press == 13 || key_press == 1)
 {
 ...
 ```
-Changing the coordinates based on angle changes
+Changing the coordinates based on angle changes based on this [Siggraph article] (https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm)
 ```c
 // rotation.c --> x_axis
 super_struct->map[i][j].x = super_struct->map[i][j].scaled_x;
