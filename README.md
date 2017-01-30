@@ -204,3 +204,28 @@ mlx_key_hook(super_struct->window, input_detective, super_struct);
 mlx_loop(super_struct->mlx);
 ```
 ## Input detection
+Applying angle of rotation
+```c
+// angle_wrangler.c --> apply_angle
+if (key_press == 0 || key_press == 2)
+{
+	if (key_press == 2)
+		super_struct->angle_y += Y_ROT;
+	else
+		super_struct->angle_y -= Y_ROT;
+}
+else if (key_press == 13 || key_press == 1)
+{
+...
+```
+Changing the coordinates based on angle changes
+```c
+// rotation.c --> x_axis
+super_struct->map[i][j].x = super_struct->map[i][j].scaled_x;
+super_struct->map[i][j].y =
+	super_struct->map[i][j].scaled_y * cos(RADS(super_struct->angle_x))
+	- super_struct->map[i][j].scaled_z * sin(RADS(super_struct->angle_x));
+super_struct->map[i][j].z =
+	super_struct->map[i][j].scaled_y * sin(RADS(super_struct->angle_x))
+	+ super_struct->map[i][j].scaled_z * cos(RADS(super_struct->angle_x));
+```
