@@ -192,7 +192,7 @@ while (k <= max)
 	k += RES;
 }
 ```
-Working with the graphics library (Minilibx)
+Working with the graphics library (MinilibX)
 ```c
 // draw.c --> connect_lines
 // taking image and placing it in middle
