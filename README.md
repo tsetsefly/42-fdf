@@ -192,6 +192,31 @@ while (k <= max)
 	k += RES;
 }
 ```
+Drawing lines
+```c
+// draw.c --> draw_line
+if (fabs(super_struct->slope) < 1)
+	low_slope(super_struct);
+else
+	high_slope(super_struct);
+```
+Connecting lines
+```c
+// draw.c --> connect_lines
+while (i < super_struct->rows)
+{
+	j = 0;
+	while (j < super_struct->cols)
+	{
+		if (j < super_struct->cols - 1)
+			draw_line(i, j, super_struct, 'j');
+		if (i < super_struct->rows - 1)
+			draw_line(i, j, super_struct, 'i');
+		j++;
+	}
+	i++;
+}
+```
 Working with the graphics library (MinilibX)
 ```c
 // draw.c --> connect_lines
@@ -204,6 +229,17 @@ mlx_key_hook(super_struct->window, input_detective, super_struct);
 mlx_loop(super_struct->mlx);
 ```
 ## Input detection
+Key press actions
+```c
+/* *********************************** */
+/* X-AXIS: 's' = 1;  'w' = 13; 'x' = 8 */
+/* Y-AXIS: 'a' = 0;  'd' = 2;  'c' = 9 */
+/* Z-AXIS: 'q' = 12; 'e' = 14; 'z' = 7 */
+/* *********************************** */
+// zoom
+// reset
+// 90-deg
+```
 Applying angle of rotation
 ```c
 // angle_wrangler.c --> apply_angle
