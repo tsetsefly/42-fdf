@@ -229,18 +229,20 @@ mlx_key_hook(super_struct->window, input_detective, super_struct);
 mlx_loop(super_struct->mlx);
 ```
 ## Input detection
-Key press actions
-```c
-/* *********************************** */
-/* X-AXIS: 's' = 1;  'w' = 13; 'x' = 8 */
-/* Y-AXIS: 'a' = 0;  'd' = 2;  'c' = 9 */
-/* Z-AXIS: 'q' = 12; 'e' = 14; 'z' = 7 */
-/* *********************************** */
-// zoom
-// reset
-// 90-deg
-```
-Applying angle of rotation
+### Rotation key presses
+|Axis    |(+)radians|(-)radians|(+)90-degrees|
+|--------|----------|----------|-------------|
+|X-AXIS  |S         |W         |X            |
+|--------|----------|----------|-------------|
+|X-AXIS  |A         |D         |C            |
+|--------|----------|----------|-------------|
+|Z-AXIS  |Q         |E         |Z            |
+|--------|----------|----------|-------------|
+### Other key presses
+Zoom-in = 1
+Zoom-out = 2
+Reset back to initial map = F
+### Applying angle of rotation
 ```c
 // angle_wrangler.c --> apply_angle
 if (key_press == 0 || key_press == 2)
