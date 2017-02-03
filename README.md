@@ -233,7 +233,7 @@ mlx_loop(super_struct->mlx);
 |Axis    |(+) radians|(-) radians|(+) 90-degrees|
 |:------:|:---------:|:---------:|:------------:|
 |X-AXIS  |S          |W          |X             |
-|X-AXIS  |A          |D          |C             |
+|Y-AXIS  |A          |D          |C             |
 |Z-AXIS  |Q          |E          |Z             |
 
 ### Other key presses
