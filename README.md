@@ -230,14 +230,11 @@ mlx_loop(super_struct->mlx);
 ```
 ## Input detection
 ### Rotation key presses
-|Axis    |(+)radians|(-)radians|(+)90-degrees|
-|--------|----------|----------|-------------|
-|X-AXIS  |S         |W         |X            |
-|--------|----------|----------|-------------|
-|X-AXIS  |A         |D         |C            |
-|--------|----------|----------|-------------|
-|Z-AXIS  |Q         |E         |Z            |
-|--------|----------|----------|-------------|
+|Axis    |(+) radians|(-) radians|(+) 90-degrees|
+|:------:|:---------:|:---------:|:------------:|
+|X-AXIS  |S          |W          |X             |
+|X-AXIS  |A          |D          |C             |
+|Z-AXIS  |Q          |E          |Z             |
 ### Other key presses
 Zoom-in = 1
 Zoom-out = 2
