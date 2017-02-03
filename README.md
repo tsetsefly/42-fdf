@@ -238,9 +238,9 @@ mlx_loop(super_struct->mlx);
 
 ### Other key presses
 
-* Zoom-in = *1*
-* Zoom-out = *2*
-* Reset back to initial map = *F*
+* Zoom-in = **1**
+* Zoom-out = **2**
+* Reset back to initial map = **F**
 
 ### Applying angle of rotation
 ```c
