@@ -235,11 +235,12 @@ mlx_loop(super_struct->mlx);
 |X-AXIS  |S          |W          |X             |
 |X-AXIS  |A          |D          |C             |
 |Z-AXIS  |Q          |E          |Z             |
+
 ### Other key presses
 
-*Zoom-in = *1*
-*Zoom-out = *2*
-*Reset back to initial map = *F*
+* Zoom-in = *1*
+* Zoom-out = *2*
+* Reset back to initial map = *F*
 
 ### Applying angle of rotation
 ```c
