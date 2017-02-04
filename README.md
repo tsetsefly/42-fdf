@@ -192,7 +192,7 @@ while (k <= max)
 	k += RES;
 }
 ```
-Drawing lines
+Determining equation for line drawing
 ```c
 // draw.c --> draw_line
 if (fabs(super_struct->slope) < 1)
@@ -217,7 +217,7 @@ while (i < super_struct->rows)
 	i++;
 }
 ```
-Working with the graphics library (MinilibX)
+Using graphics library (MinilibX) to detect key-presses and placing image
 ```c
 // draw.c --> connect_lines
 // taking image and placing it in middle
@@ -243,6 +243,7 @@ mlx_loop(super_struct->mlx);
 * Reset back to initial map = **F**
 
 ### Applying angle of rotation
+Adding angle in radians to each angle storage variable (Ex. is for y-axis)
 ```c
 // angle_wrangler.c --> apply_angle
 if (key_press == 0 || key_press == 2)
