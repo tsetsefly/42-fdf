@@ -1,6 +1,6 @@
 # FDF
 
-TL;DR = "This project is about creating a simplified 3D graphic representation of a relief landscape."
+TL;DR = This project creates a 3D graphic representation of a relief landscape.
 * FDF stands for "fils de fer," or _wireframe_ in French
 
 ## Methods of rotation
@@ -11,7 +11,7 @@ TL;DR = "This project is about creating a simplified 3D graphic representation o
 
 ## MinilibX
 
-C graphics library used to open windows, light pixels, deal with events.
+This program uses a C graphics library used to open windows, light pixels, handle events.
 * [Man pages](https://github.com/tsetsefly/42-fdf/tree/master/minilibx_macos/man)
 
 ## Error checking
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 		ft_putstr("Error: incorrect number of files!\n");
 ```
 ### File errors
-Checks for errors with file reading
+Checks for errors with **file reading**
 ```c
 // file_handling.c --> file_detective
 if ((fd = open(super_struct->file_name, O_RDONLY)) < 0)
@@ -35,7 +35,7 @@ if ((fd = open(super_struct->file_name, O_RDONLY)) < 0)
     return ;
 }
 ```
-Checks for consistent number of columns
+Checks for **consistent number of columns**
 ```c
 // error_checking.c --> compare_cols
 if (i == 0)
@@ -46,7 +46,7 @@ else
 		super_struct->file_error = 1;
 }
 ```
-Check for errors caught after file handling and struct setup
+Will halt program if errors are caught after file handling and struct setup
 ```c
 // fdf.c --> main
 if (super_struct->file_error)
@@ -192,7 +192,7 @@ while (k <= max)
 	k += RES;
 }
 ```
-Determining equation for line drawing
+Determining equation for line drawing. Differentiating between low slope and high slope to keep drawn lines smooth
 ```c
 // draw.c --> draw_line
 if (fabs(super_struct->slope) < 1)
@@ -200,7 +200,7 @@ if (fabs(super_struct->slope) < 1)
 else
 	high_slope(super_struct);
 ```
-Connecting lines
+Connecting lines between points on the map
 ```c
 // draw.c --> connect_lines
 while (i < super_struct->rows)
@@ -217,7 +217,7 @@ while (i < super_struct->rows)
 	i++;
 }
 ```
-Using graphics library (MinilibX) to detect key-presses and placing image
+Using graphics library (MinilibX) to detect key-presses and placing image in the window
 ```c
 // draw.c --> connect_lines
 // taking image and placing it in middle
@@ -229,21 +229,22 @@ mlx_key_hook(super_struct->window, input_detective, super_struct);
 mlx_loop(super_struct->mlx);
 ```
 ## Input detection
-### Rotation key presses
+### Rotation key-presses
 |Axis    |(+) radians|(-) radians|(+) 90-degrees|
 |:------:|:---------:|:---------:|:------------:|
 |X-AXIS  |S          |W          |X             |
 |Y-AXIS  |A          |D          |C             |
 |Z-AXIS  |Q          |E          |Z             |
 
-### Other key presses
+### Other key-presses
 
 * Zoom-in = **1**
 * Zoom-out = **2**
 * Reset back to initial map = **F**
+* Exit program = **Esc**
 
 ### Applying angle of rotation
-Adding angle in radians to each angle storage variable (Ex. is for y-axis)
+Adding angle in radians to each angle storage variable (example shown is for y-axis)
 ```c
 // angle_wrangler.c --> apply_angle
 if (key_press == 0 || key_press == 2)
@@ -253,11 +254,8 @@ if (key_press == 0 || key_press == 2)
 	else
 		super_struct->angle_y -= Y_ROT;
 }
-else if (key_press == 13 || key_press == 1)
-{
-...
 ```
-Changing the coordinates based on angle changes based on this [Siggraph article] (https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm)
+Changing the coordinates based on angle changes based on this [Siggraph article] (example shown is for x-axis) (https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm)
 ```c
 // rotation.c --> x_axis
 super_struct->map[i][j].x = super_struct->map[i][j].scaled_x;
