@@ -255,7 +255,7 @@ if (key_press == 0 || key_press == 2)
 		super_struct->angle_y -= Y_ROT;
 }
 ```
-Changing the coordinates based on angle changes based on this [Siggraph article] (https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm)(example shown is for x-axis)
+Changing the coordinates based on angle changes based on this [Siggraph article] (https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm) (example shown is for x-axis)
 ```c
 // rotation.c --> x_axis
 super_struct->map[i][j].x = super_struct->map[i][j].scaled_x;
